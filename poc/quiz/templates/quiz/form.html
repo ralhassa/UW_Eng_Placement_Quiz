@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Engineering Quiz || Test</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
+<body class="page_body">
+
+  <!-- Submitting a form-->
+
+  <div align = "center" style="border: solid 1px #000000;">
+    <caption style="font-size:20px;">Submit_Sample_Question</caption>
+    <form id="submit" action ="{% url 'submit' %}" method ='post' border = 1>
+      {% csrf_token %}
+            <label class="">Sample_Q1 </label>
+            <select id="q1" name="q1" placeholder="Sample_Q1" required>
+                    <option value="sample_option_1">sample_option_1</option>
+                    <option value="sample_option_2">sample_option_2</option>
+                    <option value="sample_option_3">sample_option_3</option>
+                    <option value="sample_option_4">sample_option_4</option>
+            </select>
+            <br />
+            <label class="">Sample_Q2 </label>
+            <select id="q2" name="q2" placeholder="Sample_Q2" required>
+                    <option value="sample_option_1">sample_option_1</option>
+                    <option value="sample_option_2">sample_option_2</option>
+                    <option value="sample_option_3">sample_option_3</option>
+                    <option value="sample_option_4">sample_option_4</option>
+            </select>
+            <br />
+            <label class="">Sample_Q3 </label>
+            <select id="q3" name="q3" placeholder="Sample_Q3" required>
+                    <option value="sample_option_1">sample_option_1</option>
+                    <option value="sample_option_2">sample_option_2</option>
+                    <option value="sample_option_3">sample_option_3</option>
+                    <option value="sample_option_4">sample_option_4</option>
+            </select>
+            <br />
+            <label class="">Sample_Q4 </label>
+            <select id="q4" name="q4" placeholder="Sample_Q4" required>
+                    <option value="sample_option_1">sample_option_1</option>
+                    <option value="sample_option_2">sample_option_2</option>
+                    <option value="sample_option_3">sample_option_3</option>
+                    <option value="sample_option_4">sample_option_4</option>
+            </select>
+            <input type= "submit" value = "submit"/>
+
+    </form>
+  </div>
+</body>
+</html>
