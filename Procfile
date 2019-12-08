@@ -1,1 +1,1 @@
-web: gunicorn fydptest:app
+web: gunicorn poc.wsgi --log-file -
