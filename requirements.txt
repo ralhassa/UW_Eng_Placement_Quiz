@@ -2,6 +2,7 @@ appnope==0.1.0
 asgiref==3.2.3
 backcall==0.1.0
 bleach==3.0.2
+certifi==2019.11.28
 cycler==0.10.0
 decorator==4.3.0
 defusedxml==0.5.0
@@ -34,6 +35,7 @@ pandocfilters==1.4.2
 parso==0.3.1
 pexpect==4.6.0
 pickleshare==0.7.5
+pipenv==2018.11.26
 prometheus-client==0.4.2
 prompt-toolkit==2.0.7
 ptyprocess==0.6.0
@@ -55,6 +57,8 @@ terminado==0.8.1
 testpath==0.4.2
 tornado==5.1.1
 traitlets==4.3.2
+virtualenv==16.7.8
+virtualenv-clone==0.5.3
 wcwidth==0.1.7
 webencodings==0.5.1
 whitenoise==4.1.4
