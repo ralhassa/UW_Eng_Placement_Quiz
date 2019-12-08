@@ -1,1 +1,1 @@
-web: gunicorn fydptest.wsgi
+web: gunicorn fydptest:app
