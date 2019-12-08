@@ -1,1 +1,1 @@
-web: gunicorn poc.wsgi.py --log-file -
+web: gunicorn quiz.wsgi --log-file -
