@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('form', views.form, name='form'),
+    path('download_to_csv',views.download_to_csv,name='download_to_csv'),
     url(r'submit', views.submit, name='submit'),
 ]
