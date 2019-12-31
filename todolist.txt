@@ -1,0 +1,26 @@
+FE:
+
+- Fix the way the accordion works: right now it doesn't collapse when another question is selected
+
+- Figure out how to make multi-select works
+
+- Response page
+
+BE:
+- How to deal with multi-select responses
+- data and response storage
+- host created model on heroku
+
+Data:
+- Data explorations
+- Exploratory data analysis
+- Model selection
+- Model building
+- ranked choices
+- performance improvements
+
+Design:
+- form
+- pre-form landing page?
+- post-form landing page/response page
+- program definition & exploration page
