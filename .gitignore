@@ -131,3 +131,7 @@ dmypy.json
 # Model building stuff
 model_building/
 .env
+
+# DS Store
+poc/.DS_Store
+.DS_Store
