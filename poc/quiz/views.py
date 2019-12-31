@@ -21,6 +21,7 @@ def submit(request):
         if request.method == 'POST':
             print("Post method received")
             post_dict = request.POST
+            print(post_dict)
             return response(request,post_dict)
     except:
         print("Unexpected error:", sys.exc_info()[0])
