@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Model building stuff
-model_building/
+model_building/golf_data.csv
 .env
 
 # DS Store
