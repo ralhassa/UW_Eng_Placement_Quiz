@@ -92,7 +92,7 @@ READ_PROGRAMMING = {
                     "I don't code but I am interested in trying it.":'interested'
                     }
 
-CLUBS = {
+READ_CLUBS = {
          'Robotics club (i.e. UW Robotics Team)':'robotics',
          'Student council (i.e. Engineering Society)':'student_council',
          'Consulting club or business club (i.e. DECA)':'consulting/business',
@@ -102,9 +102,9 @@ CLUBS = {
          'Autoshop club (i.e. Autonomoose Autonomous Car Club)':'autoshop',
          'Art or design club (i.e. Fashion for Change)':'art/design',
          'Consulting club (i.e. DECA)':'consulting'
-}
+            }
 
-PROJECTS = {
+READ_PROJECTS = {
             'Designing a water treatment system for Mars.':'mars_water_treatment',
             'Prototyping a musical instrument for children with a disability.':'prototyping_instrument',
             'Programming a robot that can make you dinner.':'robot',
@@ -114,19 +114,19 @@ PROJECTS = {
             'Building the world’s most powerful supercomputer.':'supercomputer'
             }
 
-EQUIPMENT = {
+READ_EQUIPMENT = {
             'That sounds cool!':'yes',
             "Could be cool, but I don't really care about fancy equipment or how much it costs.":'maybe',
             "That scares me and I don't want to touch it.":'no'
             }
 
-DRAWING = {
+READ_DRAWING = {
             'I am not the best, but I am not the worst.':'partial',
             'I am not very good.':'bad',
             'Really good, I can draw just about anything.':'good'
             }
 
-ESSAY = {
+READ_ESSAY = {
             'Excited! I can share my theories with the world.':'yes',
             'Annoyed. I would much rather be given a topic with clear instructions.':'no',
             'A bit apprehensive. I get overwhelmed with so many options.':'partial'
@@ -145,7 +145,11 @@ class NpEncoder(json.JSONEncoder):
             return super(NpEncoder, self).default(obj)
 
 def get_clean_data(directory,drop_no):
+    '''
+    Should we drop "Are you happy with your program?"
+    '''
     data = pd.read_csv(directory,dtype=str)
+    # dropping PII + gender + skill_test + timestamp + year
     if drop_no:
         data = data.drop(data.columns[[0,1,3,4,24]], axis=1)
     else:
@@ -153,6 +157,22 @@ def get_clean_data(directory,drop_no):
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
     data.program = data.program.map(READ_PROGRAMS)
+    data.creative = data.creative.map(READ_CREATIVE)
+    data.problem_type = data.problem_type.map(READ_PROBLEMS)
+    data.outdoors = data.outdoors.map(READ_OUTDOORS)
+    data.career = data.career.map(READ_CAREERS)
+    data.group_work = data.group_work.map(READ_GROUPWORK)
+    data.liked_courses = data.liked_courses.map(READ_COURSES)
+    data.disliked_courses = data.disliked_courses.map(READ_COURSES)
+    data.programming = data.programming.map(READ_PROGRAMMING)
+    data.join_clubs = data.join_clubs.map(READ_CLUBS)
+    data.not_clubs = data.not_clubs.map(READ_CLUBS)
+    data.liked_projects = data.liked_projects.map(READ_PROJECTS)
+    data.disliked_projects = data.disliked_projects.map(READ_PROJECTS)
+    data.expensive_equipment = data.expensive_equipment.map(READ_EQUIPMENT)
+    data.drawing = data.drawing.map(READ_DRAWING)
+    data.essay = data.essay.map(READ_ESSAY)
+
     return data
 
 def get_encoded_data(directory):
@@ -175,6 +195,28 @@ def get_encoded_data(directory):
         file.write(json.dumps(encoded_dict_list, cls=NpEncoder))
 
     return [df,encoded_dict_list]
+
+# Defining methods to help normaliz the data
+def normalize_3_variables(df3,x,y,column,hue):
+    normalized_data = df3[[x,y,column,hue]]
+    normalized_data = normalized_data.groupby([x,y,column,hue],as_index=False).size().reset_index()
+    normalized_data = normalized_data.rename(index=str,columns = {0:"percent"})
+    normalized_data["percent"] = 100*(normalized_data["percent"]/sum(normalized_data["percent"]))
+    return normalized_data
+
+def normalize_2_variables(df2,x,y,column):
+    normalized_data = df2[[x,y,column]]
+    normalized_data = normalized_data.groupby([x,y,column],as_index=False).size().reset_index()
+    normalized_data = normalized_data.rename(index=str,columns = {0:"percent"})
+    normalized_data["percent"] = 100*(normalized_data["percent"]/sum(normalized_data["percent"]))
+    return normalized_data
+
+def normalize_1_variables(df1,x,y):
+    normalized_data = df1[[x,y]]
+    normalized_data = normalized_data.groupby([x,y],as_index=False).size().reset_index()
+    normalized_data = normalized_data.rename(index=str,columns = {0:"percent"})
+    normalized_data["percent"] = 100*(normalized_data["percent"]/sum(normalized_data["percent"]))
+    return normalized_data
 
 
 '''

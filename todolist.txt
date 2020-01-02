@@ -24,3 +24,11 @@ Design:
 - pre-form landing page?
 - post-form landing page/response page
 - program definition & exploration page
+
+
+Open Questions:
+1. Should we drop "Are you happy with your program"=="No" from model building?
+2. How should we treat "industry"?
+      i. break into 138 unique responses and use them each as an individual option
+      ii. break each entry with multiple lines so that the number of responses Change
+      iii. figure out how to deal with 
