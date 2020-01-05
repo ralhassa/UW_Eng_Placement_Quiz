@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+	<title>Waterloo | Engineering</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+	<style type="text/css" media="screen">
+		body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;background:#ECECEC;}
+		a {color:#333;font-weight:200;margin-right:20px;}
+		a:hover {color:#57068C;}
+		.container {position:absolute;top:50%;left:50%;width:800px;height:600px;border:1px solid #FFF;box-shadow:0 0 6px #333;}
+		.skipnav { text-align:left;}
+		.skipnav a { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+		.skipnav a:focus, .skipnav a:active { position: static; left: 500; width: 780px; height: auto; overflow: visible; text-decoration: underline; border:1px solid #ccc; padding:10px; outline:none;}
+		.footer {margin:10px auto;text-align:center;}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.swfobject.1-1-1.min.js"></script>
+</head>
+<body>
+	<div class="skipnav"><a href="quiz_accessible.html" class="accessible">View Accessible Version</a></div>
+	<div class="container">
+		<div id="quizarea">
+			<p>No Flash detected, redirecting to HTML version of the quiz.</p>
+		</div>
+		<div class="footer">
+		<a href="http://uwaterloo.ca/engineering" target="_new">uwaterloo.ca/engineering</a> 
+		<a href="mailto:enginfo@uwaterloo.ca">email us</a>
+	</div>
+	</div>
+	
+	<script type="text/javascript">
+		// loads flash
+		$('#quizarea').flash({swf:'preloader.swf',width:800,height:600});
+		// load the accessible version
+		if (!$('#quizarea p').length == 0) {
+			var url = "quiz_html_js.html";
+			window.location = url;
+		}
+		// center
+		$('.container').css({margin:'-'+($('.container').height() / 2)+'px 0 0 -'+($('.container').width() / 2)+'px'});
+	</script>
+</body>
+</html>

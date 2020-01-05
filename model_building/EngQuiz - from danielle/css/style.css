@@ -1,0 +1,691 @@
+/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
+/* main.css 1.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/* * What follows is the result of much research on cross-browser styling. * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal, * Kroc Camen, and the H5BP dev community and team. */
+/* ========================================================================== Base styles: opinionated defaults ========================================================================== */
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+/* * Remove text-shadow in selection highlight: * https://twitter.com/miketaylr/status/12228805301 * * Vendor-prefixed and regular ::selection selectors cannot be combined: * https://stackoverflow.com/a/16982510/7133471 * * Customize the background color to match your design. */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+/* * A better looking default horizontal rule */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+/* * Remove the gap between audio, canvas, iframes, * images, videos and the bottom of their containers: * https://github.com/h5bp/html5-boilerplate/issues/440 */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+/* * Remove default fieldset styles. */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/* * Allow only vertical resizing of textareas. */
+textarea {
+  resize: vertical;
+}
+/* ========================================================================== Browser Upgrade Prompt ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+/* ========================================================================== Author's custom styles ========================================================================== */
+html {
+  height: 100%;
+  font-size: 1em;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font: normal 100% Verdana, sans-serif;
+  text-align: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+li {
+  display: inline-block;
+  font-size: 90%;
+  vertical-align: top;
+}
+h1 {
+  font-size: 140%;
+}
+small {
+  font-weight: normal;
+  font-size: 60%;
+}
+a {
+  color: #ccc;
+}
+.starthidden {
+  display: none;
+}
+#accessible {
+  float: right;
+  padding: 0.375em;
+  background-color: #9e0b0f;
+  color: #fff;
+}
+#quiz {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+#gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background-size: 100% 100%;
+  z-index: -9999;
+}
+.padding-body-side {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.padding-body-top {
+  padding-top: 10%;
+}
+.fas {
+  font-size: 5em;
+}
+.next {
+  width: 100px;
+  height: 150px;
+  margin: 10px;
+}
+.next:hover {
+  outline: none;
+  cursor: pointer;
+}
+.start {
+  padding: 0.625em;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  font-weight: bold;
+}
+.start {
+  margin: 0 auto;
+}
+.start:hover,
+.more:hover {
+  background-color: #ececec;
+  border: 1px solid #000;
+  text-decoration: none;
+}
+.more {
+  padding: 0.5em;
+  border: 1px solid #57068c;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  float: right;
+  background: white;
+  font-size: 75%;
+  border-radius: 4px;
+}
+.more:hover {
+  background-color: #ececec;
+  border: 1px solid #000;
+  text-decoration: none;
+}
+.finalbuts {
+  padding: 0.625em;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  margin-right: 15px;
+  background: #fff;
+}
+.finalbuts:hover {
+  background-color: #ececec;
+  border: 1px solid #000;
+  text-decoration: none;
+}
+.message {
+  padding: 0.375em;
+  background-color: #ff9999;
+  margin-top: 60px;
+}
+.choice {
+  padding: 0.625em;
+  border: 5px solid #57068c;
+  margin: 0.625em 0.625em 0 0;
+  background: white;
+  color: #57068c;
+  text-align: left;
+  font-size: 75%;
+}
+.choice h1 {
+  margin: 0;
+}
+.small {
+  font-style: italic;
+  font-size: 80%;
+}
+.intro {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.notice {
+  width: 80%;
+  background-color: #fff;
+  border: 3px solid #57068c;
+  margin: 50px auto 10px auto;
+  text-align: left;
+  color: #57068c;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.notice h2,
+.notice p {
+  padding-left: 50px;
+}
+.clear {
+  clear: both;
+}
+.outcome {
+  text-align: left;
+  padding: 20px 30px 30px 30px;
+}
+.emailresults {
+  padding: 20px;
+  border: 1px solid #fff;
+  height: 100px;
+}
+.emailinput {
+  width: 153px;
+  float: left;
+}
+/* * Question styling */
+.grad_purple {
+  background-image: linear-gradient(
+    left top,
+    rgb(79, 5, 128) 42%,
+    rgb(41, 3, 69) 72%
+  );
+  background-image: -o-linear-gradient(
+    left top,
+    rgb(79, 5, 128) 42%,
+    rgb(41, 3, 69) 72%
+  );
+  background-image: -moz-linear-gradient(
+    left top,
+    rgb(79, 5, 128) 42%,
+    rgb(41, 3, 69) 72%
+  );
+  background-image: -webkit-linear-gradient(
+    left top,
+    rgb(79, 5, 128) 42%,
+    rgb(41, 3, 69) 72%
+  );
+  background-image: -ms-linear-gradient(
+    left top,
+    rgb(79, 5, 128) 42%,
+    rgb(41, 3, 69) 72%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0.42, rgb(79, 5, 128)),
+    color-stop(0.72, rgb(41, 3, 69))
+  );
+  background-size: 100% 100%;
+}
+.grad_red {
+  background-image: linear-gradient(
+    99 top,
+    rgb(69, 11, 22) 22%,
+    rgb(148, 22, 45) 61%
+  );
+  background-image: -o-linear-gradient(
+    99 top,
+    rgb(69, 11, 22) 22%,
+    rgb(148, 22, 45) 61%
+  );
+  background-image: -moz-linear-gradient(
+    99 top,
+    rgb(69, 11, 22) 22%,
+    rgb(148, 22, 45) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    99 top,
+    rgb(69, 11, 22) 22%,
+    rgb(148, 22, 45) 61%
+  );
+  background-image: -ms-linear-gradient(
+    99 top,
+    rgb(69, 11, 22) 22%,
+    rgb(148, 22, 45) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    99 top,
+    77 bottom,
+    color-stop(0.22, rgb(69, 11, 22)),
+    color-stop(0.61, rgb(148, 22, 45))
+  );
+  background-size: 100% 100%;
+}
+.grad_yellow {
+  background-image: linear-gradient(
+    right top,
+    rgb(209, 164, 2) 22%,
+    rgb(253, 202, 0) 61%
+  );
+  background-image: -o-linear-gradient(
+    right top,
+    rgb(209, 164, 2) 22%,
+    rgb(253, 202, 0) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right top,
+    rgb(209, 164, 2) 22%,
+    rgb(253, 202, 0) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right top,
+    rgb(209, 164, 2) 22%,
+    rgb(253, 202, 0) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right top,
+    rgb(209, 164, 2) 22%,
+    rgb(253, 202, 0) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left bottom,
+    color-stop(0.22, rgb(209, 164, 2)),
+    color-stop(0.61, rgb(253, 202, 0))
+  );
+  background-size: 100% 100%;
+}
+.grad_pink {
+  background-image: linear-gradient(
+    top,
+    rgb(189, 59, 141) 22%,
+    rgb(222, 35, 153) 61%
+  );
+  background-image: -o-linear-gradient(
+    top,
+    rgb(189, 59, 141) 22%,
+    rgb(222, 35, 153) 61%
+  );
+  background-image: -moz-linear-gradient(
+    top,
+    rgb(189, 59, 141) 22%,
+    rgb(222, 35, 153) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    top,
+    rgb(189, 59, 141) 22%,
+    rgb(222, 35, 153) 61%
+  );
+  background-image: -ms-linear-gradient(
+    top,
+    rgb(189, 59, 141) 22%,
+    rgb(222, 35, 153) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.22, rgb(189, 59, 141)),
+    color-stop(0.61, rgb(222, 35, 153))
+  );
+  background-size: 100% 100%;
+}
+.grad_green {
+  background-image: linear-gradient(
+    right bottom,
+    rgb(181, 191, 0) 27%,
+    rgb(163, 168, 3) 61%
+  );
+  background-image: -o-linear-gradient(
+    right bottom,
+    rgb(181, 191, 0) 27%,
+    rgb(163, 168, 3) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right bottom,
+    rgb(181, 191, 0) 27%,
+    rgb(163, 168, 3) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right bottom,
+    rgb(181, 191, 0) 27%,
+    rgb(163, 168, 3) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right bottom,
+    rgb(181, 191, 0) 27%,
+    rgb(163, 168, 3) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    left top,
+    color-stop(0.27, rgb(181, 191, 0)),
+    color-stop(0.61, rgb(163, 168, 3))
+  );
+  background-size: 100% 100%;
+}
+.grad_blue {
+  background-image: linear-gradient(
+    right top,
+    rgb(0, 112, 203) 22%,
+    rgb(15, 96, 158) 61%
+  );
+  background-image: -o-linear-gradient(
+    right top,
+    rgb(0, 112, 203) 22%,
+    rgb(15, 96, 158) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right top,
+    rgb(0, 112, 203) 22%,
+    rgb(15, 96, 158) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right top,
+    rgb(0, 112, 203) 22%,
+    rgb(15, 96, 158) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right top,
+    rgb(0, 112, 203) 22%,
+    rgb(15, 96, 158) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left bottom,
+    color-stop(0.22, rgb(0, 112, 203)),
+    color-stop(0.61, rgb(15, 96, 158))
+  );
+  background-size: 100% 100%;
+}
+.grad_orange {
+  background-image: linear-gradient(
+    right bottom,
+    rgb(231, 131, 0) 22%,
+    rgb(194, 116, 0) 61%
+  );
+  background-image: -o-linear-gradient(
+    right bottom,
+    rgb(231, 131, 0) 22%,
+    rgb(194, 116, 0) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right bottom,
+    rgb(231, 131, 0) 22%,
+    rgb(194, 116, 0) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right bottom,
+    rgb(231, 131, 0) 22%,
+    rgb(194, 116, 0) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right bottom,
+    rgb(231, 131, 0) 22%,
+    rgb(194, 116, 0) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    left top,
+    color-stop(0.22, rgb(231, 131, 0)),
+    color-stop(0.61, rgb(194, 116, 0))
+  );
+  background-size: 100% 100%;
+}
+.grad_grey {
+  background-image: linear-gradient(
+    right bottom,
+    rgb(97, 97, 97) 27%,
+    rgb(127, 127, 127) 61%
+  );
+  background-image: -o-linear-gradient(
+    right bottom,
+    rgb(97, 97, 97) 27%,
+    rgb(127, 127, 127) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right bottom,
+    rgb(97, 97, 97) 27%,
+    rgb(127, 127, 127) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right bottom,
+    rgb(97, 97, 97) 27%,
+    rgb(127, 127, 127) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right bottom,
+    rgb(97, 97, 97) 27%,
+    rgb(127, 127, 127) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    left top,
+    color-stop(0.27, rgb(97, 97, 97)),
+    color-stop(0.61, rgb(127, 127, 127))
+  );
+  background-size: 100% 100%;
+}
+.grad_teal {
+  background-image: linear-gradient(
+    right top,
+    rgb(0, 153, 164) 22%,
+    rgb(0, 88, 94) 61%
+  );
+  background-image: -o-linear-gradient(
+    right top,
+    rgb(0, 153, 164) 22%,
+    rgb(0, 88, 94) 61%
+  );
+  background-image: -moz-linear-gradient(
+    right top,
+    rgb(0, 153, 164) 22%,
+    rgb(0, 88, 94) 61%
+  );
+  background-image: -webkit-linear-gradient(
+    right top,
+    rgb(0, 153, 164) 22%,
+    rgb(0, 88, 94) 61%
+  );
+  background-image: -ms-linear-gradient(
+    right top,
+    rgb(0, 153, 164) 22%,
+    rgb(0, 88, 94) 61%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left bottom,
+    color-stop(0.22, rgb(0, 153, 164)),
+    color-stop(0.61, rgb(0, 88, 94))
+  );
+  background-size: 100% 100%;
+}
+/* * Icons */
+.spritesheet {
+  background: url("../img/spritesheet.png") no-repeat;
+}
+.tell {
+  background-position: -503px -135px;
+  width: 153px;
+  height: 30px;
+  margin-left: 163px;
+}
+.email {
+  background-position: -503px -105px;
+  width: 153px;
+  height: 30px;
+  margin-left: 10px;
+}
+.refresh {
+  background-position: -503px -165px;
+  width: 153px;
+  height: 30px;
+}
+.logo {
+  background-position: -500px -400px;
+  width: 250px;
+  height: 100px;
+}
+.exclamation {
+  margin: -50px;
+  width: 100px;
+  height: 100px;
+  background-position: -200px -400px;
+}
+/* ========================================================================== Helper classes ========================================================================== */
+/* * Hide visually and from screen readers */
+.hidden {
+  display: none !important;
+}
+/* * Hide only visually, but have it available for screen readers: * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility * * 1. For long content, line feeds are not interpreted as spaces and small width * causes content to wrap 1 word per line: * https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  /* 1 */
+}
+/* * Extends the .visuallyhidden class to allow the element * to be focusable when navigated to via the keyboard: * https://www.drupal.org/node/897638 */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
+}
+/* * Hide visually and from screen readers, but maintain layout */
+.invisible {
+  visibility: hidden;
+}
+/* * Clearfix: contain floats * * For modern browsers * 1. The space content is one way to avoid an Opera bug when the * `contenteditable` attribute is included anywhere else in the document. * Otherwise it causes space to appear at the top and bottom of elements * that receive the `clearfix` class. * 2. The use of `table` rather than `block` is only necessary if using * `:before` to contain the top-margins of child elements. */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.clearfix:after {
+  clear: both;
+}
+/* ========================================================================== EXAMPLE Media Queries for Responsive Design. These examples override the primary ('mobile first') styles. Modify as content requires. ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+/* ========================================================================== Print styles. Inlined to avoid the additional HTTP request: https://www.phpied.com/delay-loading-your-print-css/ ========================================================================== */
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /* * Don't show links that are fragment identifiers, * or use the `javascript:` pseudo protocol */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /* * Printing Tables: * http://css-discuss.incutio.com/wiki/Printing_Tables */
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

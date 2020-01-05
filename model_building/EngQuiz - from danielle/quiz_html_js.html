@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <!-- 
+	*    Developed for The University of Waterloo by http://www.studiographic.ca 04/12
+	*    Code comments/questions/suggestions/bashings can be emailed to mark@studiographic.ca
+	-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-128970757-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-128970757-1", {
+        custom_map: { dimension1: "timestamp" }
+      });
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>University of Waterloo | Engineering Placement Quiz</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css?v=3" />
+    <link rel="stylesheet" href="css/cookieconsent.min.css" />
+    <script src="js/cookieconsent.min.js"></script>
+    <script>
+      var canTrackResults = true;
+      window.addEventListener("load", function() {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: {
+              background: "#000"
+            },
+            button: {
+              background: "#f1d600"
+            }
+          },
+          showLink: false,
+          type: "opt-out",
+          onStatusChange: function(status) {
+            if (!this.hasConsented()) {
+              canTrackResults = false;
+              window["ga-disable-UA-128970757-1"] = true;
+              console.warn("Disabled recording of results.");
+            } else {
+              canTrackResults = true;
+			  window["ga-disable-UA-128970757-1"] = false;
+              console.warn("Enabled recording of results.");
+			}
+          },
+          content: {
+            message:
+              "This website uses cookies to collect the results of the survey",
+            deny: "Refuse cookies"
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- <div id="accessible">Accessible Version</div> -->
+    <div id="quiz" class="starthidden grad_purple">
+      <div id="intro" class="padding-body-side">
+        <header><div class="spritesheet logo">&nbsp;</div></header>
+        <h1>Which engineering programs are right for you?</h1>
+        <br />
+        <p>
+          Do you prefer to work in an office or outdoors? Would you rather have
+          invented the automobile or the Internet?
+        </p>
+        <p>
+          We’ve surveyed Waterloo Engineering students to find out what makes
+          them tick. Take our quiz to see what students who share your interests
+          are studying, and where you might fit.
+        </p>
+        <br />
+        <a class="start btn-large">Start Quiz</a>
+        <div class="notice">
+          <div class="spritesheet exclamation">&nbsp;</div>
+          <h2>How does it work?</h2>
+          <p>
+            This quiz was created with assistance from students in Management
+            Engineering. <a target="_blank" href="https://uwaterloo.ca/engineering/future-undergraduate-students/programs-and-options" style="color:#57068C">Learn more</a> about
+            the data-mining techniques that power it.
+          </p>
+        </div>
+      </div>
+      <div id="q0" class="padding-body-side padding-body-top">
+        <h1>What field interests you the most?</h1>
+        <ul grad="grad_teal">
+          <li class="answer next" data-question="0" data-answer="0">
+            <i class="fas fa-dollar-sign"></i>
+            <p>Finance</p>
+          </li>
+          <li class="answer next" data-question="0" data-answer="1">
+            <i class="fas fa-industry"></i>
+            <p>Manufacturing</p>
+          </li>
+          <li class="answer next" data-question="0" data-answer="2">
+            <i class="fas fa-laptop"></i>
+            <p>Software Development</p>
+          </li>
+          <li class="answer next" data-question="0" data-answer="3">
+            <i class="fas fa-book"></i>
+            <p>Research</p>
+          </li>
+          <li class="answer next" data-question="0" data-answer="4">
+            <i class="fas fa-building"></i>
+            <p>Construction</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q1" class="padding-body-side padding-body-top">
+        <h1>
+          I would like to have been part of the team that was responsible for:
+        </h1>
+        <ul grad="grad_orange">
+          <li class="answer next" data-question="1" data-answer="0">
+            <i class="fas fa-car"></i>
+            <p>The Automobile</p>
+          </li>
+          <li class="answer next" data-question="1" data-answer="1">
+            <i class="fas fa-globe"></i>
+            <p>The Internet</p>
+          </li>
+          <li class="answer next" data-question="1" data-answer="2">
+            <i class="fas fa-monument"></i>
+            <p>The CN Tower</p>
+          </li>
+          <li class="answer next" data-question="1" data-answer="3">
+            <i class="fas fa-solar-panel"></i>
+            <p>Solar Panels</p>
+          </li>
+          <li class="answer next" data-question="1" data-answer="4">
+            <i class="fas fa-robot"></i>
+            <p>The Robot</p>
+          </li>
+          <li class="answer next" data-question="1" data-answer="5">
+            <i class="fas fa-prescription-bottle"></i>
+            <p>Penicillin</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q2" class="padding-body-side padding-body-top">
+        <h1>When you start work, ideally you would want to...</h1>
+        <ul grad="grad_pink">
+          <li class="answer next" data-question="2" data-answer="0">
+            <i class="fas fa-city"></i>
+            <p>Work for a large corporation</p>
+          </li>
+          <li class="answer next" data-question="2" data-answer="1">
+            <i class="fas fa-building"></i>
+            <p>Work for a small company</p>
+          </li>
+          <li class="answer next" data-question="2" data-answer="2">
+            <i class="fas fa-home"></i>
+            <p>Work in a start up</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q3" class="padding-body-side padding-body-top">
+        <h1>I would rather design something that..</h1>
+        <ul grad="grad_blue">
+          <li class="answer next" data-question="3" data-answer="0">
+            <i class="fas fa-eye"></i>
+            <p>
+              I can see function and prove it works, but can't necessarily touch
+            </p>
+          </li>
+          <li class="answer next" data-question="3" data-answer="1">
+            <i class="fas fa-hand-paper"></i>
+            <p>I can see function and tangibly touch the parts</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q4" class="padding-body-side padding-body-top">
+        <h1>I would rather work as part of a...</h1>
+        <ul grad="grad_grey">
+          <li class="answer next" data-question="4" data-answer="0">
+            <i class="fas fa-people-carry"></i>
+            <p>
+              <strong>Focused team</strong> composed of my peers and colleagues
+            </p>
+          </li>
+          <li class="answer next" data-question="4" data-answer="1">
+            <i class="fas fa-users"></i>
+            <p>
+              <strong>Multidisciplinary team</strong><br />
+              (a team of many types of professionals, not just engineers)
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div id="q5" class="padding-body-side padding-body-top">
+        <h1>When working on a project would you rather:</h1>
+        <ul grad="grad_green">
+          <li class="answer next" data-question="5" data-answer="0">
+            <i class="fas fa-project-diagram"></i>
+            <p>Know all the requirements for the project at the beginning</p>
+          </li>
+          <li class="answer next" data-question="5" data-answer="1">
+            <i class="fas fa-wind"></i>
+            <p>Continuously change and update requirements as you go</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q6" class="padding-body-side padding-body-top">
+        <h1>What cause do you care about the most?</h1>
+        <ul grad="grad_orange">
+          <li class="answer next" data-question="6" data-answer="0">
+            <i class="fas fa-medkit"></i>
+            <p>Health</p>
+          </li>
+          <li class="answer next" data-question="6" data-answer="1">
+            <i class="fas fa-globe-americas"></i>
+            <p>Environment</p>
+          </li>
+          <li class="answer next" data-question="6" data-answer="2">
+            <i class="fas fa-user"></i>
+            <p>Human Rights</p>
+          </li>
+          <li class="answer next" data-question="6" data-answer="3">
+            <i class="fas fa-mobile-alt"></i>
+            <p>Bringing technology to developing countries</p>
+          </li>
+        </ul>
+      </div>
+      <div id="q7" class="padding-body-side padding-body-top">
+        <h1>You are most likely to eavesdrop in a conversation regarding</h1>
+        <ul grad="grad_red">
+          <li
+            class="answer next"
+            data-question="7"
+            data-answer="0"
+            style="height:250px;"
+          >
+            <i class="fas fa-space-shuttle"></i>
+            <p>
+              A groundbreaking metal that will create stronger cars, planes and
+              spaceships for a cheaper cost
+            </p>
+          </li>
+          <li
+            class="answer next"
+            data-question="7"
+            data-answer="1"
+            style="height:250px;"
+          >
+            <i class="fas fa-globe-asia"></i>
+            <p>
+              A new way to deal with movement in the Earth’s surface to protect
+              buildings from earthquakes
+            </p>
+          </li>
+          <li
+            class="answer next"
+            data-question="7"
+            data-answer="2"
+            style="height:250px;"
+          >
+            <i class="fas fa-microchip"></i>
+            <p>
+              A microchip that is smaller than usual but twice as powerful as
+              before
+            </p>
+          </li>
+          <li class="answer next" data-question="7" data-answer="3">
+            <i class="fas fa-robot"></i>
+            <p>
+              A factory that is able to 100% rely on robotics while producing no
+              defective products
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div id="q8" class="padding-body-side padding-body-top">
+        <h1>In an ideal setting, you are working with:</h1>
+        <ul grad="grad_purple">
+          <li class="answer next" data-question="8" data-answer="0">
+            <i class="fas fa-user-circle"></i>
+            <p>People</p>
+          </li>
+          <li class="answer next" data-question="8" data-answer="1">
+            <i class="fas fa-desktop"></i>
+            <p>Computers</p>
+          </li>
+          <li class="answer next" data-question="8" data-answer="2">
+            <i class="fas fa-business-time"></i>
+            <p>Business processes</p>
+          </li>
+          <li class="answer next" data-question="8" data-answer="3">
+            <i class="fas fa-wrench"></i>
+            <p>Machinery</p>
+          </li>
+        </ul>
+      </div>
+      <div class="outcome"></div>
+    </div>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        var heightOfConsentHeader = $(".cc-bottom").innerHeight();
+        $(".notice").css("margin-bottom", heightOfConsentHeader);
+      });
+      function guid() {
+        var lut = [];
+        for (var i = 0; i < 256; i++) {
+          lut[i] = (i < 16 ? "0" : "") + i.toString(16);
+        }
+        var d0 = (Math.random() * 0xffffffff) | 0;
+        var d1 = (Math.random() * 0xffffffff) | 0;
+        var d2 = (Math.random() * 0xffffffff) | 0;
+        var d3 = (Math.random() * 0xffffffff) | 0;
+        return (
+          lut[d0 & 0xff] +
+          lut[(d0 >> 8) & 0xff] +
+          lut[(d0 >> 16) & 0xff] +
+          lut[(d0 >> 24) & 0xff] +
+          "-" +
+          lut[d1 & 0xff] +
+          lut[(d1 >> 8) & 0xff] +
+          "-" +
+          lut[((d1 >> 16) & 0x0f) | 0x40] +
+          lut[(d1 >> 24) & 0xff] +
+          "-" +
+          lut[(d2 & 0x3f) | 0x80] +
+          lut[(d2 >> 8) & 0xff] +
+          "-" +
+          lut[(d2 >> 16) & 0xff] +
+          lut[(d2 >> 24) & 0xff] +
+          lut[d3 & 0xff] +
+          lut[(d3 >> 8) & 0xff] +
+          lut[(d3 >> 16) & 0xff] +
+          lut[(d3 >> 24) & 0xff]
+        );
+      }
+      var userId = userId || guid();
+      // Likelihood tables
+      var classPriorProbability = [
+        0.064164649,
+        0.06779661,
+        0.059322034,
+        0.047215496,
+        0.03874092,
+        0.024213075,
+        0.00968523,
+        0.119854722,
+        0.099273608,
+        0.182808717,
+        0.071428571,
+        0.161016949,
+        0.054479419
+      ];
+
+      var fieldOfInterest = [
+        [
+          0.017241379,
+          0.032786885,
+          0.074074074,
+          0.022727273,
+          0.189189189,
+          0.04,
+          0.230769231,
+          0.240384615,
+          0.022988506,
+          0.025641026,
+          0.03125,
+          0.007246377,
+          0.08
+        ], // Finance
+        [
+          0.155172414,
+          0.639344262,
+          0.074074074,
+          0.045454545,
+          0.162162162,
+          0.08,
+          0.076923077,
+          0.298076923,
+          0.494252874,
+          0.269230769,
+          0.1875,
+          0.007246377,
+          0.14
+        ], // Manufacturing
+        [
+          0.172413793,
+          0.016393443,
+          0.055555556,
+          0.772727273,
+          0.324324324,
+          0.04,
+          0.076923077,
+          0.346153846,
+          0.068965517,
+          0.455128205,
+          0.046875,
+          0.942028986,
+          0.62
+        ], // Software Development
+        [
+          0.620689655,
+          0.262295082,
+          0.074074074,
+          0.136363636,
+          0.243243243,
+          0.44,
+          0.230769231,
+          0.076923077,
+          0.298850575,
+          0.224358974,
+          0.71875,
+          0.036231884,
+          0.1
+        ], // Research
+        [
+          0.034482759,
+          0.049180328,
+          0.722222222,
+          0.022727273,
+          0.081081081,
+          0.4,
+          0.384615385,
+          0.038461538,
+          0.114942529,
+          0.025641026,
+          0.015625,
+          0.007246377,
+          0.06
+        ] // Construction
+      ];
+
+      var teamResponsibility = [
+        [
+          0.06779661,
+          0.080645161,
+          0.054545455,
+          0.088888889,
+          0.078947368,
+          0.038461538,
+          0.142857143,
+          0.19047619,
+          0.477272727,
+          0.159235669,
+          0.046153846,
+          0.035971223,
+          0.039215686
+        ], // The Automobile
+        [
+          0.06779661,
+          0.064516129,
+          0.054545455,
+          0.6,
+          0.289473684,
+          0.115384615,
+          0.071428571,
+          0.466666667,
+          0.079545455,
+          0.108280255,
+          0.107692308,
+          0.726618705,
+          0.392156863
+        ], // The Internet
+        [
+          0.016949153,
+          0.048387097,
+          0.763636364,
+          0.022222222,
+          0.052631579,
+          0.153846154,
+          0.571428571,
+          0.066666667,
+          0.068181818,
+          0.01910828,
+          0.030769231,
+          0.007194245,
+          0.117647059
+        ], // CN Tower
+        [
+          0.084745763,
+          0.338709677,
+          0.036363636,
+          0.066666667,
+          0.315789474,
+          0.5,
+          0.071428571,
+          0.142857143,
+          0.204545455,
+          0.070063694,
+          0.384615385,
+          0.035971223,
+          0.215686275
+        ], // Solar Panels
+        [
+          0.220338983,
+          0.016129032,
+          0.036363636,
+          0.2,
+          0.236842105,
+          0.038461538,
+          0.071428571,
+          0.038095238,
+          0.147727273,
+          0.617834395,
+          0.076923077,
+          0.165467626,
+          0.176470588
+        ], // The robot
+        [
+          0.542372881,
+          0.451612903,
+          0.054545455,
+          0.022222222,
+          0.026315789,
+          0.153846154,
+          0.071428571,
+          0.095238095,
+          0.022727273,
+          0.025477707,
+          0.353846154,
+          0.028776978,
+          0.058823529
+        ] // Penicillin
+      ];
+
+      var startWork = [
+        [
+          0.267857143,
+          0.542372881,
+          0.326923077,
+          0.404761905,
+          0.314285714,
+          0.173913043,
+          0.454545455,
+          0.490196078,
+          0.423529412,
+          0.311688312,
+          0.35483871,
+          0.404411765,
+          0.208333333
+        ], // Large corporation
+        [
+          0.482142857,
+          0.338983051,
+          0.576923077,
+          0.261904762,
+          0.571428571,
+          0.739130435,
+          0.454545455,
+          0.333333333,
+          0.435294118,
+          0.38961039,
+          0.387096774,
+          0.367647059,
+          0.5
+        ], // Small company
+        [
+          0.25,
+          0.118644068,
+          0.096153846,
+          0.333333333,
+          0.114285714,
+          0.086956522,
+          0.090909091,
+          0.176470588,
+          0.141176471,
+          0.298701299,
+          0.258064516,
+          0.227941176,
+          0.291666667
+        ] // Start up
+      ];
+
+      var designSomething = [
+        [
+          0.452830189,
+          0.410714286,
+          0.204081633,
+          0.666666667,
+          0.3125,
+          0.4,
+          0.25,
+          0.797979798,
+          0.12195122,
+          0.245033113,
+          0.813559322,
+          0.804511278,
+          0.577777778
+        ], // Non-tangible
+        [
+          0.547169811,
+          0.589285714,
+          0.795918367,
+          0.333333333,
+          0.6875,
+          0.6,
+          0.75,
+          0.202020202,
+          0.87804878,
+          0.754966887,
+          0.186440678,
+          0.195488722,
+          0.422222222
+        ] // Tangible
+      ];
+
+      var workPartOf = [
+        [
+          0.339622642,
+          0.196428571,
+          0.265306122,
+          0.41025641,
+          0.46875,
+          0.25,
+          0.375,
+          0.191919192,
+          0.292682927,
+          0.298013245,
+          0.254237288,
+          0.526315789,
+          0.044444444
+        ], // Focused
+        [
+          0.660377358,
+          0.803571429,
+          0.734693878,
+          0.58974359,
+          0.53125,
+          0.75,
+          0.625,
+          0.808080808,
+          0.707317073,
+          0.701986755,
+          0.745762712,
+          0.473684211,
+          0.955555556
+        ] // Multi-disciplinary
+      ];
+
+      var onProject = [
+        [
+          0.528301887,
+          0.75,
+          0.816326531,
+          0.564102564,
+          0.6875,
+          0.6,
+          0.875,
+          0.484848485,
+          0.646341463,
+          0.642384106,
+          0.593220339,
+          0.526315789,
+          0.422222222
+        ], // Know-it-all
+        [
+          0.471698113,
+          0.25,
+          0.183673469,
+          0.435897436,
+          0.3125,
+          0.4,
+          0.125,
+          0.515151515,
+          0.353658537,
+          0.357615894,
+          0.406779661,
+          0.473684211,
+          0.577777778
+        ] // Continuous
+      ];
+
+      var careMost = [
+        [
+          0.924528302,
+          0.410714286,
+          0.326530612,
+          0.128205128,
+          0.21875,
+          0.05,
+          0.125,
+          0.282828283,
+          0.256097561,
+          0.271523179,
+          0.474576271,
+          0.278195489,
+          0.311111111,
+          0.328087167
+        ], // Health
+        [
+          0.01754386,
+          0.45,
+          0.377358491,
+          0.162790698,
+          0.305555556,
+          0.708333333,
+          0.583333333,
+          0.145631068,
+          0.430232558,
+          0.290322581,
+          0.301587302,
+          0.160583942,
+          0.265306122
+        ], // Environment
+        [
+          0.070175439,
+          0.066666667,
+          0.188679245,
+          0.186046512,
+          0.194444444,
+          0.125,
+          0.166666667,
+          0.310679612,
+          0.127906977,
+          0.083870968,
+          0.079365079,
+          0.167883212,
+          0.224489796
+        ], // Human Rights
+        [
+          0.035087719,
+          0.083333333,
+          0.113207547,
+          0.511627907,
+          0.277777778,
+          0.083333333,
+          0.083333333,
+          0.262135922,
+          0.186046512,
+          0.35483871,
+          0.158730159,
+          0.394160584,
+          0.204081633
+        ] // Technology
+      ];
+
+      var eavesdrop = [
+        [
+          0.210526316,
+          0.416666667,
+          0.20754717,
+          0.069767442,
+          0.277777778,
+          0.125,
+          0.166666667,
+          0.155339806,
+          0.639534884,
+          0.24516129,
+          0.333333333,
+          0.131386861,
+          0.142857143
+        ], // Metals
+        [
+          0.192982456,
+          0.216666667,
+          0.603773585,
+          0.139534884,
+          0.083333333,
+          0.666666667,
+          0.666666667,
+          0.233009709,
+          0.093023256,
+          0.025806452,
+          0.111111111,
+          0.072992701,
+          0.306122449
+        ], // Earthquakes
+        [
+          0.385964912,
+          0.116666667,
+          0.094339623,
+          0.488372093,
+          0.305555556,
+          0.166666667,
+          0.083333333,
+          0.223300971,
+          0.058139535,
+          0.219354839,
+          0.444444444,
+          0.386861314,
+          0.224489796
+        ], // Microchip
+        [
+          0.210526316,
+          0.25,
+          0.094339623,
+          0.302325581,
+          0.333333333,
+          0.041666667,
+          0.083333333,
+          0.388349515,
+          0.209302326,
+          0.509677419,
+          0.111111111,
+          0.408759124,
+          0.326530612
+        ] // Lean production
+      ];
+
+      var workingWith = [
+        [
+          0.666666667,
+          0.666666667,
+          0.773584906,
+          0.23255814,
+          0.472222222,
+          0.666666667,
+          0.583333333,
+          0.572815534,
+          0.418604651,
+          0.277419355,
+          0.587301587,
+          0.226277372,
+          0.734693878
+        ], // People
+        [
+          0.192982456,
+          0.066666667,
+          0.132075472,
+          0.697674419,
+          0.361111111,
+          0.166666667,
+          0.166666667,
+          0.106796117,
+          0.151162791,
+          0.470967742,
+          0.206349206,
+          0.759124088,
+          0.163265306
+        ], // Computers
+        [
+          0.052631579,
+          0.066666667,
+          0.018867925,
+          0.023255814,
+          0.055555556,
+          0.041666667,
+          0.166666667,
+          0.300970874,
+          0.023255814,
+          0.012903226,
+          0.047619048,
+          0.00729927,
+          0.081632653
+        ], // Business
+        [
+          0.087719298,
+          0.2,
+          0.075471698,
+          0.046511628,
+          0.111111111,
+          0.125,
+          0.083333333,
+          0.019417476,
+          0.406976744,
+          0.238709677,
+          0.158730159,
+          0.00729927,
+          0.020408163
+        ] // Machine
+      ];
+
+      var questionOptionCounts = [5, 6, 3, 2, 2, 2, 4, 4, 4];
+
+      var selectedAnswers = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+
+      var tabIndex = 0;
+
+      // initially hides all questions
+      $("#quiz div")
+        .not("#intro, .logo, .notice, .answers p, .exclamation")
+        .each(function() {
+          $(this).addClass("starthidden");
+        });
+      // start the quiz
+      $(".start")
+        .keypress(function(e) {
+          $(this)
+            .closest("div")
+            .eq(0)
+            .fadeToggle(function() {
+              $(this)
+                .closest("div")
+                .nextAll("div")
+                .eq(0)
+                .fadeToggle();
+            });
+
+          if (canTrackResults) {
+            gtag("event", "Quiz start", {
+              event_category: userId,
+              timestamp: Date.now()
+            });
+          }
+        })
+        .on("click", function() {
+          $(this)
+            .closest("div")
+            .eq(0)
+            .fadeToggle(function() {
+              $(this)
+                .closest("div")
+                .nextAll("div")
+                .eq(0)
+                .fadeToggle();
+            });
+
+          if (canTrackResults) {
+            gtag("event", "Quiz start", {
+              event_category: userId,
+              timestamp: Date.now()
+            });
+          }
+        });
+      // click highlights your answer
+      $(".answer")
+        .keypress(function(e) {
+          if (e.which === 13) {
+            // $(this).toggleClass('selected')
+            $(".answer")
+              .not(this)
+              .removeClass("selected");
+          }
+        })
+        .on("click", function() {
+          var $this = $(this);
+          $this.toggleClass("selected");
+          $(".answer")
+            .not(this)
+            .removeClass("selected");
+          var questionNumber = $this.data("question");
+          var answer = $this.data("answer");
+          selectedAnswers[tabIndex] = answer;
+          tabIndex++;
+
+          if (canTrackResults) {
+            gtag("event", "Answer", {
+              event_category: userId,
+              event_label: questionNumber + ";" + answer,
+              timestamp: Date.now()
+            });
+          }
+        });
+      //
+      // The business!
+      //
+      function business() {
+        // If nothing is selected, show an error.
+        if ($(".selected").length == 0) {
+          $(".message")
+            .text("Please select an answer")
+            .fadeIn(function() {
+              $(".message")
+                .delay(1000)
+                .fadeOut();
+            });
+          return;
+        }
+
+        $(this)
+          .closest("div")
+          .eq(0)
+          .fadeToggle(function() {
+            $(this)
+              .closest("div")
+              .nextAll("div")
+              .eq(0)
+              .fadeToggle();
+            $(".answer").removeClass("selected");
+          });
+
+        if (tabIndex !== selectedAnswers.length) {
+          return;
+        }
+
+        var probabilities = [];
+        var numberOfPrograms = classPriorProbability.length;
+        for (var k = 0; k < numberOfPrograms; k++) {
+          var outcome =
+            classPriorProbability[k] *
+            fieldOfInterest[selectedAnswers[0]][k] *
+            teamResponsibility[selectedAnswers[1]][k] *
+            startWork[selectedAnswers[2]][k] *
+            designSomething[selectedAnswers[3]][k] *
+            workPartOf[selectedAnswers[4]][k] *
+            onProject[selectedAnswers[5]][k] *
+            careMost[selectedAnswers[6]][k] *
+            eavesdrop[selectedAnswers[7]][k] *
+            workingWith[selectedAnswers[8]][k];
+          probabilities.push(outcome);
+        }
+
+        // Final outcome
+        answerHolder = [
+          {
+            name: "Biomedical",
+            value: probabilities[0],
+            description:
+              '<h1>Biomedical</h1><p class="small">Improve the health of others</p><p>Use engineering know-how to develop better ways to diagnose illnesses, treat health problems, and enhance health.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/biomedical-engineering",
+            copy:
+              "Use engineering know-how to develop better ways to diagnose illnesses, treat health problems, and enhance health."
+          },
+          {
+            name: "Chemical",
+            value: probabilities[1],
+            description:
+              '<h1>Chemical</h1><p class="small">Be a transformation expert</p><p>Chemical engineers are in charge of all aspects involved from the manipulation of raw materials into every product that we use, wear, live in and around, and rely on every day. Making products and processes safe, cost-effective and energy efficient are all elements of being a Chemical Engineer.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/chemical-engineering",
+            copy:
+              "Chemical engineers are in charge of all aspects involved from the manipulation of raw materials into every product that we use, wear, live in and around, and rely on every day. Making products and processes safe, cost-effective and energy efficient are all elements of being a Chemical Engineer."
+          },
+          {
+            name: "Civil",
+            value: probabilities[2],
+            description:
+              '<h1>Civil</h1><p class="small">Influence the infrastructure the world relies on</p><p>Civil engineers design, consult and advise on, and oversee the major infrastructure that all societies need to function, stay safe, thrive - and usually take for granted! Things like water supply networks, bridges and roadways, even airports.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/civil-engineering",
+            copy:
+              "Influence the infrastructure the world relies on</p><p>Civil engineers design, consult and advise on, and oversee the major infrastructure that all societies need to function, stay safe, thrive - and usually take for granted! Things like water supply networks, bridges and roadways, even airports."
+          },
+          {
+            name: "Computer",
+            value: probabilities[3],
+            description:
+              '<h1>Computer</h1><p class="small">Get the big tech picture for the 21st century.</p><p>Computer engineers are on the cutting edge of design, application and integration of software and hardware components to create the newest and most helpful technology. Anywhere and anything that focuses on information processing, transfer or storage involves a Computer Engineer.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/computer-engineering",
+            copy:
+              "Get the big tech picture for the 21st century.</p><p>Computer engineers are on the cutting edge of design, application and integration of software and hardware components to create the newest and most helpful technology. Anywhere and anything that focuses on information processing, transfer or storage involves a Computer Engineer."
+          },
+          {
+            name: "Electrical",
+            value: probabilities[4],
+            description:
+              '<h1>Electrical</h1><p class="small">Think information, power and energy</p><p>Electrical engineers are experts in the fundamentals of electricity allowing them to harness its potential to improve the way we function, interact, and develop in society around the world. Creating faster, innovative, more reliable, and safer technologies - from giant power generators to Bluetooth devices - is what Electrical Engineering is all about.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/electrical-engineering",
+            copy:
+              "Think information, power and energy</p><p>Electrical engineers are experts in the fundamentals of electricity allowing them to harness its potential to improve the way we function, interact, and develop in society around the world. Creating faster, innovative, more reliable, and safer technologies - from giant power generators to Bluetooth devices - is what Electrical Engineering is all about."
+          },
+          {
+            name: "Environment",
+            value: probabilities[5],
+            description:
+              "<h1>Environment</h1><p class=\"small\">Think global impact.</p><p>Environmental engineers are experts in the management, protection, and rehabilitation of our natural environment. This highly consultative field of engineering is in demand in all areas of industry and government. Whether it's protecting an endangered species' habitat or preventing leaching of toxins into drinking water, environmental engineers are involved.</p>",
+            link:
+              "https://uwaterloo.ca/future-students/programs/environmental-engineering",
+            copy:
+              "Environmental engineers are experts in the management, protection, and rehabilitation of our natural environment. This highly consultative field of engineering is in demand in all areas of industry and government. Whether it's protecting an endangered species' habitat or preventing leaching of toxins into drinking water, environmental engineers are involved."
+          },
+          {
+            name: "Geological",
+            value: probabilities[6],
+            description:
+              '<h1>Geological</h1><p class="small">Manage high-risks by understanding how the Earth works.</p><p>Geological engineers know just how successful any infrastructural project will be by their deep understanding of the Earth\'s surface and sub-surface properties. Choosing the right location to build the next skyscraper or drill for oil without disastrous results comes down to geological engineers.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/geological-engineering",
+            copy:
+              "Manage high-risks by understanding how the Earth works.</p><p>Geological engineers know just how successful any infrastructural project will be by their deep understanding of the Earth's surface and sub-surface properties. Choosing the right location to build the next skyscraper or drill for oil without disastrous results comes down to geological engineers."
+          },
+          {
+            name: "Management",
+            value: probabilities[7],
+            description:
+              '<h1>Management</h1><p class="small">Influence optimization in any industry.</p><p>Management engineers use the combination of analytical problem solving, savvy software skills and management experience to increase efficiencies and decrease losses in industry. Any CEO who wants to optimize their business will look to a management engineer who "gets" both the technical and business sides of their company.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/management-engineering",
+            copy:
+              'Influence optimization in any industry.</p><p>Management engineers use the combination of analytical problem solving, savvy software skills and management experience to increase efficiencies and decrease losses in industry. Any CEO who wants to optimize their business will look to a management engineer who "gets" both the technical and business sides of their company.'
+          },
+          {
+            name: "Mechanical",
+            value: probabilities[8],
+            description:
+              '<h1>Mechanical</h1><p class="small">Design and invent things that move.</p><p>Mechanical engineers work from the ground up to develop and lead projects that involve anything that moves - from wind turbines to medical implants. Choosing the right material for any product and function saves time, money, and resources, and there\'s no one savvier in this than mechanical engineers.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/mechanical-engineering",
+            copy:
+              "Design and invent things that move.</p><p>Mechanical engineers work from the ground up to develop and lead projects that involve anything that moves - from wind turbines to medical implants. Choosing the right material for any product and function saves time, money, and resources, and there's no one savvier in this than mechanical engineers."
+          },
+          {
+            name: "Mechatronics",
+            value: probabilities[9],
+            description:
+              '<h1>Mechatronics</h1><p class="small">Integrate mechanical design with electronics, computers and software.</p>Mechatronics engineers are ready to take on the challenges of the modern world where every process, device, and vehicle is expected to be "smart" and multi-functional. Think laparoscopic tools that can mimic a surgeons\' movements at a miniaturized level or automated vehicles that can "learn" preferred routes.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/mechatronics-engineering",
+            copy:
+              'Integrate mechanical design with electronics, computers and software.</p>Mechatronics engineers are ready to take on the challenges of the modern world where every process, device, and vehicle is expected to be "smart" and multi-functional. Think laparoscopic tools that can mimic a surgeons\' movements at a miniaturized level or automated vehicles that can "learn" preferred routes.'
+          },
+          {
+            name: "Nanotechnology",
+            value: probabilities[10],
+            description:
+              '<h1>Nanotechnology</h1><p class="small">Focus on a billionth of a metre.</p><p>Nanotechnology engineers are focused on the potential of advanced materials - at the atomic level. Combining theoretical research with quantum mechanics, they\'re creating new materials that will make airplanes lighter, cosmetics more personalized, and life-saving devices as small as a blood cell.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/nanotechnology-engineering",
+            copy:
+              "Nanotechnology engineers are focused on the potential of advanced materials - at the atomic level. Combining theoretical research with quantum mechanics, they're creating new materials that will make airplanes lighter, cosmetics more personalized, and life-saving devices as small as a blood cell."
+          },
+          {
+            name: "Software",
+            value: probabilities[11],
+            description:
+              '<h1>Software</h1><p class="small">Influence human-computer interaction.</p><p>Software engineers really understand how to develop and test software so that it meets the needs of its users. Combining the applied approach of computer engineering with computer programming, software engineers are always in demand to create the next best program with the user in mind.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/software-engineering",
+            copy:
+              "Software engineers really understand how to develop and test software so that it meets the needs of its users. Combining the applied approach of computer engineering with computer programming, software engineers are always in demand to create the next best program with the user in mind."
+          },
+          {
+            name: "Systems Design",
+            value: probabilities[12],
+            description:
+              '<h1>Systems Design</h1><p class="small">Be a big-picture problem solver.</p><p>Systems Design engineers understand that all things are integrated, and so use a systems-based approach to problem solving partnered with a keen sense of design to lead well-functioning teams across a variety of disciplines. These engineers understand how a pacemaker effects a human\'s biological system over time or the impact of replacing traffic lights with roundabouts in transportation systems.</p>',
+            link:
+              "https://uwaterloo.ca/future-students/programs/systems-design-engineering",
+            copy:
+              "Systems Design engineers understand that all things are integrated, and so use a systems-based approach to problem solving partnered with a keen sense of design to lead well-functioning teams across a variety of disciplines. These engineers understand how a pacemaker effects a human's biological system over time or the impact of replacing traffic lights with roundabouts in transportation systems."
+          }
+        ];
+        // sort by score in descending order
+        function SortByValue(a, b) {
+          return a.value - b.value;
+        }
+        answerHolder.sort(SortByValue).reverse();
+
+        // write the outcome html
+        $(".outcome").html(
+          '<h1>You\'re done!</h1><p>Here are the top three programs chosen by students with interests similar to yours.</p><div style="clear:both;"></div><div class="choice"><a href="' +
+            answerHolder[0].link +
+            '" class="more" target="blank">Find out more</a><p>' +
+            answerHolder[0].description +
+            '</p></div><div class="choice"><a href="' +
+            answerHolder[1].link +
+            '" class="more" target="blank">Find out more</a><p>' +
+            answerHolder[1].description +
+            '</p></div><div class="choice"><a href="' +
+            answerHolder[2].link +
+            '" class="more" target="blank">Find out more</a><p>' +
+            answerHolder[2].description +
+            '</p></div><div style="clear:both;"></div><p>Now that you have a starting point, <a href="http://uwaterloo.ca/engineering/future-undergraduate-students/undergraduate-programs-options" target="blank">find out more</a> about Waterloo Engineering’s undergraduate programs.</p>' +
+            '<div class="emailresults"><h3>Email yourself the quiz results!</h3><form id="emailresultsform" name="emailresultsform" method="post" action="emailresults.php"><input class="starthidden" name="onetitle" value="' +
+            answerHolder[0].name +
+            '"><input class="starthidden" name="onecopy" value="' +
+            answerHolder[0].copy +
+            '"><input class="starthidden" name="onelink" value="' +
+            answerHolder[0].link +
+            '"><input class="starthidden" name="twotitle" value="' +
+            answerHolder[1].name +
+            '"><input class="starthidden" name="twocopy" value="' +
+            answerHolder[1].copy +
+            '"><input class="starthidden" name="twolink" value="' +
+            answerHolder[1].link +
+            '"><input class="starthidden" name="threetitle" value="' +
+            answerHolder[2].name +
+            '"><input class="starthidden" name="threecopy" value="' +
+            answerHolder[2].copy +
+            '"><input class="starthidden" name="threelink" value="' +
+            answerHolder[2].link +
+            '"><input type="text" name="youremail" placeholder="Your email" class="emailinput"><button type="submit" onclick="document.getElementById(\'emailresultsform\').submit();">Submit</button></div></form></div><br />' +
+            '<h2>How does it work?</h2><p>This quiz was created with assistance from students in Management Engineering. <a href="https://uwaterloo.ca/engineering-student-ambassadors/apply/take-our-quiz" target="_blank">Learn more</a> about the data-mining techniques that power it.</p>'
+        );
+        $(".outcome").addClass("grad_purple");
+        $("#quiz").removeClass("grad_purple");
+
+        if (canTrackResults) {
+          var timestamp = Date.now();
+          gtag("event", "Quiz result", {
+            event_category: userId,
+            event_label: 0 + ";" + answerHolder[0].name,
+            timestamp: timestamp
+          });
+          gtag("event", "Quiz result", {
+            event_category: userId,
+            event_label: 1 + ";" + answerHolder[1].name,
+            timestamp: timestamp
+          });
+          gtag("event", "Quiz result", {
+            event_category: userId,
+            event_label: 2 + ";" + answerHolder[2].name,
+            timestamp: timestamp
+          });
+        }
+      }
+      function Refresh() {
+        setTimeout("location.reload(true);", 500);
+      }
+      $(".next")
+        .keypress(function(e) {
+          if (e.which == 13) {
+            // ENTER is pressed
+            $(this).trigger("click", business);
+          }
+        })
+        .on("click", business);
+      $(".next").on("click", function() {
+        var newGrad = $(this)
+            .parent()
+            .attr("grad"),
+          oldGrad = $("#gradient").css("background");
+        $("#quiz")
+          .animate()
+          .attr("class", newGrad);
+      });
+      $("#quiz").removeClass("starthidden");
+    </script>
+  </body>
+</html>
