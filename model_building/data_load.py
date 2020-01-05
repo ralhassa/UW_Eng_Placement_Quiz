@@ -30,7 +30,7 @@ READ_HEADERS = {
 READ_PROGRAMS = {
                 'Mechanical Engineering':'mech',
                 'Biomedical Engineering':'bmed',
-                'Software Engineering':'sft',
+                'Software Engineering':'swe',
                 'Computer Engineering':'ce',
                 'Mechatronics Engineering':'tron',
                 'Civil Engineering':'cive',
@@ -57,6 +57,17 @@ READ_CREATIVE = {
                 'I am very creative.' : 'creative'
                 }
 
+READ_INDUSTRY = {
+                'Architecture (i.e. Designing a building taller than the CN Tower)':'architecture',
+                'Automotive (i.e. Designing a new autonomous car)':'automotive',
+                'Business (i.e. Starting your own consulting company)':'business',
+                'Construction (i.e. Building a smart city)':'construction',
+                'Health (i.e. Creating technology for minimally invasive surgeries)':'health',
+                'Environment (i.e. Producing energy in sustainable ways)':'environment',
+                'Manufacturing (i.e. Optimization or automation of manufacturing processes)':'manufacturing',
+                'Technology (i.e. Working with cloud based software)':'technology'
+                }
+
 READ_OUTDOORS = {
                 'Working outside would be okay, but only for short periods of time.':'limited',
                 'I would rather work inside.':'indoors',
@@ -80,9 +91,17 @@ READ_GROUPWORK = {
                  }
 
 READ_COURSES = {
+                'Autoshop':'autoshop',
+                'Biology':'biology',
+                'Business':'business',
+                'Chemistry':'chemistry',
                 'Computer Science':'computer_science',
-                'Visual Arts' : 'visual_arts',
-                'Language Arts':'language_arts'
+                'Geography':'geography',
+                'History':'history',
+                'Language Arts':'language_arts',
+                'Math':'math',
+                'Physics':'physics',
+                'Visual Arts':'visual_arts'
                 }
 
 READ_PROGRAMMING = {
@@ -93,26 +112,25 @@ READ_PROGRAMMING = {
                     }
 
 READ_CLUBS = {
-         'Robotics club (i.e. UW Robotics Team)':'robotics',
-         'Student council (i.e. Engineering Society)':'student_council',
-         'Consulting club or business club (i.e. DECA)':'consulting/business',
-         'Environment club (i.e. UW Energy Network)':'environment',
-         'Business club (i.e. UW Finance Association)':'business',
-         'Hacker club (i.e. UW Hacks)':'hacker_club',
-         'Autoshop club (i.e. Autonomoose Autonomous Car Club)':'autoshop',
-         'Art or design club (i.e. Fashion for Change)':'art/design',
-         'Consulting club (i.e. DECA)':'consulting'
+            'Art or design club (i.e. Fashion for Change)':'art/design',
+            'Autoshop club (i.e. Autonomoose Autonomous Car Club)':'autoshop',
+            'Business club (i.e. UW Finance Association)':'business',
+            'Consulting club (i.e. DECA)':'consulting',
+            'Environment club (i.e. UW Energy Network)':'environment',
+            'Robotics club (i.e. UW Robotics Team)':'robotics',
+            'Hacker club (i.e. UW Hacks)':'hacker_club',
+            'Student council (i.e. Engineering Society)':'student_council',
             }
 
 READ_PROJECTS = {
-            'Designing a water treatment system for Mars.':'mars_water_treatment',
-            'Prototyping a musical instrument for children with a disability.':'prototyping_instrument',
-            'Programming a robot that can make you dinner.':'robot',
-            'Optimizing the Uber Pool routes.':'uber_pool',
-            'Designing an Olympic village.':'olympic_village',
-            'Creating a battery from recycled material.':'battery',
-            'Building the world’s most powerful supercomputer.':'supercomputer'
-            }
+                'Prototyping a musical instrument for children with a disability.':'prototyping_instrument',
+                'Designing a water treatment system for Mars.':'mars_water_treatment',
+                'Programming a robot that can make you dinner.':'robot',
+                'Building the world’s most powerful supercomputer.':'supercomputer',
+                'Designing an Olympic village.':'olympic_village',
+                'Creating a battery from recycled material.':'battery',
+                'Optimizing the Uber Pool routes.':'uber_pool'
+                }
 
 READ_EQUIPMENT = {
             'That sounds cool!':'yes',
