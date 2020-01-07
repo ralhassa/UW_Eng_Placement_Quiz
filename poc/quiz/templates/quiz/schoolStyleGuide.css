@@ -12,7 +12,7 @@
     color: #8100B4;
 }
 #EngPurple2{
-    color: #BE33DA;
+    background-color: #BE33DA;
 }
 #EngPurple2A{
     color: #000000;
@@ -23,11 +23,11 @@
 }
 #EngPurple2C{
     /* >14PT */
-    color: #DFDFDF;
+    background-color: #DFDFDF;
 }
 #EngPurple3{
     /* print primary color */
-    color: #8100B4;
+    background-color: #8100B4;
 }
 #EngPurple3A{
     color: #FFFFFF
@@ -39,15 +39,16 @@
 #EngPurple3C{
     color: #DFDFDF;
 }
-#EngPurple4{
+/* engPurple4 */
+#panel-heading{
     /* digital primary color */
-    color: #57058B;
+   background-color: #57058B;
 }
-#EngPurple4A{
-    color: #FFFFFF
+#panel-title{
+    color: #FFFFFF;
 }
-#EngPurple4B{
-    color: #D0B4E7;
+#panel-body{
+    background-color: #D0B4E7;
 }
 #EngPurple4C{
     color: #DFDFDF;
