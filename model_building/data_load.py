@@ -236,6 +236,20 @@ def normalize_1_variables(df1,x,y):
     normalized_data["percent"] = 100*(normalized_data["percent"]/sum(normalized_data["percent"]))
     return normalized_data
 
+def heatmapify(df,one_var,list_one,two_var,list_two):
+    return_list = []
+    for one in list_one:
+        new_list = []
+        rez1 = df.loc[(df[one_var]==one)]
+        for two in list_two:
+            rez2 = rez1.loc[(rez1[two_var]==two)]
+            if(len(rez2)>0):
+                (new_list).append((float(rez2["percent"])))
+            else:
+                (new_list).append(0.0)
+        (return_list).append((new_list))
+    heatmapdf = pd.DataFrame(return_list, index=list_one, columns=list_two)
+    return heatmapdf
 
 '''
 Might need these later
