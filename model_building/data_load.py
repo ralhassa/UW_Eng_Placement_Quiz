@@ -3,153 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing
 
-# Changing questions into column headers for readability
-READ_HEADERS = {
-                'What Engineering program are you in?':'program',
-                'Are you happy with what your program provides you with (i.e. courses, job opportunities, projects, etc.)':'happy',
-                'What kind of problems do you enjoy solving?':'problem_type',
-                'Would you consider yourself as being creative?':'creative',
-                'What industry can you see yourself working in, in the future? Select all that apply.':'industry',
-                'How comfortable are you working in the outdoors?':'outdoors',
-                'What can you see yourself doing in the future?':'career',
-                'How do you feel about group work? ':'group_work',
-                'What high school class did you enjoy the most?':'liked_courses',
-                'What high school class did you enjoy the least?':'disliked_courses',
-                'How do you feel about computer programming?':'programming',
-                'What type of club would you consider joining?':'join_clubs',
-                'What type of club would you NOT want to join?':'not_clubs',
-                'What project would you want to be a part of? ':'liked_projects',
-                'What project do you find the least interesting?':'disliked_projects',
-                'If you could only watch one TV show for the rest of your life, what would it be?':'tv_shows',
-                'If engineering didn’t exist, what would you consider studying?':'alternate_degree',
-                'How do you feel about working with expensive equipment?':'expensive_equipment',
-                'How would you describe your drawing abilities?':'drawing',
-                'You have an assignment to write an essay about anything you want. How does that make you feel?':'essay'
-                }
-
-READ_PROGRAMS = {
-                'Mechanical Engineering':'mech',
-                'Biomedical Engineering':'bmed',
-                'Software Engineering':'swe',
-                'Computer Engineering':'ce',
-                'Mechatronics Engineering':'tron',
-                'Civil Engineering':'cive',
-                'Chemical Engineering':'chem',
-                'Systems Design Engineering':'syde',
-                'Management Engineering':'msci',
-                'Electrical Engineering':'elec',
-                'Nanotechnology Engineering':'nano',
-                'Geological Engineering':'geo',
-                'Environmental Engineering':'env',
-                'Architectural Engineering':'arch-e',
-                'Architecture':'arch'
-                }
-
-READ_PROBLEMS = {
-                'Problems that are well defined.':'defined',
-                'Problems that require some investigation.':'investigate',
-                'Problems with very limited information.':'discover'
-                }
-
-READ_CREATIVE = {
-                'I am somewhat creative.':'somewhat_creative',
-                'I am not creative.' : 'not_creative',
-                'I am very creative.' : 'creative'
-                }
-
-READ_INDUSTRY = {
-                'Architecture (i.e. Designing a building taller than the CN Tower)':'architecture',
-                'Automotive (i.e. Designing a new autonomous car)':'automotive',
-                'Business (i.e. Starting your own consulting company)':'business',
-                'Construction (i.e. Building a smart city)':'construction',
-                'Health (i.e. Creating technology for minimally invasive surgeries)':'health',
-                'Environment (i.e. Producing energy in sustainable ways)':'environment',
-                'Manufacturing (i.e. Optimization or automation of manufacturing processes)':'manufacturing',
-                'Technology (i.e. Working with cloud based software)':'technology'
-                }
-
-READ_OUTDOORS = {
-                'Working outside would be okay, but only for short periods of time.':'limited',
-                'I would rather work inside.':'indoors',
-                'I love the outdoors and wish I could work outside every day.':'outdoors'
-                }
-
-READ_CAREERS = {
-                'Building things with moving parts.':'building',
-                'Designing or building sensor based technology.':'sensors',
-                'Programming apps.':'programming',
-                'Optimizing processes.':'optimizing',
-                "Improving the way we use the world's resources.":'resources',
-                'Designing buildings.':'buildings',
-                'Making discoveries at the molecular level.':'molecules'
-                }
-
-READ_GROUPWORK = {
-                'I occasionally like working with others.':'occasionally',
-                'I enjoy working with others.':'yes',
-                'I do not like working as part of a team. I would rather work alone.':'no'
-                 }
-
-READ_COURSES = {
-                'Autoshop':'autoshop',
-                'Biology':'biology',
-                'Business':'business',
-                'Chemistry':'chemistry',
-                'Computer Science':'computer_science',
-                'Geography':'geography',
-                'History':'history',
-                'Language Arts':'language_arts',
-                'Math':'math',
-                'Physics':'physics',
-                'Visual Arts':'visual_arts'
-                }
-
-READ_PROGRAMMING = {
-                    "I can code but it's not my favourite thing to do.":'partial',
-                    "I code, I enjoy it and I'm good at it.":'complete',
-                    'I don’t code and I have no desire to learn.':'no',
-                    "I don't code but I am interested in trying it.":'interested'
-                    }
-
-READ_CLUBS = {
-            'Art or design club (i.e. Fashion for Change)':'art/design',
-            'Autoshop club (i.e. Autonomoose Autonomous Car Club)':'autoshop',
-            'Business club (i.e. UW Finance Association)':'business',
-            'Consulting club (i.e. DECA)':'consulting',
-            'Environment club (i.e. UW Energy Network)':'environment',
-            'Robotics club (i.e. UW Robotics Team)':'robotics',
-            'Hacker club (i.e. UW Hacks)':'hacker_club',
-            'Student council (i.e. Engineering Society)':'student_council',
-            }
-
-READ_PROJECTS = {
-                'Prototyping a musical instrument for children with a disability.':'prototyping_instrument',
-                'Designing a water treatment system for Mars.':'mars_water_treatment',
-                'Programming a robot that can make you dinner.':'robot',
-                'Building the world’s most powerful supercomputer.':'supercomputer',
-                'Designing an Olympic village.':'olympic_village',
-                'Creating a battery from recycled material.':'battery',
-                'Optimizing the Uber Pool routes.':'uber_pool'
-                }
-
-READ_EQUIPMENT = {
-            'That sounds cool!':'yes',
-            "Could be cool, but I don't really care about fancy equipment or how much it costs.":'maybe',
-            "That scares me and I don't want to touch it.":'no'
-            }
-
-READ_DRAWING = {
-            'I am not the best, but I am not the worst.':'partial',
-            'I am not very good.':'bad',
-            'Really good, I can draw just about anything.':'good'
-            }
-
-READ_ESSAY = {
-            'Excited! I can share my theories with the world.':'yes',
-            'Annoyed. I would much rather be given a topic with clear instructions.':'no',
-            'A bit apprehensive. I get overwhelmed with so many options.':'partial'
-            }
-
+from dictionaries import *
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -162,16 +16,14 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-def get_clean_data(directory,drop_no):
+def get_clean_data(directory,drop_not_happy):
     '''
     Should we drop "Are you happy with your program?"
     '''
     data = pd.read_csv(directory,dtype=str)
     # dropping PII + gender + skill_test + timestamp + year
-    if drop_no:
-        data = data.drop(data.columns[[0,1,3,4,24]], axis=1)
-    else:
-        data = data.drop(data.columns[[0,1,3,4,24]], axis=1)
+    data = data.drop(data.columns[[0,1,3,4,24]], axis=1)
+
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
     data.program = data.program.map(READ_PROGRAMS)
@@ -191,6 +43,30 @@ def get_clean_data(directory,drop_no):
     data.drawing = data.drawing.map(READ_DRAWING)
     data.essay = data.essay.map(READ_ESSAY)
 
+    # Cleaning industry data
+    data.index.name = 'id'
+    industry_data = data["industry"].str.split(";", expand = True)
+    industry_data = industry_data.replace(READ_INDUSTRY)
+    binary_industry_data = np.array([np.arange(len(data))]*8).T
+    binary_industry_data = pd.DataFrame(binary_industry_data, columns=READ_INDUSTRY.values())
+    binary_industry_data.index.name = 'id'
+    for col in binary_industry_data.columns:
+        binary_industry_data[col].values[:] = False
+
+    for index, row in industry_data.iterrows():
+        for i in range(8):
+            try:
+                binary_industry_data.iloc[int(index), binary_industry_data.columns.get_loc(row[i])] = 1
+            except:
+                error = "None_Type detected"
+
+    data.index = data.index.map(int)
+    binary_industry_data.index = binary_industry_data.index.map(int)
+    data = (data.merge(binary_industry_data, left_on='id', right_on='id',how='left'))
+
+    # if drop where all values are unhapppy
+    if drop_not_happy:
+        data = data[data.happy == 'Yes']
     return data
 
 def get_encoded_data(directory):
@@ -251,6 +127,8 @@ def heatmapify(df,one_var,list_one,two_var,list_two):
     heatmapdf = pd.DataFrame(return_list, index=list_one, columns=list_two)
     return heatmapdf
 
+# def fix_industry
+# fdf
 '''
 Might need these later
 
