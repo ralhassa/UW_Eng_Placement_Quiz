@@ -27,8 +27,8 @@ def get_clean_data(directory,drop_not_happy):
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
     data.program = data.program.map(READ_PROGRAMS)
-    data.creative = data.creative.map(READ_CREATIVE)
     data.problem_type = data.problem_type.map(READ_PROBLEMS)
+    data.creative = data.creative.map(READ_CREATIVE)
     data.outdoors = data.outdoors.map(READ_OUTDOORS)
     data.career = data.career.map(READ_CAREERS)
     data.group_work = data.group_work.map(READ_GROUPWORK)
@@ -39,6 +39,8 @@ def get_clean_data(directory,drop_not_happy):
     data.not_clubs = data.not_clubs.map(READ_CLUBS)
     data.liked_projects = data.liked_projects.map(READ_PROJECTS)
     data.disliked_projects = data.disliked_projects.map(READ_PROJECTS)
+    data.tv_shows = data.tv_shows.map(READ_TV)
+    data.alternate_degree = data.alternate_degree.map(READ_ALTERNATE_DEGREE)
     data.expensive_equipment = data.expensive_equipment.map(READ_EQUIPMENT)
     data.drawing = data.drawing.map(READ_DRAWING)
     data.essay = data.essay.map(READ_ESSAY)

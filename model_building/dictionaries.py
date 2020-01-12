@@ -70,7 +70,7 @@ READ_OUTDOORS = {
                 }
 
 READ_CAREERS = {
-                'Building things with moving parts.':'building',
+                'Building things with moving parts.':'moving_parts',
                 'Designing or building sensor based technology.':'sensors',
                 'Programming apps.':'programming',
                 'Optimizing processes.':'optimizing',
@@ -127,6 +127,34 @@ READ_PROJECTS = {
                 'Optimizing the Uber Pool routes.':'uber_pool'
                 }
 
+READ_TV = {
+            'Big Bang Theory':'big_bang_theory',
+            'Breaking Bad':'breaking_bad',
+            'Grey’s Anatomy':'greys_anatomy',
+            'House Hunters':'house_hunters',
+            'Myth Busters':'myth_busters',
+            'Planet Earth':'planet_earth',
+            'Silicon Valley':'silicon_valley'
+            }
+
+READ_ALTERNATE_DEGREE = {
+            'Applied Science':'applied_science',
+            'Business':'business',
+            'Computer Science':'cs',
+            'Economics':'econ',
+            'English Literature':'lit',
+            'Environmental Studies':'env',
+            'Finance':'fin',
+            'Geography':'geo',
+            'Graphic Design':'design',
+            'Health Studies':'health',
+            'Marketing':'marketing',
+            'Math':'math',
+            'Political Science':'poli_sci',
+            'Psychology':'psych',
+            'Visual Arts':'visual_arts'
+            }
+
 READ_EQUIPMENT = {
             'That sounds cool!':'yes',
             "Could be cool, but I don't really care about fancy equipment or how much it costs.":'maybe',
@@ -144,13 +172,3 @@ READ_ESSAY = {
             'Annoyed. I would much rather be given a topic with clear instructions.':'no',
             'A bit apprehensive. I get overwhelmed with so many options.':'partial'
             }
-
-READ_INDUSTRY ={'Architecture (i.e. Designing a building taller than the CN Tower)':'architecture',
-                'Automotive (i.e. Designing a new autonomous car)':'automotive',
-                'Business (i.e. Starting your own consulting company)':'business',
-                'Construction (i.e. Building a smart city)':'construction',
-                'Health (i.e. Creating technology for minimally invasive surgeries)':'health',
-                'Environment (i.e. Producing energy in sustainable ways)':'environment',
-                'Manufacturing (i.e. Optimization or automation of manufacturing processes)':'manufacturing',
-                'Technology (i.e. Working with cloud based software)':'technology'
-                }
