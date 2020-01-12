@@ -21,8 +21,6 @@ def get_clean_data(directory,drop_not_happy):
     Should we drop "Are you happy with your program?"
     '''
     data = pd.read_csv(directory,dtype=str)
-    # dropping PII + gender + skill_test + timestamp + year
-    data = data.drop(data.columns[[0,1,3,4,24]], axis=1)
 
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
@@ -69,10 +67,14 @@ def get_clean_data(directory,drop_not_happy):
     # if drop where all values are unhapppy
     if drop_not_happy:
         data = data[data.happy == 'Yes']
+    data.index = data.index.map(int)
+    # dropping PII + gender + skill_test + timestamp + year + raw_industry
+    data = data.drop(data.columns[[0,1,3,4,8,24]], axis=1)
     return data
 
-def get_encoded_data(directory):
-    df = get_clean_data(directory)
+def get_encoded_data(directory,model_name,drop_not_happy):
+    df = get_clean_data(directory,drop_not_happy)
+    df = df.drop(['happy'], axis=1)
 
     col_list = list(df.columns)
     encoded_dict_list = []
@@ -84,11 +86,12 @@ def get_encoded_data(directory):
         vals = df[col].unique()
         keys = list(le.inverse_transform(vals))
         cd = dict(zip(keys,vals))
-        cd['column'] = col
-        encoded_dict_list.append(cd)
-
-    with open('encoded_dictionary', 'w') as file:
-        file.write(json.dumps(encoded_dict_list, cls=NpEncoder))
+        row = {col:cd}
+        encoded_dict_list.append(row)
+    dest_file = 'exported_model_files/'+model_name+'_encoded_dictionary.txt'
+    output_file = open(dest_file, 'w')
+    for dic in encoded_dict_list:
+        output_file.write(str(dict(dic)))
 
     return [df,encoded_dict_list]
 
