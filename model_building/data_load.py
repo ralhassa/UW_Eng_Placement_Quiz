@@ -1,6 +1,7 @@
 import json
-import pandas as pd
 import numpy as np
+import pandas as pd
+import pickle
 from sklearn import preprocessing
 
 from dictionaries import *
@@ -94,6 +95,34 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         output_file.write(str(dict(dic)))
 
     return [df,encoded_dict_list]
+
+def save_model(model,cat,model_name):
+    with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
+        pickle.dump(model, fid,2)
+    with open('exported_model_files/'+model_name+'_cat', 'wb') as fid:
+        pickle.dump(cat, fid,2)
+
+def retrieve_prediction_labels(model,prediction):
+    # returns a dictionary for each label and their probability in the prediction
+    labels = model.classes_
+    results = prediction[0]
+    results_dict = {}
+    for i in range(len(results)):
+        results_dict[INV_INDEX_PROGRAM[labels[i]]] = np.round(results[i],4)
+    return results_dict
+
+def test_model(model_name,vector):
+    print("Loading CAT file...")
+    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    index_dict = pickle.load(pkl_file)
+    new_vector = np.zeros(len(index_dict))
+
+    print("Loading model...")
+    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    model = pickle.load(pkl_file)
+    prediction = model.predict_proba(vector)
+    print("Results:")
+    print(retrieve_prediction_labels(model,prediction))
 
 # Defining methods to help normaliz the data
 def normalize_3_variables(df3,x,y,column,hue):
