@@ -172,3 +172,38 @@ READ_ESSAY = {
             'Annoyed. I would much rather be given a topic with clear instructions.':'no',
             'A bit apprehensive. I get overwhelmed with so many options.':'partial'
             }
+
+INDEX_PROGRAM = {
+                'mech': 9,
+                'bmed': 2,
+                'swe': 12,
+                'tron': 14,
+                'cive': 5,
+                'chem': 4,
+                'syde': 13,
+                'msci': 10,
+                'ce': 3,
+                'elec': 6,
+                'nano': 11,
+                'geo': 8,
+                'env': 7,
+                'arch-e': 1,
+                'arch': 0
+                }
+INV_INDEX_PROGRAM= {
+            9:'mech',
+            2:'bmed',
+            12:'swe',
+            14:'tron',
+            5:'cive',
+            4:'chem',
+            13:'syde',
+            10:'msci',
+            3:'ce',
+            6:'elec',
+            11:'nano',
+            8:'geo',
+            7:'env',
+            1:'arch-e',
+            0:'arch'
+            }
