@@ -2,7 +2,7 @@ FE:
 
 - Fix the way the accordion works: right now it doesn't collapse when another question is selected
 
-- Figure out how to make multi-select works
+- Figure out how to make checkboxes rounded
 
 - Response page
 
@@ -26,21 +26,6 @@ Design:
 - program definition & exploration page
 
 Open Questions:
-1. Should we drop "Are you happy with your program"=="No" from model building?
-2. How should we treat "industry"?
-      i. break into 138 unique responses and use them each as an individual option
-      ii. break each entry with multiple lines so that the number of responses Change
-      iii. break the question into multiple answers, so that there is one column for each possible response
-      iV. figure out how to deal with it in Naiyve Bayes
-3. Missing values:
-  https://datascience.stackexchange.com/questions/13597/naive-bayes-should-generate-prediction-given-missing-features-scikit-learn
-  - not possible unless we implement our own version of the model using the paper that they had in the comment (astronomy paper)
-  - this wont affect treating industry. We can turn it into a binary of true and false for every existing industry. The problem with this is that we are then over indexing on industry
-4. Skip wont be possible unless we implement our own version of the model; See point 3
-
-5. Can attempt to create a front end only version for client hand-off and keep this version for demo purposes.
-  - FE version wont store information and will only give a resposponse for top 3 programs
-
-6. Scoring can be done on the BE only implemented version with the predict with probability response
-
-7. It doesn't look like the engineering_quiz github was updated as part of the FYDP. It was last updated in Jan, there isnt any code that directly converts the code to something digestible to a matrix on javascript. Things weren't really commented on well, so its hard to decipher what they're trying to do. It looks like they manually converted the NB model to a matrix and used that to inform the response. Its really clever but difficult to recreate.
+- How to score models?
+  -Old FYDP team  did 5 fold validation for cross fold validation
+  -Leave one out is a more consistent and more easy to explain
