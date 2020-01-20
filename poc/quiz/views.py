@@ -8,6 +8,7 @@ import numpy as np
 import sys
 
 from . models import *
+from model_building.data_load import *
 
 def index(request):
     return HttpResponse("This is the home page")
