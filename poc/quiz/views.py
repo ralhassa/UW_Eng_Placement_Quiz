@@ -96,32 +96,25 @@ def response(request,post_dict,model_name):
     print("Loading model")
     pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
     nb_model = pickle.load(pkl_file)
-    prediction = nb_model.predict([new_vector])
-    response_message = ''
-    if prediction == 0:
-        response_message  = 'You should not play golf today'
-        rm = 'NO'
-    else:
-        response_message = 'You could play golf today'
-        rm = 'YES'
 
+    prediction = nb_model.predict_proba([new_vector])
     print("Prediction created...")
 
     print("Creating new record...")
     print(post_dict)
-    new_record = Results()
-    new_record.name = post_dict['name']
-    new_record.email = post_dict['email']
-    new_record.OUTLOOK = post_dict['OUTLOOK']
-    new_record.TEMPERATURE = post_dict['TEMPERATURE']
-    new_record.HUMIDITY = post_dict['HUMIDITY']
-    new_record.WINDY = post_dict['WINDY']
-    new_record.PLAY = rm
-    new_record.save()
+    # new_record = Results()
+    # new_record.name = post_dict['name']
+    # new_record.email = post_dict['email']
+    # new_record.OUTLOOK = post_dict['OUTLOOK']
+    # new_record.TEMPERATURE = post_dict['TEMPERATURE']
+    # new_record.HUMIDITY = post_dict['HUMIDITY']
+    # new_record.WINDY = post_dict['WINDY']
+    # new_record.PLAY = rm
+    # # new_record.save()
 
     context = {
-        'response_message':response_message,
-        'new_record':str(new_record)
+        'response_message':str(prediction),
+        'new_record':str()
     }
     print("Response Created...")
     return render(request,'quiz/response.html',context)
