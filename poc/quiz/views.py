@@ -32,7 +32,6 @@ def response(request,post_dict):
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
 
-    program = encoded_dictionary['program']
     problem_type = encoded_dictionary['problem_type']
     creative = encoded_dictionary['creative']
     outdoors = encoded_dictionary['outdoors']
