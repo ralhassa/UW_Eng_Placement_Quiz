@@ -96,9 +96,9 @@ def response(request,post_dict):
 
     print("Loading model")
     pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
-    nb_model = pickle.load(pkl_file)
+    model = pickle.load(pkl_file)
 
-    prediction = nb_model.predict_proba([new_vector])
+    prediction = model.predict_proba([new_vector])
     print("Prediction created...")
 
     print("Creating new record...")
@@ -114,7 +114,7 @@ def response(request,post_dict):
     # # new_record.save()
 
     context = {
-        'response_message':str(prediction),
+        'response_message':str(retrieve_prediction_labels(model,prediction)),
         'new_record':str()
     }
     print("Response Created...")
