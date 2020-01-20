@@ -27,7 +27,8 @@ def submit(request):
         print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...create) 3")
 
-def response(request,post_dict,model_name):
+def response(request,post_dict):
+    model_name = 'nb_model_basic'
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
 
