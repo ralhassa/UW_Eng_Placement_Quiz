@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from sklearn import preprocessing
 
-from dictionaries import *
+from model_building.dictionaries import *
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
