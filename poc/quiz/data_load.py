@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import os
 import pandas as pd
 import pickle
 from sklearn import preprocessing
@@ -103,6 +104,7 @@ def get_encoded_dict(model_name):
     cols = []
     print("getting encoded dict..")
     print(model_name)
+    print(os.getcwd())
 
     with open('quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
