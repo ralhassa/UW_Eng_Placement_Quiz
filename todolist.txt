@@ -39,5 +39,5 @@ on deploy:
 - maybe move model building into poc?
 
 Current attempt:
-- Add exported_model_files, data_load, and dictionaries to quiz folder under poc
+- Add quiz_data.csv, exported_model_files, data_load, and dictionaries to quiz folder under poc
 - Rename imports to include from . "file" import *

@@ -74,8 +74,11 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def get_encoded_data(directory,model_name,drop_not_happy):
+    print("getting encoded dict..")
+    print(model_name)
     df = get_clean_data(directory,drop_not_happy)
     df = df.drop(['happy'], axis=1)
+    print("clean data retrieved")
 
     col_list = list(df.columns)
     encoded_dict_list = []
