@@ -52,12 +52,12 @@ def get_clean_data(directory,drop_not_happy):
     binary_industry_data = pd.DataFrame(binary_industry_data, columns=READ_INDUSTRY.values())
     binary_industry_data.index.name = 'id'
     for col in binary_industry_data.columns:
-        binary_industry_data[col].values[:] = False
+        binary_industry_data[col].values[:] = '0'
 
     for index, row in industry_data.iterrows():
         for i in range(8):
             try:
-                binary_industry_data.iloc[int(index), binary_industry_data.columns.get_loc(row[i])] = 1
+                binary_industry_data.iloc[int(index), binary_industry_data.columns.get_loc(row[i])] = '1'
             except:
                 error = "None_Type detected"
 
@@ -73,6 +73,20 @@ def get_clean_data(directory,drop_not_happy):
     data = data.drop(data.columns[[0,1,3,4,8,24]], axis=1)
     return data
 
+def transform_post_dict(post_dict):
+    industries = post_dict['industry']
+    post_dict['architecture'] = 0
+    post_dict['automotive'] = 0
+    post_dict['business'] = 0
+    post_dict['construction'] = 0
+    post_dict['health'] = 0
+    post_dict['environment'] = 0
+    post_dict['manufacturing'] = 0
+    post_dict['technology'] = 0
+    for industry in industries:
+        post_dict[industry] = 1
+    return post_dict
+
 def get_encoded_data(directory,model_name,drop_not_happy):
     df = get_clean_data(directory,drop_not_happy)
     df = df.drop(['happy'], axis=1)
@@ -87,14 +101,33 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         vals = df[col].unique()
         keys = list(le.inverse_transform(vals))
         cd = dict(zip(keys,vals))
-        row = {col:cd}
+        row = {str(col):cd}
         encoded_dict_list.append(row)
-    dest_file = 'exported_model_files/'+model_name+'_encoded_dictionary.txt'
-    output_file = open(dest_file, 'w')
-    for dic in encoded_dict_list:
-        output_file.write(str(dict(dic)))
+        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+            json.dump(row,f,cls=NpEncoder)
+
+    with open('exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+        for col in col_list:
+            f.write(col)
+            f.write('\n')
 
     return [df,encoded_dict_list]
+
+def get_encoded_dict(model_name):
+    cols = []
+
+    with open('exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+        for line in f:
+            # remove linebreak which is the last character of the string
+            currentPlace = line[:-1]
+            # add item to the list
+            cols.append(currentPlace)
+    encoded_dict = {}
+    for col in cols:
+        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+            row = json.loads(f.read())
+        encoded_dict[col] = row
+    return encoded_dict
 
 def save_model(model,cat,model_name):
     with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:

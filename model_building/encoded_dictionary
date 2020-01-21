@@ -1,1 +1,0 @@
-[{"Rainy": 1, "Overcast": 0, "Sunny": 2, "column": "OUTLOOK"}, {"Hot": 1, "Mild": 2, "Cool": 0, "column": "TEMPERATURE"}, {"High": 0, "Normal": 1, "column": "HUMIDITY"}, {"FALSE": 0, "TRUE": 1, "column": "WINDY"}, {"No": 0, "Yes": 1, "column": "PLAY"}]
