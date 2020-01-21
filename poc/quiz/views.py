@@ -31,6 +31,7 @@ def submit(request):
 
 def response(request,post_dict):
     model_name = MODEL_NAME
+    post_dict = transform_post_dict(post_dict)
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
     print("encoded_dictionary retrieved...")
