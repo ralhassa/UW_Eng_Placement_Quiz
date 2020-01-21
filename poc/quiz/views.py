@@ -90,7 +90,7 @@ def response(request,post_dict):
 	# Prepare the feature vector for prediction
 
     print("Loading new_vector....")
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('../quiz/exported_model_files/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
@@ -123,7 +123,7 @@ def response(request,post_dict):
     print(post_dict)
 
     print("Loading model")
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('../quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     prediction = model.predict_proba([new_vector])

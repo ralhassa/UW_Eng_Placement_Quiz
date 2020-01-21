@@ -90,10 +90,10 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         cd = dict(zip(keys,vals))
         row = {str(col):cd}
         encoded_dict_list.append(row)
-        with open('quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+        with open('../quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(row,f,cls=NpEncoder)
 
-    with open('quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+    with open('../quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')
@@ -106,7 +106,7 @@ def get_encoded_dict(model_name):
     print(model_name)
     print(os.getcwd())
 
-    with open('quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+    with open('../quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
             # remove linebreak which is the last character of the string
             currentPlace = line[:-1]
@@ -114,7 +114,7 @@ def get_encoded_dict(model_name):
             cols.append(currentPlace)
     encoded_dict = {}
     for col in cols:
-        with open('quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+        with open('../quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
             row = json.loads(f.read())
         encoded_dict[col] = row
     return encoded_dict
