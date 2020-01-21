@@ -92,6 +92,7 @@ def transform_post_dict(post_dict):
     post_dict['technology'] = 0
     for industry in industries:
         post_dict[industry] = 1
+    print(post_dict)
     return post_dict
 
 def get_encoded_data(directory,model_name,drop_not_happy):
