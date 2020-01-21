@@ -106,7 +106,7 @@ def get_encoded_dict(model_name):
     print(model_name)
     print(os.getcwd())
 
-    with open('/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+    with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
             # remove linebreak which is the last character of the string
             currentPlace = line[:-1]
@@ -114,7 +114,7 @@ def get_encoded_dict(model_name):
             cols.append(currentPlace)
     encoded_dict = {}
     for col in cols:
-        with open('/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+        with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
             row = json.loads(f.read())
         encoded_dict[col] = row
     return encoded_dict
