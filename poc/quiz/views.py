@@ -8,8 +8,8 @@ import numpy as np
 import sys
 
 from . models import *
-from data_load import *
-from activate_model import *
+from . data_load import *
+from . activate_model import *
 
 def index(request):
     return HttpResponse("This is the home page")
