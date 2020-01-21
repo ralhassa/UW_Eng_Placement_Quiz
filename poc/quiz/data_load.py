@@ -90,10 +90,10 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         cd = dict(zip(keys,vals))
         row = {str(col):cd}
         encoded_dict_list.append(row)
-        with open('/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(row,f,cls=NpEncoder)
 
-    with open('/quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+    with open('exported_model_files/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')

@@ -41,4 +41,4 @@ on deploy:
 Current attempt:
 - Add quiz_data.csv, exported_model_files, data_load, and dictionaries to quiz folder under poc
 - Rename imports to include from . "file" import *
-- Add quiz/ to retrieve all filenames
+- Add poc/quiz/ to retrieve all filenames
