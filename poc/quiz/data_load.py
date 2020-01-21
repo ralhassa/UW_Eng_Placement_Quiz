@@ -76,6 +76,14 @@ def get_clean_data(directory,drop_not_happy):
 
 def transform_post_dict(post_dict):
     post_dict = json.dumps(dict(post_dict))
+    print(type(post_dict))
+    print(post_dict)
+    post_dict = json.loads(post_dict)
+    print(type(post_dict))
+    print(post_dict)
+    post_dict = dict(post_dict)
+    print(type(post_dict))
+    print(post_dict)
     print((post_dict['industry']))
     industries = post_dict['industry']
     post_dict['architecture'] = 0
