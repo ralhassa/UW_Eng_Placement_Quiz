@@ -75,7 +75,7 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def transform_post_dict(post_dict):
-    post_dict = dict(post_dict.iterlists())
+    post_dict = post_dict.dict()
     print(type(post_dict))
     print(dict(post_dict))
     print(type(post_dict))
