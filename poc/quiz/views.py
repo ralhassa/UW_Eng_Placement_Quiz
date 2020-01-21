@@ -73,8 +73,11 @@ def response(request,post_dict):
 
     print("Loading response into new_vector...")
     print(post_dict)
-    print(type(print(type(post_dict))))
-    print(post_dict[problem_type])
+    print(type(post_dict))
+    print(post_dict['problem_type'])
+    print(type(post_dict['problem_type']))
+    print(problem_type)
+    print(type(problem_type))
     new_vector[0] =  problem_type[post_dict['problem_type']]
     print(1)
     new_vector[1] =  creative[post_dict['creative']]
