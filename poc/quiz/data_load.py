@@ -79,7 +79,6 @@ def transform_post_dict(post_dict):
     print(type(post_dict))
     print(dict(post_dict))
     print(type(post_dict))
-    print(post_dict[])
     print(list(post_dict['industry']))
     industries = list(post_dict['industry'])
     print(industries)
