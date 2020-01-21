@@ -33,32 +33,59 @@ def response(request,post_dict):
     model_name = MODEL_NAME
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
+    print("encoded_dictionary retrieved...")
 
     problem_type = encoded_dictionary['problem_type']
+    print(1)
     creative = encoded_dictionary['creative']
+    print(2)
     outdoors = encoded_dictionary['outdoors']
+    print(3)
     career = encoded_dictionary['career']
+    print(4)
     group_work = encoded_dictionary['group_work']
+    print(5)
     liked_courses = encoded_dictionary['liked_courses']
+    print(6)
     disliked_courses = encoded_dictionary['disliked_courses']
+    print(7)
     programming = encoded_dictionary['programming']
+    print(8)
     join_clubs = encoded_dictionary['join_clubs']
+    print(9)
     not_clubs = encoded_dictionary['not_clubs']
+    print(10)
     liked_projects = encoded_dictionary['liked_projects']
+    print(11)
     disliked_projects = encoded_dictionary['disliked_projects']
+    print(12)
     tv_shows = encoded_dictionary['tv_shows']
+    print(13)
     alternate_degree = encoded_dictionary['alternate_degree']
+    print(14)
     expensive_equipment = encoded_dictionary['expensive_equipment']
+    print(15)
     drawing = encoded_dictionary['drawing']
+    print(16)
     essay = encoded_dictionary['essay']
+    print(17)
     architecture = encoded_dictionary['architecture']
+    print(18)
     automotive = encoded_dictionary['automotive']
+    print(19)
     business = encoded_dictionary['business']
+    print(20)
     construction = encoded_dictionary['construction']
+    print(21)
     health = encoded_dictionary['health']
+    print(22)
     environment = encoded_dictionary['environment']
+    print(23)
     manufacturing = encoded_dictionary['manufacturing']
+    print(24)
     technology = encoded_dictionary['technology']
+
+    print("Labels encoded..")
 
 	# Prepare the feature vector for prediction
 
