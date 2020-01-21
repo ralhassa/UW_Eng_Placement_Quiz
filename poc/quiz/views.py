@@ -95,6 +95,9 @@ def response(request,post_dict):
     new_vector = np.zeros(len(index_dict))
 
     print("Loading response into new_vector...")
+    print(post_dict['problem_type'])
+    print()
+    print(problem_type)
     new_vector[0] =  problem_type[post_dict['problem_type']]
     print(1)
     new_vector[1] =  creative[post_dict['creative']]
