@@ -96,30 +96,55 @@ def response(request,post_dict):
 
     print("Loading response into new_vector...")
     new_vector[0] =  problem_type[post_dict['problem_type']]
+    print(1)
     new_vector[1] =  creative[post_dict['creative']]
+    print(2)
     new_vector[2] =  outdoors[post_dict['outdoors']]
+    print(3)
     new_vector[3] =  career[post_dict['career']]
+    print(4)
     new_vector[4] =  group_work[post_dict['group_work']]
+    print(5)
     new_vector[5] =  liked_courses[post_dict['liked_courses']]
+    print(6)
     new_vector[6] =  disliked_courses[post_dict['disliked_courses']]
+    print(7)
     new_vector[7] =  programming[post_dict['programming']]
+    print(8)
     new_vector[8] =  join_clubs[post_dict['join_clubs']]
+    print(9)
     new_vector[9] =  not_clubs[post_dict['not_clubs']]
+    print(10)
     new_vector[10] = liked_projects[post_dict['liked_projects']]
+    print(11)
     new_vector[11] = disliked_projects[post_dict['disliked_projects']]
+    print(12)
     new_vector[12] = tv_shows[post_dict['tv_shows']]
+    print(13)
     new_vector[13] = alternate_degree[post_dict['alternate_degree']]
+    print(14)
     new_vector[14] = expensive_equipment[post_dict['expensive_equipment']]
+    print(15)
     new_vector[15] = drawing[post_dict['drawing']]
+    print(16)
     new_vector[16] = essay[post_dict['essay']]
+    print(17)
     new_vector[17] = architecture[post_dict['architecture']]
+    print(18)
     new_vector[18] = automotive[post_dict['automotive']]
+    print(19)
     new_vector[19] = business[post_dict['business']]
+    print(20)
     new_vector[20] = construction[post_dict['construction']]
+    print(21)
     new_vector[21] = health[post_dict['health']]
+    print(22)
     new_vector[22] = environment[post_dict['environment']]
+    print(23)
     new_vector[23] = manufacturing[post_dict['manufacturing']]
+    print(24)
     new_vector[24] = technology[post_dict['technology']]
+    print(25)
     print(post_dict)
 
     print("Loading model")
