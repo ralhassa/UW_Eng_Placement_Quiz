@@ -75,16 +75,10 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def transform_post_dict(post_dict):
+    print("Transforming post_dict...")
     post_dict = json.dumps(dict(post_dict))
-    print(type(post_dict))
-    print(post_dict)
     post_dict = json.loads(post_dict)
-    print(type(post_dict))
-    print(post_dict)
     post_dict = dict(post_dict)
-    print(type(post_dict))
-    print(post_dict)
-    print((post_dict['industry']))
     industries = post_dict['industry']
     post_dict['architecture'] = 0
     post_dict['automotive'] = 0
@@ -96,8 +90,7 @@ def transform_post_dict(post_dict):
     post_dict['technology'] = 0
     for industry in industries:
         post_dict[industry] = 1
-    print(post_dict)
-    return post_dict
+    return dict(post_dict)
 
 def get_encoded_data(directory,model_name,drop_not_happy):
     df = get_clean_data(directory,drop_not_happy)
