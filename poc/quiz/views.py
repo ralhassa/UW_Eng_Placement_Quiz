@@ -72,63 +72,31 @@ def response(request,post_dict):
     new_vector = np.zeros(len(index_dict))
 
     print("Loading response into new_vector...")
-    print(post_dict)
-    print(type(post_dict))
-    print(post_dict['problem_type'])
-    print(type(post_dict['problem_type']))
-    print(problem_type)
-    print(type(problem_type))
     new_vector[0] =  problem_type[post_dict['problem_type'][0]]
-    print(1)
     new_vector[1] =  creative[post_dict['creative'][0]]
-    print(2)
     new_vector[2] =  outdoors[post_dict['outdoors'][0]]
-    print(3)
     new_vector[3] =  career[post_dict['career'][0]]
-    print(4)
     new_vector[4] =  group_work[post_dict['group_work'][0]]
-    print(5)
     new_vector[5] =  liked_courses[post_dict['liked_courses'][0]]
-    print(6)
     new_vector[6] =  disliked_courses[post_dict['disliked_courses'][0]]
-    print(7)
     new_vector[7] =  programming[post_dict['programming'][0]]
-    print(8)
     new_vector[8] =  join_clubs[post_dict['join_clubs'][0]]
-    print(9)
     new_vector[9] =  not_clubs[post_dict['not_clubs'][0]]
-    print(10)
     new_vector[10] = liked_projects[post_dict['liked_projects'][0]]
-    print(11)
     new_vector[11] = disliked_projects[post_dict['disliked_projects'][0]]
-    print(12)
     new_vector[12] = tv_shows[post_dict['tv_shows'][0]]
-    print(13)
     new_vector[13] = alternate_degree[post_dict['alternate_degree'][0]]
-    print(14)
     new_vector[14] = expensive_equipment[post_dict['expensive_equipment'][0]]
-    print(15)
     new_vector[15] = drawing[post_dict['drawing'][0]]
-    print(16)
     new_vector[16] = essay[post_dict['essay'][0]]
-    print(17)
     new_vector[17] = architecture[post_dict['architecture'][0]]
-    print(18)
     new_vector[18] = automotive[post_dict['automotive'][0]]
-    print(19)
     new_vector[19] = business[post_dict['business'][0]]
-    print(20)
     new_vector[20] = construction[post_dict['construction'][0]]
-    print(21)
     new_vector[21] = health[post_dict['health'][0]]
-    print(22)
     new_vector[22] = environment[post_dict['environment'][0]]
-    print(23)
     new_vector[23] = manufacturing[post_dict['manufacturing'][0]]
-    print(24)
     new_vector[24] = technology[post_dict['technology'][0]]
-    print(25)
-    print(post_dict)
 
     print("Loading model")
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
@@ -138,7 +106,7 @@ def response(request,post_dict):
     print("Prediction created...")
 
     print("Creating new record...")
-    print(post_dict)
+    # Need to create back-end to store results
     # new_record = Results()
     # new_record.name = post_dict['name']
     # new_record.email = post_dict['email']
