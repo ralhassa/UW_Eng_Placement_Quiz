@@ -75,7 +75,9 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def transform_post_dict(post_dict):
+    print(post_dict)
     industries = post_dict['industry']
+    print(industries)
     post_dict['architecture'] = 0
     post_dict['automotive'] = 0
     post_dict['business'] = 0
