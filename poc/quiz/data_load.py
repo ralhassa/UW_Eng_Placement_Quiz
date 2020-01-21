@@ -75,9 +75,11 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def transform_post_dict(post_dict):
+    post_dict = dict(post_dict.iterlists())
     print(type(post_dict))
     print(dict(post_dict))
     print(type(post_dict))
+    print(post_dict[])
     print(list(post_dict['industry']))
     industries = list(post_dict['industry'])
     print(industries)
