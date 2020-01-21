@@ -8,7 +8,8 @@ import numpy as np
 import sys
 
 from . models import *
-from model_building.data_load import *
+from data_load import *
+from activate_model import *
 
 def index(request):
     return HttpResponse("This is the home page")
@@ -29,7 +30,7 @@ def submit(request):
         return HttpResponse("Something went wrong...create) 3")
 
 def response(request,post_dict):
-    model_name = 'nb_model_basic'
+    model_name = MODEL_NAME
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
 

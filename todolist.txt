@@ -29,3 +29,11 @@ Open Questions:
 - How to score models?
   -Old FYDP team  did 5 fold validation for cross fold validation
   -Leave one out is a more consistent and more easy to explain
+
+
+on deploy:
+- set model_name somewhere?
+- copy model?
+- copy data_load?
+- copy dictionaries.py?
+- maybe move model building into poc?
