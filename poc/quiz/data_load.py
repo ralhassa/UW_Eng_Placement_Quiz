@@ -80,16 +80,16 @@ def transform_post_dict(post_dict):
     post_dict = json.loads(post_dict)
     post_dict = dict(post_dict)
     industries = post_dict['industry']
-    post_dict['architecture'] = 0
-    post_dict['automotive'] = 0
-    post_dict['business'] = 0
-    post_dict['construction'] = 0
-    post_dict['health'] = 0
-    post_dict['environment'] = 0
-    post_dict['manufacturing'] = 0
-    post_dict['technology'] = 0
+    post_dict['architecture'] = '0'
+    post_dict['automotive'] = '0'
+    post_dict['business'] = '0'
+    post_dict['construction'] = '0'
+    post_dict['health'] = '0'
+    post_dict['environment'] = '0'
+    post_dict['manufacturing'] = '0'
+    post_dict['technology'] = '0'
     for industry in industries:
-        post_dict[industry] = 1
+        post_dict[industry] = '1'
     return dict(post_dict)
 
 def get_encoded_data(directory,model_name,drop_not_happy):
