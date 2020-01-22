@@ -52,8 +52,30 @@ UPDATES:
 Current Issues:
 - If industry isnt selected on the quiz, the model breaks
 - old model is built on deprecated code. I can't run it and make it work easily. This means that we wont be able to compare each of our models to each of the previous models ourselves for a 1:1 comparison. We have to rely on their data. I could potentially fix it with a sprint or two dedicated to refactoring their codebase,  but I don't see the value.
+- establish model building principles and ranked list of experiments
+- division of labor
 
-Decision tree update:
+Decision tree:
 - test_vector got nano with naive bayes, tron with decision trees
 - Decision trees give no probability for anything other than the one selected
 - Decision tree accuracy = <33 % because of how decision trees work, value changes
+
+Associations:
+- Not a predictor, discover associations between selections
+
+Support vector machines:
+- Can return one prediction, no probabilities
+
+Logistic Regression:
+- 44% accuracy
+
+Focus on:
+- Skewness
+- data balancing
+- association rule mining
+- feature selection
+
+- explore trends
+- start creating prioritized hypothesis list
+
+- front end building
