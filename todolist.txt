@@ -1,15 +1,14 @@
 FE:
-
 - Fix the way the accordion works: right now it doesn't collapse when another question is selected
 
 - Figure out how to make checkboxes rounded
 
 - Response page
 
+- If industry isnt selected on the quiz, the model breaks
+
 BE:
-- How to deal with multi-select responses?
 - data and response storage
-- host created model on heroku
 
 Data:
 - Data explorations
@@ -30,6 +29,10 @@ Open Questions:
   -Old FYDP team  did 5 fold validation for cross fold validation
   -Leave one out is a more consistent and more easy to explain
 
+Old model:
+- old model is built on deprecated code. I can't run it and make it work easily. This means that we wont be able to compare each of our models to each of the previous models ourselves for a 1:1 comparison. We have to rely on their data. I could potentially fix it with a sprint or two dedicated to refactoring their codebase,  but I don't see the value.
+- Old team experimented with decision trees, associations, and naive bayes
+
 
 on deploy:
 - set model_name somewhere?
@@ -38,7 +41,19 @@ on deploy:
 - copy dictionaries.py?
 - maybe move model building into poc?
 
-Current attempt:
+Add New Model:
 - Add quiz_data.csv, exported_model_files, data_load, and dictionaries to quiz folder under poc
 - Rename imports to include from . "file" import *
 - Add poc/quiz/ to retrieve all filenames
+- Update model name
+
+UPDATES:
+
+Current Issues:
+- If industry isnt selected on the quiz, the model breaks
+- old model is built on deprecated code. I can't run it and make it work easily. This means that we wont be able to compare each of our models to each of the previous models ourselves for a 1:1 comparison. We have to rely on their data. I could potentially fix it with a sprint or two dedicated to refactoring their codebase,  but I don't see the value.
+
+Decision tree update:
+- test_vector got nano with naive bayes, tron with decision trees
+- Decision trees give no probability for anything other than the one selected
+- Decision tree accuracy = <33 % because of how decision trees work, value changes
