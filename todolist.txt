@@ -52,6 +52,12 @@ UPDATES:
 Current Issues:
 - If industry isnt selected on the quiz, the model breaks
 - old model is built on deprecated code. I can't run it and make it work easily. This means that we wont be able to compare each of our models to each of the previous models ourselves for a 1:1 comparison. We have to rely on their data. I could potentially fix it with a sprint or two dedicated to refactoring their codebase,  but I don't see the value.
+- New data push:
+  -- NB = 36% accuracy, ranks nano 1 caused by +500 or 33% lift in responses
+  -- ent = No ranked result, results change every model build. Accuracy = 35%
+  -- LRR = ranks chem 1, 44% accuracy, no lift with more data
+
+
 - establish model building principles and ranked list of experiments
 - division of labor
 
@@ -71,6 +77,7 @@ Logistic Regression:
 
 Focus on:
 - Skewness
+- not happy placement
 - data balancing
 - association rule mining
 - feature selection
