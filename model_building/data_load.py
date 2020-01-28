@@ -1,3 +1,4 @@
+import itertools
 import json
 import numpy as np
 import pandas as pd
@@ -74,18 +75,22 @@ def get_clean_data(directory,drop_not_happy):
     return data
 
 def transform_post_dict(post_dict):
+    print("Transforming post_dict...")
+    post_dict = json.dumps(dict(post_dict))
+    post_dict = json.loads(post_dict)
+    post_dict = dict(post_dict)
     industries = post_dict['industry']
-    post_dict['architecture'] = 0
-    post_dict['automotive'] = 0
-    post_dict['business'] = 0
-    post_dict['construction'] = 0
-    post_dict['health'] = 0
-    post_dict['environment'] = 0
-    post_dict['manufacturing'] = 0
-    post_dict['technology'] = 0
+    post_dict['architecture'] = '0'
+    post_dict['automotive'] = '0'
+    post_dict['business'] = '0'
+    post_dict['construction'] = '0'
+    post_dict['health'] = '0'
+    post_dict['environment'] = '0'
+    post_dict['manufacturing'] = '0'
+    post_dict['technology'] = '0'
     for industry in industries:
-        post_dict[industry] = 1
-    return post_dict
+        post_dict[industry] = '1'
+    return dict(post_dict)
 
 def get_encoded_data(directory,model_name,drop_not_happy):
     df = get_clean_data(directory,drop_not_happy)
@@ -194,8 +199,133 @@ def heatmapify(df,one_var,list_one,two_var,list_two):
     heatmapdf = pd.DataFrame(return_list, index=list_one, columns=list_two)
     return heatmapdf
 
-# def fix_industry
-# fdf
+def permu(lists,model_name,program_count):
+
+    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    index_dict = pickle.load(pkl_file)
+    new_vector = np.zeros(len(index_dict))
+
+    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    model = pickle.load(pkl_file)
+    print("model loaded...")
+    def fn(lists, group=[], result=[]):
+        if not lists:
+            p = np.array(group).reshape(1, -1)
+            pred = INV_INDEX_PROGRAM[model.predict(p)[0]]
+            program_count[pred] = program_count[pred] + 1
+            return
+        first, rest = lists[0], lists[1:]
+        for letter in first:
+            fn(rest, group + [letter], result)
+    result = []
+    fn(lists, result=result)
+    return program_count
+
+def check_skew(model_name, problem_type = False , creative = False,
+                outdoors = False, career = False, group_work = False, liked_courses = False, disliked_courses = False,
+                programming = False,join_clubs = False,not_clubs = False,liked_projects = False,disliked_projects = False,
+                tv_shows = False,alternate_degree = False,expensive_equipment = False, drawing = False, essay = False, architecture = False, automotive = False,business = False, construction = False, health = False, environment = False, manufacturing = False, technology = False):
+    encoded_dictionary = get_encoded_dict(model_name)
+
+    d_problem_type = encoded_dictionary['problem_type']['problem_type']
+    d_creative = encoded_dictionary['creative']['creative']
+    d_outdoors = encoded_dictionary['outdoors']['outdoors']
+    d_career = encoded_dictionary['career']['career']
+    d_group_work = encoded_dictionary['group_work']['group_work']
+    d_liked_courses = encoded_dictionary['liked_courses']['liked_courses']
+    d_disliked_courses = encoded_dictionary['disliked_courses']['disliked_courses']
+    d_programming = encoded_dictionary['programming']['programming']
+    d_join_clubs = encoded_dictionary['join_clubs']['join_clubs']
+    d_not_clubs = encoded_dictionary['not_clubs']['not_clubs']
+    d_liked_projects = encoded_dictionary['liked_projects']['liked_projects']
+    d_disliked_projects = encoded_dictionary['disliked_projects']['disliked_projects']
+    d_tv_shows = encoded_dictionary['tv_shows']['tv_shows']
+    d_alternate_degree = encoded_dictionary['alternate_degree']['alternate_degree']
+    d_expensive_equipment = encoded_dictionary['expensive_equipment']['expensive_equipment']
+    d_drawing = encoded_dictionary['drawing']['drawing']
+    d_essay = encoded_dictionary['essay']['essay']
+    d_architecture = encoded_dictionary['architecture']['architecture']
+    d_automotive = encoded_dictionary['automotive']['automotive']
+    d_business = encoded_dictionary['business']['business']
+    d_construction = encoded_dictionary['construction']['construction']
+    d_health = encoded_dictionary['health']['health']
+    d_environment = encoded_dictionary['environment']['environment']
+    d_manufacturing = encoded_dictionary['manufacturing']['manufacturing']
+    d_technology = encoded_dictionary['technology']['technology']
+
+    test_variables = []
+    if problem_type==True:
+        test_variables.append(list(d_problem_type.values()))
+    if creative== True:
+        test_variables.append(list(d_creative.values()))
+    if outdoors== True:
+        test_variables.append(list(d_outdoors.values()))
+    if career== True:
+        test_variables.append(list(d_career.values()))
+    if group_work== True:
+        test_variables.append(list(d_group_work.values()))
+    if liked_courses== True:
+        test_variables.append(list(d_liked_courses.values()))
+    if disliked_courses== True:
+        test_variables.append(list(d_disliked_courses.values()))
+    if programming== True:
+        test_variables.append(list(d_programming.values()))
+    if join_clubs== True:
+        test_variables.append(list(d_join_clubs.values()))
+    if not_clubs== True:
+        test_variables.append(list(d_not_clubs.values()))
+    if liked_projects== True:
+        test_variables.append(list(d_liked_projects.values()))
+    if disliked_projects== True:
+        test_variables.append(list(d_disliked_projects.values()))
+    if tv_shows== True:
+        test_variables.append(list(d_tv_shows.values()))
+    if alternate_degree== True:
+        test_variables.append(list(d_alternate_degree.values()))
+    if expensive_equipment== True:
+        test_variables.append(list(d_expensive_equipment.values()))
+    if drawing== True:
+        test_variables.append(list(d_drawing.values()))
+    if essay== True:
+        test_variables.append(list(d_essay.values()))
+    if architecture== True:
+        test_variables.append(list(d_architecture.values()))
+    if automotive== True:
+        test_variables.append(list(d_automotive.values()))
+    if business== True:
+        test_variables.append(list(d_business.values()))
+    if construction== True:
+        test_variables.append(list(d_construction.values()))
+    if health== True:
+        test_variables.append(list(d_health.values()))
+    if environment== True:
+        test_variables.append(list(d_environment.values()))
+    if manufacturing== True:
+        test_variables.append(list(d_manufacturing.values()))
+    if technology== True:
+        test_variables.append(list(d_technology.values()))
+
+    program_count = {
+            'mech': 0,
+            'bmed': 0,
+            'swe': 10,
+            'tron': 0,
+            'cive': 0,
+            'chem': 0,
+            'syde': 0,
+            'msci': 0,
+            'ce': 0,
+            'elec': 0,
+            'nano': 0,
+            'geo': 0,
+            'env': 0,
+            'arch-e': 0,
+            'arch': 0
+            }
+
+    re = permu(test_variables,model_name,program_count)
+
+    return re
 '''
 Might need these later
 
@@ -225,4 +355,122 @@ Might need these later
 #     df = pd.get_dummies(df,columns=one_hot_encode)
 #
 #     return df
+
+
+# def check_skew(model_name, problem_type = True , creative = True, outdoors = True, career = True, group_work = True, liked_courses = True, disliked_courses = True, programming = True,join_clubs = True,not_clubs = True,liked_projects = True,disliked_projects = True,tv_shows = True,alternate_degree = True,expensive_equipment = True,drawing = True,essay = True,architecture = True,automotive = True,business = True,construction = True,health = True,environment = True,manufacturing = True,technology = True):
+#     encoded_dictionary = get_encoded_dict(model_name)
+#
+#     problem_type = encoded_dictionary['problem_type']['problem_type']
+#     creative = encoded_dictionary['creative']['creative']
+#     outdoors = encoded_dictionary['outdoors']['outdoors']
+#     career = encoded_dictionary['career']['career']
+#     group_work = encoded_dictionary['group_work']['group_work']
+#     liked_courses = encoded_dictionary['liked_courses']['liked_courses']
+#     disliked_courses = encoded_dictionary['disliked_courses']['disliked_courses']
+#     programming = encoded_dictionary['programming']['programming']
+#     join_clubs = encoded_dictionary['join_clubs']['join_clubs']
+#     not_clubs = encoded_dictionary['not_clubs']['not_clubs']
+#     liked_projects = encoded_dictionary['liked_projects']['liked_projects']
+#     disliked_projects = encoded_dictionary['disliked_projects']['disliked_projects']
+#     tv_shows = encoded_dictionary['tv_shows']['tv_shows']
+#     alternate_degree = encoded_dictionary['alternate_degree']['alternate_degree']
+#     expensive_equipment = encoded_dictionary['expensive_equipment']['expensive_equipment']
+#     drawing = encoded_dictionary['drawing']['drawing']
+#     essay = encoded_dictionary['essay']['essay']
+#     architecture = encoded_dictionary['architecture']['architecture']
+#     automotive = encoded_dictionary['automotive']['automotive']
+#     business = encoded_dictionary['business']['business']
+#     construction = encoded_dictionary['construction']['construction']
+#     health = encoded_dictionary['health']['health']
+#     environment = encoded_dictionary['environment']['environment']
+#     manufacturing = encoded_dictionary['manufacturing']['manufacturing']
+#     technology = encoded_dictionary['technology']['technology']
+#
+#     test_variables = []
+#     if problem_type:
+#         test_variables.append(list(problem_type.values()))
+#     if creative:
+#         test_variables.append(list(creative.values()))
+#     if outdoors:
+#         test_variables.append(list(outdoors.values()))
+#     if career:
+#         test_variables.append(list(career.values()))
+#     if group_work:
+#         test_variables.append(list(group_work.values()))
+#     if liked_courses:
+#         test_variables.append(list(liked_courses.values()))
+#     if disliked_courses:
+#         test_variables.append(list(disliked_courses.values()))
+#     if programming:
+#         test_variables.append(list(programming.values()))
+#     if join_clubs:
+#         test_variables.append(list(join_clubs.values()))
+#     if not_clubs:
+#         test_variables.append(list(not_clubs.values()))
+#     if liked_projects:
+#         test_variables.append(list(liked_projects.values()))
+#     if disliked_projects:
+#         test_variables.append(list(disliked_projects.values()))
+#     if tv_shows:
+#         test_variables.append(list(tv_shows.values()))
+#     if alternate_degree:
+#         test_variables.append(list(alternate_degree.values()))
+#     if expensive_equipment:
+#         test_variables.append(list(expensive_equipment.values()))
+#     if drawing:
+#         test_variables.append(list(drawing.values()))
+#     if essay:
+#         test_variables.append(list(essay.values()))
+#     if architecture:
+#         test_variables.append(list(architecture.values()))
+#     if automotive:
+#         test_variables.append(list(automotive.values()))
+#     if business:
+#         test_variables.append(list(business.values()))
+#     if construction:
+#         test_variables.append(list(construction.values()))
+#     if health:
+#         test_variables.append(list(health.values()))
+#     if environment:
+#         test_variables.append(list(environment.values()))
+#     if manufacturing:
+#         test_variables.append(list(manufacturing.values()))
+#     if technology:
+#         test_variables.append(list(technology.values()))
+#
+#     permutations = np.array(list(itertools.product(*test_variables)))
+#
+#     program_count = {
+#             'mech': 0,
+#             'bmed': 0,
+#             'swe': 10,
+#             'tron': 0,
+#             'cive': 0,
+#             'chem': 0,
+#             'syde': 0,
+#             'msci': 0,
+#             'ce': 0,
+#             'elec': 0,
+#             'nano': 0,
+#             'geo': 0,
+#             'env': 0,
+#             'arch-e': 0,
+#             'arch': 0
+#             }
+#
+#     print("Loading CAT file...")
+#     pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+#     index_dict = pickle.load(pkl_file)
+#     new_vector = np.zeros(len(index_dict))
+#
+#     print("Loading model...")
+#     pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+#     model = pickle.load(pkl_file)
+#
+#     for p in permutations:
+#         p = np.array([p])
+#         result = INV_INDEX_PROGRAM[model.predict(p)[0]]
+#         program_count[result] = program_count[result] + 1
+#
+#     return program_count
 '''
