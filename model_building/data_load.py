@@ -18,7 +18,7 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-def get_clean_data(directory,drop_not_happy,drop_gender=True):
+def get_clean_data(directory,drop_not_happy='H',drop_gender=True):
     '''
     Should we drop "Are you happy with your program?"
     '''
@@ -76,7 +76,6 @@ def get_clean_data(directory,drop_not_happy,drop_gender=True):
         data = data.drop(['happy'], axis=1)
     if drop_not_happy == 'NH':
         data = data[data.happy == 'No']
-        data = data.drop(['happy'], axis=1)
 
     # drop gender data
     if drop_gender:
@@ -103,7 +102,7 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
-def get_encoded_data(directory,model_name,drop_not_happy):
+def get_encoded_data(directory,model_name,drop_not_happy='H'):
     df = get_clean_data(directory,drop_not_happy)
 
     col_list = list(df.columns)
@@ -333,6 +332,150 @@ def check_skew(model_name,column_list):
     re = permu(test_variables,model_name,program_count)
 
     return re
+
+def check_gender_bias(directory,model_name,column_list):
+    drop_gender=False
+
+    gender_data = get_clean_data(directory,drop_gender=drop_gender)[['program','gender']]
+    gender_data = gender_data.reset_index()
+    gender_data = gender_data.drop(['id'], axis=1)
+
+    test_data = get_encoded_data(directory,model_name)[0]
+    test_data = test_data[column_list]
+    test_data = test_data.reset_index()
+    test_data = test_data.drop(['program','id'], axis=1)
+
+    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    index_dict = pickle.load(pkl_file)
+    new_vector = np.zeros(len(index_dict))
+
+    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    model = pickle.load(pkl_file)
+
+    predictions ={}
+    for i in range(0,len(test_data)):
+        vector = np.asarray(test_data.loc[i,])
+        vector = np.array(vector).reshape(1, -1)
+        predictions[i] = INV_INDEX_PROGRAM[model.predict(vector)[0]]
+
+    gender_data['predicted_program'] = pd.Series(predictions)
+    gender_count = {}
+    for i in range(0,len(gender_data)):
+        try:
+            program_count = gender_count[gender_data.loc[i,'gender']]
+            try:
+                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
+            except:
+                program_count[gender_data.loc[i,'predicted_program']] = 0
+
+            gender_count[gender_data.loc[i,'gender']] = program_count
+        except:
+            gender_count[gender_data.loc[i,'gender']] = {
+                                                            'mech': 0,
+                                                            'bmed': 0,
+                                                            'swe': 0,
+                                                            'tron': 0,
+                                                            'cive': 0,
+                                                            'chem': 0,
+                                                            'syde': 0,
+                                                            'msci': 0,
+                                                            'ce': 0,
+                                                            'elec': 0,
+                                                            'nano': 0,
+                                                            'geo': 0,
+                                                            'env': 0,
+                                                            'arch-e': 0,
+                                                            'arch': 0
+                                                            }
+            program_count = gender_count[gender_data.loc[i,'gender']]
+            try:
+                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
+            except:
+                program_count[gender_data.loc[i,'predicted_program']] = 0
+            gender_count[gender_data.loc[i,'gender']] = program_count
+    return gender_count
+
+def check_happy_bias(directory,model_name,column_list):
+    drop_gender = True
+    drop_not_happy = 'NH'
+
+    happy_data = get_clean_data(directory,drop_gender=drop_gender,drop_not_happy=drop_not_happy)[['program']]
+    happy_data = happy_data.reset_index()
+    happy_data = happy_data.drop(['id'], axis=1)
+
+    test_data = get_encoded_data(directory,model_name,drop_not_happy='NH')[0]
+    test_data = test_data[column_list]
+    test_data = test_data.reset_index()
+    test_data = test_data.drop(['program','id'], axis=1)
+
+    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    index_dict = pickle.load(pkl_file)
+    new_vector = np.zeros(len(index_dict))
+
+    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    model = pickle.load(pkl_file)
+
+    predictions ={}
+    for i in range(0,len(test_data)):
+        vector = np.asarray(test_data.loc[i,])
+        vector = np.array(vector).reshape(1, -1)
+        predictions[i] = INV_INDEX_PROGRAM[model.predict(vector)[0]]
+
+    happy_data['predicted_program'] = pd.Series(predictions)
+
+    pred_to_orig = {
+                'mech-orig': 0,
+                'bmed-orig': 0,
+                'swe-orig': 0,
+                'tron-orig': 0,
+                'cive-orig': 0,
+                'chem-orig': 0,
+                'syde-orig': 0,
+                'msci-orig': 0,
+                'ce-orig': 0,
+                'elec-orig': 0,
+                'nano-orig': 0,
+                'geo-orig': 0,
+                'env-orig': 0,
+                'arch-e-orig': 0,
+                'arch-orig': 0
+                }
+
+    for i in range(0,len(happy_data)):
+        try:
+            prediction_count = pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')]
+            try:
+                prediction_count[happy_data.loc[i,'program']] =prediction_count[happy_data.loc[i,'program']] + 1
+            except:
+                prediction_count[happy_data.loc[i,'program']] = 0
+
+            pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')] = prediction_count
+        except:
+            pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')] = {
+                                                            'mech': 0,
+                                                            'bmed': 0,
+                                                            'swe': 0,
+                                                            'tron': 0,
+                                                            'cive': 0,
+                                                            'chem': 0,
+                                                            'syde': 0,
+                                                            'msci': 0,
+                                                            'ce': 0,
+                                                            'elec': 0,
+                                                            'nano': 0,
+                                                            'geo': 0,
+                                                            'env': 0,
+                                                            'arch-e': 0,
+                                                            'arch': 0
+                                                            }
+            prediction_count = pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')]
+            try:
+                prediction_count[happy_data.loc[i,'program']] =prediction_count[happy_data.loc[i,'program']] + 1
+            except:
+                prediction_count[happy_data.loc[i,'program']] = 0
+
+            pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')] = prediction_count
+    return pred_to_orig
 '''
 Might need these later
 
@@ -362,122 +505,4 @@ Might need these later
 #     df = pd.get_dummies(df,columns=one_hot_encode)
 #
 #     return df
-
-
-# def check_skew(model_name, problem_type = True , creative = True, outdoors = True, career = True, group_work = True, liked_courses = True, disliked_courses = True, programming = True,join_clubs = True,not_clubs = True,liked_projects = True,disliked_projects = True,tv_shows = True,alternate_degree = True,expensive_equipment = True,drawing = True,essay = True,architecture = True,automotive = True,business = True,construction = True,health = True,environment = True,manufacturing = True,technology = True):
-#     encoded_dictionary = get_encoded_dict(model_name)
-#
-#     problem_type = encoded_dictionary['problem_type']['problem_type']
-#     creative = encoded_dictionary['creative']['creative']
-#     outdoors = encoded_dictionary['outdoors']['outdoors']
-#     career = encoded_dictionary['career']['career']
-#     group_work = encoded_dictionary['group_work']['group_work']
-#     liked_courses = encoded_dictionary['liked_courses']['liked_courses']
-#     disliked_courses = encoded_dictionary['disliked_courses']['disliked_courses']
-#     programming = encoded_dictionary['programming']['programming']
-#     join_clubs = encoded_dictionary['join_clubs']['join_clubs']
-#     not_clubs = encoded_dictionary['not_clubs']['not_clubs']
-#     liked_projects = encoded_dictionary['liked_projects']['liked_projects']
-#     disliked_projects = encoded_dictionary['disliked_projects']['disliked_projects']
-#     tv_shows = encoded_dictionary['tv_shows']['tv_shows']
-#     alternate_degree = encoded_dictionary['alternate_degree']['alternate_degree']
-#     expensive_equipment = encoded_dictionary['expensive_equipment']['expensive_equipment']
-#     drawing = encoded_dictionary['drawing']['drawing']
-#     essay = encoded_dictionary['essay']['essay']
-#     architecture = encoded_dictionary['architecture']['architecture']
-#     automotive = encoded_dictionary['automotive']['automotive']
-#     business = encoded_dictionary['business']['business']
-#     construction = encoded_dictionary['construction']['construction']
-#     health = encoded_dictionary['health']['health']
-#     environment = encoded_dictionary['environment']['environment']
-#     manufacturing = encoded_dictionary['manufacturing']['manufacturing']
-#     technology = encoded_dictionary['technology']['technology']
-#
-#     test_variables = []
-#     if problem_type:
-#         test_variables.append(list(problem_type.values()))
-#     if creative:
-#         test_variables.append(list(creative.values()))
-#     if outdoors:
-#         test_variables.append(list(outdoors.values()))
-#     if career:
-#         test_variables.append(list(career.values()))
-#     if group_work:
-#         test_variables.append(list(group_work.values()))
-#     if liked_courses:
-#         test_variables.append(list(liked_courses.values()))
-#     if disliked_courses:
-#         test_variables.append(list(disliked_courses.values()))
-#     if programming:
-#         test_variables.append(list(programming.values()))
-#     if join_clubs:
-#         test_variables.append(list(join_clubs.values()))
-#     if not_clubs:
-#         test_variables.append(list(not_clubs.values()))
-#     if liked_projects:
-#         test_variables.append(list(liked_projects.values()))
-#     if disliked_projects:
-#         test_variables.append(list(disliked_projects.values()))
-#     if tv_shows:
-#         test_variables.append(list(tv_shows.values()))
-#     if alternate_degree:
-#         test_variables.append(list(alternate_degree.values()))
-#     if expensive_equipment:
-#         test_variables.append(list(expensive_equipment.values()))
-#     if drawing:
-#         test_variables.append(list(drawing.values()))
-#     if essay:
-#         test_variables.append(list(essay.values()))
-#     if architecture:
-#         test_variables.append(list(architecture.values()))
-#     if automotive:
-#         test_variables.append(list(automotive.values()))
-#     if business:
-#         test_variables.append(list(business.values()))
-#     if construction:
-#         test_variables.append(list(construction.values()))
-#     if health:
-#         test_variables.append(list(health.values()))
-#     if environment:
-#         test_variables.append(list(environment.values()))
-#     if manufacturing:
-#         test_variables.append(list(manufacturing.values()))
-#     if technology:
-#         test_variables.append(list(technology.values()))
-#
-#     permutations = np.array(list(itertools.product(*test_variables)))
-#
-#     program_count = {
-#             'mech': 0,
-#             'bmed': 0,
-#             'swe': 10,
-#             'tron': 0,
-#             'cive': 0,
-#             'chem': 0,
-#             'syde': 0,
-#             'msci': 0,
-#             'ce': 0,
-#             'elec': 0,
-#             'nano': 0,
-#             'geo': 0,
-#             'env': 0,
-#             'arch-e': 0,
-#             'arch': 0
-#             }
-#
-#     print("Loading CAT file...")
-#     pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
-#     index_dict = pickle.load(pkl_file)
-#     new_vector = np.zeros(len(index_dict))
-#
-#     print("Loading model...")
-#     pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
-#     model = pickle.load(pkl_file)
-#
-#     for p in permutations:
-#         p = np.array([p])
-#         result = INV_INDEX_PROGRAM[model.predict(p)[0]]
-#         program_count[result] = program_count[result] + 1
-#
-#     return program_count
 '''
