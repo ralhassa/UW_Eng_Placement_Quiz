@@ -97,6 +97,8 @@ completed:
 - association rule mining complete
 - skew data method complete
 - feature selection method complete
+- happy bias comparison complete
+- gender bias comparison complete
 
 Remaining:
 - Dive deeper into association rule mining
@@ -104,3 +106,5 @@ Remaining:
 - explore trends
 - start creating prioritized hypothesis list
 - front end building
+- cross validation scoring
+- revive models from the original team
