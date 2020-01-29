@@ -18,11 +18,14 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-def get_clean_data(directory,drop_not_happy):
+def get_clean_data(directory,drop_not_happy,drop_gender=True):
     '''
     Should we drop "Are you happy with your program?"
     '''
     data = pd.read_csv(directory,dtype=str)
+
+    # dropping PII + skill_test + timestamp + year + raw_industry
+    data = data.drop(data.columns[[0,1,3,24]], axis=1)
 
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
@@ -65,13 +68,21 @@ def get_clean_data(directory,drop_not_happy):
     data.index = data.index.map(int)
     binary_industry_data.index = binary_industry_data.index.map(int)
     data = (data.merge(binary_industry_data, left_on='id', right_on='id',how='left'))
+    data = data.drop(['industry'], axis=1)
 
     # if drop where all values are unhapppy
-    if drop_not_happy:
+    if drop_not_happy == 'H':
         data = data[data.happy == 'Yes']
+        data = data.drop(['happy'], axis=1)
+    if drop_not_happy == 'NH':
+        data = data[data.happy == 'No']
+        data = data.drop(['happy'], axis=1)
+
+    # drop gender data
+    if drop_gender:
+        data = data.drop(['gender'], axis=1)
+
     data.index = data.index.map(int)
-    # dropping PII + gender + skill_test + timestamp + year + raw_industry
-    data = data.drop(data.columns[[0,1,3,4,8,24]], axis=1)
     return data
 
 def transform_post_dict(post_dict):
@@ -94,7 +105,6 @@ def transform_post_dict(post_dict):
 
 def get_encoded_data(directory,model_name,drop_not_happy):
     df = get_clean_data(directory,drop_not_happy)
-    df = df.drop(['happy'], axis=1)
 
     col_list = list(df.columns)
     encoded_dict_list = []
@@ -221,10 +231,7 @@ def permu(lists,model_name,program_count):
     fn(lists, result=result)
     return program_count
 
-def check_skew(model_name, problem_type = False , creative = False,
-                outdoors = False, career = False, group_work = False, liked_courses = False, disliked_courses = False,
-                programming = False,join_clubs = False,not_clubs = False,liked_projects = False,disliked_projects = False,
-                tv_shows = False,alternate_degree = False,expensive_equipment = False, drawing = False, essay = False, architecture = False, automotive = False,business = False, construction = False, health = False, environment = False, manufacturing = False, technology = False):
+def check_skew(model_name,column_list):
     encoded_dictionary = get_encoded_dict(model_name)
 
     d_problem_type = encoded_dictionary['problem_type']['problem_type']
@@ -254,61 +261,61 @@ def check_skew(model_name, problem_type = False , creative = False,
     d_technology = encoded_dictionary['technology']['technology']
 
     test_variables = []
-    if problem_type==True:
+    if 'problem_type' in column_list :
         test_variables.append(list(d_problem_type.values()))
-    if creative== True:
+    if 'creative' in column_list :
         test_variables.append(list(d_creative.values()))
-    if outdoors== True:
+    if 'outdoors' in column_list :
         test_variables.append(list(d_outdoors.values()))
-    if career== True:
+    if 'career' in column_list :
         test_variables.append(list(d_career.values()))
-    if group_work== True:
+    if 'group_work' in column_list :
         test_variables.append(list(d_group_work.values()))
-    if liked_courses== True:
+    if 'liked_courses' in column_list :
         test_variables.append(list(d_liked_courses.values()))
-    if disliked_courses== True:
+    if 'disliked_courses' in column_list :
         test_variables.append(list(d_disliked_courses.values()))
-    if programming== True:
+    if 'programming' in column_list :
         test_variables.append(list(d_programming.values()))
-    if join_clubs== True:
+    if 'join_clubs' in column_list :
         test_variables.append(list(d_join_clubs.values()))
-    if not_clubs== True:
+    if 'not_clubs' in column_list :
         test_variables.append(list(d_not_clubs.values()))
-    if liked_projects== True:
+    if 'liked_projects' in column_list :
         test_variables.append(list(d_liked_projects.values()))
-    if disliked_projects== True:
+    if 'disliked_projects' in column_list :
         test_variables.append(list(d_disliked_projects.values()))
-    if tv_shows== True:
+    if 'tv_shows' in column_list :
         test_variables.append(list(d_tv_shows.values()))
-    if alternate_degree== True:
+    if 'alternate_degree' in column_list :
         test_variables.append(list(d_alternate_degree.values()))
-    if expensive_equipment== True:
+    if 'expensive_equipment' in column_list :
         test_variables.append(list(d_expensive_equipment.values()))
-    if drawing== True:
+    if 'drawing' in column_list :
         test_variables.append(list(d_drawing.values()))
-    if essay== True:
+    if 'essay' in column_list :
         test_variables.append(list(d_essay.values()))
-    if architecture== True:
+    if 'architecture' in column_list :
         test_variables.append(list(d_architecture.values()))
-    if automotive== True:
+    if 'automotive' in column_list :
         test_variables.append(list(d_automotive.values()))
-    if business== True:
+    if 'business' in column_list :
         test_variables.append(list(d_business.values()))
-    if construction== True:
+    if 'construction' in column_list :
         test_variables.append(list(d_construction.values()))
-    if health== True:
+    if 'health' in column_list :
         test_variables.append(list(d_health.values()))
-    if environment== True:
+    if 'environment' in column_list :
         test_variables.append(list(d_environment.values()))
-    if manufacturing== True:
+    if 'manufacturing' in column_list :
         test_variables.append(list(d_manufacturing.values()))
-    if technology== True:
+    if 'technology' in column_list :
         test_variables.append(list(d_technology.values()))
 
     program_count = {
             'mech': 0,
             'bmed': 0,
-            'swe': 10,
+            'swe': 0,
             'tron': 0,
             'cive': 0,
             'chem': 0,
