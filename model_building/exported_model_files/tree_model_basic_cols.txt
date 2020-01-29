@@ -1,7 +1,7 @@
 program
 problem_type
 creative
-outdoors
+industry
 career
 group_work
 liked_courses
@@ -16,7 +16,7 @@ alternate_degree
 expensive_equipment
 drawing
 essay
-architecture
+Skill testing question: what is (4+2)x2 ?
 automotive
 business
 construction

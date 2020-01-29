@@ -19,7 +19,8 @@ READ_HEADERS = {
                 'If engineering didn’t exist, what would you consider studying?':'alternate_degree',
                 'How do you feel about working with expensive equipment?':'expensive_equipment',
                 'How would you describe your drawing abilities?':'drawing',
-                'You have an assignment to write an essay about anything you want. How does that make you feel?':'essay'
+                'You have an assignment to write an essay about anything you want. How does that make you feel?':'essay',
+                "What is your gender?  **We're asking this to discover any gender biases in our questions**":'gender'
                 }
 
 READ_PROGRAMS = {

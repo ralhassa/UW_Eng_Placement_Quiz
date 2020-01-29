@@ -47,8 +47,10 @@ Add New Model:
 - Add poc/quiz/ to retrieve all filenames
 - Update model name
 
-UPDATES:
 
+Sprint End JAN 22:
+
+UPDATES:
 Current Issues:
 - If industry isnt selected on the quiz, the model breaks
 - old model is built on deprecated code. I can't run it and make it work easily. This means that we wont be able to compare each of our models to each of the previous models ourselves for a 1:1 comparison. We have to rely on their data. I could potentially fix it with a sprint or two dedicated to refactoring their codebase,  but I don't see the value.
@@ -85,4 +87,20 @@ Focus on:
 - explore trends
 - start creating prioritized hypothesis list
 
+- front end building
+
+
+
+Sprint End JAN 29:
+completed:
+- not happy data complete
+- association rule mining complete
+- skew data method complete
+- feature selection method complete
+
+Remaining:
+- Dive deeper into association rule mining
+- Dive deeper into feature selection
+- explore trends
+- start creating prioritized hypothesis list
 - front end building
