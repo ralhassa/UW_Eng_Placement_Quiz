@@ -115,16 +115,17 @@ completed:
 - Created dictionary for model experiments
 - Recreated model building environment
 - SVM - LE method created
-
-remaining
 - one_hot_encode models
 - merge encode models
 - binary data classifier nb
 - binary data classifier lrr
 - binary data classifier tree
 - binary data classifier svm
-- pickle and depickle binary data classifiers
-- data balancing
+- pickle binary classifiers
+
+remaining
+- data balancing:  Look at the binary classifier method, theres a lot there to work with
+- depickle binary data classifiers
 - cross validation scoring
 - not_happy reassignment scoring
 - happy hold out scoring # these are the 7 rows of program-gender combination
