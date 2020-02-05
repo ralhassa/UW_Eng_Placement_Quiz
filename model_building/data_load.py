@@ -191,7 +191,6 @@ def binary_classifier(data,model_name,data_balance_multiple,model_type):
         print(str(temp_model_name)+" created..")
 
 
-
 def save_model(model,cat,model_name):
     with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
