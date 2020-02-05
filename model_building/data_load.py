@@ -21,7 +21,7 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-def get_clean_data(directory,drop_not_happy='H',drop_gender=True):
+def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=False):
     '''
     Should we drop "Are you happy with your program?"
     '''
@@ -85,7 +85,21 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True):
         data = data.drop(['gender'], axis=1)
 
     data.index = data.index.map(int)
-    data = data.sample(frac=1).reset_index(drop=True)
+    # data = data.sample(frac=1).reset_index(drop=True) ##Shuffle
+
+    if data_balance != False:
+        programs = list(READ_PROGRAMS.values())
+        b_df = df.copy()
+        b_df = b_df.sample(n=0)
+
+        for program in programs:
+            temp_df = df.copy()[df.program==program]
+            while len(temp_df) <= data_balance[program]:
+                temp_df = temp_df.append(temp_df)
+            temp_df = temp_df.sample(n=data_balance[program])
+            b_df = b_df.append(temp_df)
+            b_df = b_df.sample(frac=1).reset_index(drop=True)
+        data= False
     return data
 
 def transform_post_dict(post_dict):
@@ -106,8 +120,8 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
-def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H'):
-    df = get_clean_data(directory,drop_not_happy)
+def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
+    df = get_clean_data(directory,drop_not_happy,data_balance)
     df = df[column_list]
 
     col_list = list(df.columns)
@@ -148,7 +162,7 @@ def get_encoded_dict(model_name):
         encoded_dict[col] = row
     return encoded_dict
 
-def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H'):
+def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
     df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy)[0]
     df = pd.get_dummies(df,columns=one_hot_encode)
     return df

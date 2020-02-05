@@ -113,7 +113,7 @@ Remaining:
 sprint ending Feb 5th
 completed:
 - Created dictionary for model experiments
-- Recreated model building environment
+- Recreated model building environmentmes
 - SVM - LE method created
 - one_hot_encode models
 - merge encode models
