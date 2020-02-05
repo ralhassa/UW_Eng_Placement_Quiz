@@ -3,7 +3,10 @@ import json
 import numpy as np
 import pandas as pd
 import pickle
-from sklearn import preprocessing
+from sklearn import metrics, tree, svm, preprocessing
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
+from sklearn.naive_bayes import MultinomialNB
 
 from dictionaries import *
 
@@ -82,6 +85,7 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True):
         data = data.drop(['gender'], axis=1)
 
     data.index = data.index.map(int)
+    data = data.sample(frac=1).reset_index(drop=True)
     return data
 
 def transform_post_dict(post_dict):
@@ -102,8 +106,9 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
-def get_encoded_data(directory,model_name,drop_not_happy='H'):
+def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H'):
     df = get_clean_data(directory,drop_not_happy)
+    df = df[column_list]
 
     col_list = list(df.columns)
     encoded_dict_list = []
@@ -142,6 +147,50 @@ def get_encoded_dict(model_name):
             row = json.loads(f.read())
         encoded_dict[col] = row
     return encoded_dict
+
+def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H'):
+    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy)[0]
+    df = pd.get_dummies(df,columns=one_hot_encode)
+    return df
+
+def binary_classifier(data,model_name,data_balance_multiple,model_type):
+    programs = list(READ_PROGRAMS.values())
+    for program in programs:
+        temp_model_name = model_name+ "_"+program
+        temp_dictionary = INV_INDEX_PROGRAM.copy()
+        for key in INV_INDEX_PROGRAM.keys():
+            if str(key) != str(INDEX_PROGRAM[program]):
+                temp_dictionary[key] = -1
+            else:
+                temp_dictionary[key] = INDEX_PROGRAM[program]
+        # preparing data below
+        temp_data = data.copy()
+        temp_data.program = temp_data.program.map(temp_dictionary)
+
+        temp_program_data = temp_data.copy()[temp_data.program==INDEX_PROGRAM[program]]
+
+        other_program_data = temp_data.copy()[temp_data.program!=INDEX_PROGRAM[program]]
+        other_program_data = other_program_data.sample(n=len(temp_program_data)*data_balance_multiple)
+
+        temp_data = temp_program_data.append(other_program_data)
+        temp_data = temp_data.sample(frac=1).reset_index(drop=True)
+
+        # Building model
+        x_df = temp_data.drop(axis=1,columns=["program"])
+        y_df = temp_data["program"]
+
+        X = np.array(x_df) # convert dataframe into np array
+        Y = np.array(y_df) # convert dataframe into np array
+
+        model = model_type.fit(X, Y) # fit the model using training data
+
+        cat = data.drop('program',axis=1)
+        cat = dict(zip(cat.columns,range(cat.shape[1])))
+
+        save_model(model,cat,temp_model_name)
+        print(str(temp_model_name)+" created..")
+
+
 
 def save_model(model,cat,model_name):
     with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
@@ -479,15 +528,6 @@ def check_happy_bias(directory,model_name,column_list):
 '''
 Might need these later
 
-# def get_one_hot_encoded_data(directory):
-#     df = get_clean_data(directory)
-#     keys = df['current_average'].unique()
-#     le = preprocessing.LabelEncoder()
-#     le.fit(list(keys))
-#     df['current_average'] = le.transform(list(df['current_average']))
-#
-#     df = pd.get_dummies(df)
-#     return df
 #
 # def merged_encoding(directory,label_encode,one_hot_encode,drop_pref=False):
 #

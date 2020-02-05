@@ -108,3 +108,35 @@ Remaining:
 - front end building
 - cross validation scoring
 - revive models from the original team
+
+
+sprint ending Feb 5th
+completed:
+- Created dictionary for model experiments
+- Recreated model building environment
+- SVM - LE method created
+
+remaining
+- one_hot_encode models
+- merge encode models
+- binary data classifier nb
+- binary data classifier lrr
+- binary data classifier tree
+- binary data classifier svm
+- pickle and depickle binary data classifiers
+- data balancing
+- cross validation scoring
+- not_happy reassignment scoring
+- happy hold out scoring # these are the 7 rows of program-gender combination
+- save scores to csv when scored for each scoring method
+- time the check_skew method
+
+
+back-burner:
+- Dive deeper into association rule mining
+- Dive deeper into feature selection
+- start creating prioritized hypothesis list
+- front end building
+- revive models from the original team
+- build back-end to store responses
+- build response method for binary classifer models
