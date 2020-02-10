@@ -141,3 +141,20 @@ back-burner:
 - revive models from the original team
 - build back-end to store responses
 - build response method for binary classifer models
+
+
+
+RECIPROCAL RANK SCORE = 1/rank of correct program
+
+Average Precision  in this ranked scenario is not really possible
+
+NDCG?
+
+Average accuracy could be used within the binary classifiers to compare their performances to each other. But the value diminishes
+
+How often did we get the correct program in the top 3 ?
+
+CHECK FOR MEASURES OF error
+
+
+We should be able to change the individual classifiers to improve their performance but it should also be neutral or improve the the overall family measure

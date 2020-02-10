@@ -136,10 +136,10 @@ def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',d
         cd = dict(zip(keys,vals))
         row = {str(col):cd}
         encoded_dict_list.append(row)
-        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+        with open('exported_model_files/metadata/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(row,f,cls=NpEncoder)
 
-    with open('exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+    with open('exported_model_files/metadata/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')
@@ -149,7 +149,7 @@ def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',d
 def get_encoded_dict(model_name):
     cols = []
 
-    with open('exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+    with open('exported_model_files/metadata/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
             # remove linebreak which is the last character of the string
             currentPlace = line[:-1]
@@ -157,7 +157,7 @@ def get_encoded_dict(model_name):
             cols.append(currentPlace)
     encoded_dict = {}
     for col in cols:
-        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+        with open('exported_model_files/metadata/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
             row = json.loads(f.read())
         encoded_dict[col] = row
     return encoded_dict
@@ -168,6 +168,7 @@ def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop
     return df
 
 def binary_classifier(data,model_name,data_balance_multiple,model_type):
+    data.to_csv ('exported_model_files/dataframes/'+model_name+'.csv', index = None, header=True)
     programs = list(READ_PROGRAMS.values())
     for program in programs:
         temp_model_name = model_name+ "_"+program
@@ -201,15 +202,17 @@ def binary_classifier(data,model_name,data_balance_multiple,model_type):
         cat = data.drop('program',axis=1)
         cat = dict(zip(cat.columns,range(cat.shape[1])))
 
-        save_model(model,cat,temp_model_name)
-        print(str(temp_model_name)+" created..")
+        save_model(temp_data,model,cat,temp_model_name)
 
+def save_model(df,model,cat,model_name):
+    df.to_csv ('exported_model_files/dataframes/'+model_name+'.csv', index = None, header=True)
 
-def save_model(model,cat,model_name):
-    with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
+    with open('exported_model_files/models/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
-    with open('exported_model_files/'+model_name+'_cat', 'wb') as fid:
+    with open('exported_model_files/metadata/'+model_name+'_cat', 'wb') as fid:
         pickle.dump(cat, fid,2)
+
+    print(str(model_name)+" created..")
 
 def retrieve_prediction_labels(model,prediction):
     # returns a dictionary for each label and their probability in the prediction
@@ -222,12 +225,12 @@ def retrieve_prediction_labels(model,prediction):
 
 def test_model(model_name,vector):
     print("Loading CAT file...")
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
     print("Loading model...")
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
     prediction = model.predict_proba(vector)
     print("Results:")
@@ -272,11 +275,11 @@ def heatmapify(df,one_var,list_one,two_var,list_two):
 
 def permu(lists,model_name,program_count):
 
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
     print("model loaded...")
     def fn(lists, group=[], result=[]):
@@ -407,11 +410,11 @@ def check_gender_bias(directory,model_name,column_list):
     test_data = test_data.reset_index()
     test_data = test_data.drop(['program','id'], axis=1)
 
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     predictions ={}
@@ -470,11 +473,11 @@ def check_happy_bias(directory,model_name,column_list):
     test_data = test_data.reset_index()
     test_data = test_data.drop(['program','id'], axis=1)
 
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     predictions ={}
