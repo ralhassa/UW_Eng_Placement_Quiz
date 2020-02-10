@@ -168,6 +168,7 @@ def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop
     return df
 
 def binary_classifier(data,model_name,data_balance_multiple,model_type):
+    data.to_csv ('exported_model_files/dataframes/'+model_name+'.csv', index = None, header=True)
     programs = list(READ_PROGRAMS.values())
     for program in programs:
         temp_model_name = model_name+ "_"+program
