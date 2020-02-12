@@ -1,0 +1,10 @@
+alternate_degree
+architecture
+automotive
+business
+construction
+health
+environment
+manufacturing
+technology
+program
