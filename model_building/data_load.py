@@ -58,6 +58,7 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
     binary_industry_data = np.array([np.arange(len(data))]*8).T
     binary_industry_data = pd.DataFrame(binary_industry_data, columns=READ_INDUSTRY.values())
     binary_industry_data.index.name = 'id'
+
     for col in binary_industry_data.columns:
         binary_industry_data[col].values[:] = '0'
 
@@ -100,6 +101,8 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
             b_df = b_df.append(temp_df)
             b_df = b_df.sample(frac=1).reset_index(drop=True)
         data= False
+
+    data.columns = data.columns.astype(str)
     return data
 
 def transform_post_dict(post_dict):
@@ -137,7 +140,7 @@ def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',d
         row = {str(col):cd}
         encoded_dict_list.append(row)
         with open('exported_model_files/metadata/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
-            json.dump(row,f,cls=NpEncoder)
+            json.dump(str(row),f,cls=NpEncoder)
 
     with open('exported_model_files/metadata/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
