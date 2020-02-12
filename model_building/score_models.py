@@ -151,7 +151,7 @@ def get_mclass_reassignment(temp_model_name,model):
         tG_df = tG_df.drop(['id'], axis=1)
 
         model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
-        tG_df = tG_df[list(model_data.columns)]
+        tG_df = tG_df[list(model_data.columns)].sample(n=30)
 
     elif 'ohe' in model_name:
         tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='NH',data_balance=False)
@@ -274,7 +274,7 @@ def get_bclass_reassignment(test_array,model_name,test_data_t7):
         tG_df = tG_df.drop(['id'], axis=1)
 
         model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
-        tG_df = tG_df[list(model_data.columns)]
+        tG_df = tG_df[list(model_data.columns)].sample(n=30)
 
     elif 'ohe' in model_name:
         tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='NH',data_balance=False)
@@ -282,7 +282,7 @@ def get_bclass_reassignment(test_array,model_name,test_data_t7):
         tG_df = tG_df.reset_index()
         tG_df = tG_df.drop(['id'], axis=1)
         model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
-        tG_df = tG_df[list(model_data.columns)]
+        tG_df = tG_df[list(model_data.columns)].sample(n=30)
 
     # Preparing unhappy data to be consumed by the model
     test_array = np.array(tG_df.drop(axis=1,columns=["program"]))
