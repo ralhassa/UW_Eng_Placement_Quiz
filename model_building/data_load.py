@@ -91,15 +91,15 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
     if data_balance != False:
         programs = list(READ_PROGRAMS.values())
         b_df = df.copy()
-        b_df = b_df.sample(n=0)
+        b_df = b_df.head(0)
 
         for program in programs:
             temp_df = df.copy()[df.program==program]
             while len(temp_df) <= data_balance[program]:
                 temp_df = temp_df.append(temp_df)
-            temp_df = temp_df.sample(n=data_balance[program])
+            temp_df = temp_df.head(data_balance[program])
             b_df = b_df.append(temp_df)
-            b_df = b_df.sample(frac=1).reset_index(drop=True)
+            b_df = b_df.reset_index(drop=True)
         data= False
 
     data.columns = data.columns.astype(str)
@@ -188,10 +188,10 @@ def binary_classifier(data,model_name,data_balance_multiple,model_type):
         temp_program_data = temp_data.copy()[temp_data.program==INDEX_PROGRAM[program]]
 
         other_program_data = temp_data.copy()[temp_data.program!=INDEX_PROGRAM[program]]
-        other_program_data = other_program_data.sample(n=len(temp_program_data)*data_balance_multiple)
+        other_program_data = other_program_data.head(len(temp_program_data)*data_balance_multiple)
 
         temp_data = temp_program_data.append(other_program_data)
-        temp_data = temp_data.sample(frac=1).reset_index(drop=True)
+        temp_data = temp_data.reset_index(drop=True)
 
         # Building model
         x_df = temp_data.drop(axis=1,columns=["program"])

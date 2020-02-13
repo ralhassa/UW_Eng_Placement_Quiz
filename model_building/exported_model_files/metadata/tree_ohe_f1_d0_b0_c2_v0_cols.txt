@@ -5,6 +5,7 @@ career
 group_work
 liked_courses
 disliked_courses
+programming
 join_clubs
 not_clubs
 liked_projects
