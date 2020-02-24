@@ -135,3 +135,6 @@ model_building/golf_data.csv
 # DS Store
 poc/.DS_Store
 .DS_Store
+
+model_building/
+Frontend/
