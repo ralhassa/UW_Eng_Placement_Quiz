@@ -1,6 +1,8 @@
+Username: ayser
+Password: quiz_test
+
 
 heroku logs --tail --app=waterlooengineeringquiz
-
 
 
 heroku run python poc/manage.py createsuperuser --app=waterlooengineeringquiz
@@ -8,15 +10,11 @@ heroku run python poc/manage.py createsuperuser --app=waterlooengineeringquiz
 heroku run python poc/manage.py changepassword ayser  --app=waterlooengineeringquiz
 
 
-Username: ayser
-Password: quiz_test
-
-
 # to clear database
 
-heroku run python poc/manage.py manage.py flush --app=waterlooengineeringquiz
+heroku run python poc/manage.py flush --app=waterlooengineeringquiz
 
 
 
-heroku run python poc/manage.py manage.py makemigrations --app=waterlooengineeringquiz
-heroku run python poc/manage.py manage.py migrate --app=waterlooengineeringquiz
+heroku run python poc/manage.py makemigrations --app=waterlooengineeringquiz
+heroku run python poc/manage.py migrate --app=waterlooengineeringquiz

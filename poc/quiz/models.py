@@ -15,8 +15,8 @@ class Description(models.Model):
 
 class Comparison(models.Model):
     id = models.AutoField(primary_key=True)
-    program_1 = models.ForeignKey(Program, on_delete=models.CASCADE)
-    program_2 = models.ForeignKey(Program, on_delete=models.CASCADE)
+    program_1 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='program'))
+    program_2 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='compared to'))
     comparison = models.TextField()
     def __str__(self):
         return str(self.program_1)+" vs. "+str(self.program_2)+" : "+str(self.comparison)
