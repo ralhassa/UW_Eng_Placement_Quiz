@@ -1,28 +1,40 @@
 from django.contrib import admin
+from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from .models import *
 
-class ViewResult(ImportExportModelAdmin):
-    pass
 
-class ViewProgram(ImportExportModelAdmin):
-    pass
 
-class ViewDescription(ImportExportModelAdmin):
-    pass
 
-class ViewComparison(ImportExportModelAdmin):
-    pass
+class ProgramResource(resources.ModelResource):
+    class Meta:
+        model = Program
+        fields = ('id', 'name', 'code',)
 
-class ViewCourse(ImportExportModelAdmin):
-    pass
+class CourseResource(resources.ModelResource):
+    class Meta:
+        model = Course
+        fields = ('id', 'program', 'course',)
 
-class ViewCareer(ImportExportModelAdmin):
-    pass
+class ResultResource(resources.ModelResource):
+    class Meta:
+        model = Result
+        fields = ('id', 'email', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay',)
+        export_order = ('id', 'email', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay')
 
-admin.site.register(Course)
-admin.site.register(Career)
-admin.site.register(Comparison)
+
+class ProgramAdmin(ImportExportModelAdmin):
+    resource_class = ProgramResource
+
+class CourseAdmin(ImportExportModelAdmin):
+    resource_class = CourseResource
+
+class ResultAdmin(ImportExportModelAdmin):
+    resource_class = ResultResource
+
+admin.site.register(Program, ProgramAdmin)
 admin.site.register(Description)
-admin.site.register(Result)
-admin.site.register(Program)
+admin.site.register(Comparison)
+admin.site.register(Career)
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Result, ResultAdmin)
