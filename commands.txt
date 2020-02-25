@@ -1,3 +1,8 @@
+
+heroku logs --tail --app=waterlooengineeringquiz
+
+
+
 heroku run python poc/manage.py createsuperuser --app=waterlooengineeringquiz
 
 heroku run python poc/manage.py changepassword ayser  --app=waterlooengineeringquiz
