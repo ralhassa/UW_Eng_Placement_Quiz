@@ -38,7 +38,7 @@ python poc/manage.py migrate
 
 
 
-python poc/manage.py migrate --fake queue zero
+python poc/manage.py makemigrations --fake queue zero
 python poc/manage.py migrate --fake routingslip zero
 
 
