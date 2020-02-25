@@ -31,4 +31,15 @@ heroku run python poc/manage.py migrate --app=waterlooengineeringquiz
 
 heroku run bash --app=waterlooengineeringquiz
 
+python poc/manage.py makemigrations
+python poc/manage.py migrate
+
 ^ use this for making migrations
+
+
+
+python poc/manage.py migrate --fake queue zero
+python poc/manage.py migrate --fake routingslip zero
+
+
+python poc/manage.py migrate --fake-initial
