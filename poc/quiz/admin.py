@@ -3,9 +3,6 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from .models import *
 
-
-
-
 class ProgramResource(resources.ModelResource):
     class Meta:
         model = Program
@@ -32,9 +29,9 @@ class CourseAdmin(ImportExportModelAdmin):
 class ResultAdmin(ImportExportModelAdmin):
     resource_class = ResultResource
 
-admin.site.register(Program, ProgramAdmin)
-admin.site.register(Description)
-admin.site.register(Comparison)
-admin.site.register(Career)
-admin.site.register(Course, CourseAdmin)
-admin.site.register(Result, ResultAdmin)
+# admin.site.register(Program, ProgramAdmin)
+# admin.site.register(Description)
+# admin.site.register(Comparison)
+# admin.site.register(Career)
+# admin.site.register(Course, CourseAdmin)
+# admin.site.register(Result, ResultAdmin)
