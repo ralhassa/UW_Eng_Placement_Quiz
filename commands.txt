@@ -15,6 +15,5 @@ heroku run python poc/manage.py changepassword ayser  --app=waterlooengineeringq
 heroku run python poc/manage.py flush --app=waterlooengineeringquiz
 
 
-
 heroku run python poc/manage.py makemigrations --app=waterlooengineeringquiz
 heroku run python poc/manage.py migrate --app=waterlooengineeringquiz
