@@ -24,14 +24,14 @@ class Comparison(models.Model):
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    course = models.CharField(max_length=200)
+    course = models.TextField()
     def __str__(self):
         return str(self.program)+" : "+str(self.course)
 
 class Career(models.Model):
     id = models.AutoField(primary_key=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    career = models.CharField(max_length=200)
+    career = models.TextField()
     def __str__(self):
         return str(self.program)+" : "+str(self.career)
 
