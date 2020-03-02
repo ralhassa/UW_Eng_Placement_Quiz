@@ -2,14 +2,18 @@
 <html lang="en">
 
 <head>
+  {% load static %}
   <title>Engineering Quiz || Test</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="schoolStyleGuide.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/style/schoolStyleGuide.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/style/quiz.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src= "{% static '/js/quiz.js' %}"></script>
 </head>
 
 
@@ -24,14 +28,14 @@
     <div class="panel-group" id="accordion">
 
       <div style="border: solid 1px #000000;">
-        <form id="submit" action="{% url 'submit' %}" method='post' border=1>
+        <form id="submit" action="{% url 'submit' %}" method='post' onsubmit="return openRequiredQuestions();">
           {% csrf_token %}
 
           <!--  Question 1 -->
-          <div class="panel panel-default">
+          <div class="panel panel-default" id="question1">
             <div class="panel-heading" id="panel-heading">
               <h4 class="panel-title" id ="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">What kind of problems do you enjoy solving?</a>
+                <a data-toggle="collapsein" data-parent="#accordion" href="#collapse1">What kind of problems do you enjoy solving?</a>
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
@@ -49,10 +53,10 @@
             </div>
           </div>
   <!--  Question 2 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question2">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Would you consider yourself as being creative?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse2">Would you consider yourself as being creative?    <span class="warning" id="warning_2">THIS QUESTION IS REQUIRED</span></a>
       </h4>
     </div>
     <div id="collapse2" class="panel-collapse collapse">
@@ -69,12 +73,11 @@
       </div>
     </div>
   </div>
-
   <!--  Question 3 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question3">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">What industry can you see yourself working in, in the future? Select all that apply.</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse3">What industry can you see yourself working in, in the future? Select all that apply.</a>
       </h4>
     </div>
     <div id="collapse3" class="panel-collapse collapse">
@@ -116,12 +119,11 @@
       </div>
     </div>
   </div>
-
   <!--  Question 4 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question4">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">How comfortable are you working in the outdoors?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse4">How comfortable are you working in the outdoors?</a>
       </h4>
     </div>
     <div id="collapse4" class="panel-collapse collapse ">
@@ -138,12 +140,11 @@
       </div>
     </div>
   </div>
-
   <!--  Question 5 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question5">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">What can you see yourself doing in the future?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse5">What can you see yourself doing in the future?</a>
       </h4>
     </div>
     <div id="collapse5" class="panel-collapse collapse ">
@@ -173,10 +174,10 @@
     </div>
   </div>
   <!--  Question 6 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question6">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">How do you feel about group work?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse6">How do you feel about group work?</a>
       </h4>
     </div>
     <div id="collapse6" class="panel-collapse collapse ">
@@ -194,10 +195,10 @@
     </div>
   </div>
   <!--  Question 7 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question7">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">What high school class did you enjoy the most?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse7">What high school class did you enjoy the most?</a>
       </h4>
     </div>
     <div id="collapse7" class="panel-collapse collapse ">
@@ -239,10 +240,10 @@
     </div>
   </div>
   <!--  Question 8 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question8">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">What high school class did you enjoy the least?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse8">What high school class did you enjoy the least?</a>
       </h4>
     </div>
     <div id="collapse8" class="panel-collapse collapse ">
@@ -284,10 +285,10 @@
     </div>
   </div>
   <!--  Question 9 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question9">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">How do you feel about computer programming?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse9">How do you feel about computer programming?</a>
       </h4>
     </div>
     <div id="collapse9" class="panel-collapse collapse ">
@@ -308,10 +309,10 @@
     </div>
   </div>
   <!--  Question 10 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question10">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">What type of club would you consider joining?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse10">What type of club would you consider joining?</a>
       </h4>
     </div>
     <div id="collapse10" class="panel-collapse collapse ">
@@ -344,10 +345,10 @@
     </div>
   </div>
   <!--  Question 11 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question11">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">What type of club would you NOT want to join?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse11">What type of club would you NOT want to join?</a>
       </h4>
     </div>
     <div id="collapse11" class="panel-collapse collapse ">
@@ -380,10 +381,10 @@
     </div>
   </div>
   <!--  Question 12 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question12">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">What project would you want to be a part of?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse12">What project would you want to be a part of?</a>
       </h4>
     </div>
     <div id="collapse12" class="panel-collapse collapse ">
@@ -413,10 +414,10 @@
     </div>
   </div>
   <!--  Question 13 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question13">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">What project do you find the least interesting?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse13">What project do you find the least interesting?</a>
       </h4>
     </div>
     <div id="collapse13" class="panel-collapse collapse ">
@@ -446,10 +447,10 @@
     </div>
   </div>
   <!--  Question 14 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question14">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse14">If you could only watch one TV show for the rest of your life, what would it be?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse14">If you could only watch one TV show for the rest of your life, what would it be?</a>
       </h4>
     </div>
     <div id="collapse14" class="panel-collapse collapse ">
@@ -479,10 +480,10 @@
     </div>
   </div>
   <!--  Question 15 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question15">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse15">If engineering didn’t exist, what would you consider studying?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse15">If engineering didn’t exist, what would you consider studying?</a>
       </h4>
     </div>
     <div id="collapse15" class="panel-collapse collapse ">
@@ -536,10 +537,10 @@
     </div>
   </div>
   <!--  Question 16 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question16">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse16">How do you feel about working with expensive equipment?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse16">How do you feel about working with expensive equipment?</a>
       </h4>
     </div>
     <div id="collapse16" class="panel-collapse collapse ">
@@ -557,10 +558,10 @@
     </div>
   </div>
   <!--  Question 17 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question17">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse17">How would you describe your drawing abilities?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse17">How would you describe your drawing abilities?</a>
       </h4>
     </div>
     <div id="collapse17" class="panel-collapse collapse ">
@@ -578,10 +579,10 @@
     </div>
   </div>
   <!--  Question 18 -->
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="question18">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse18">You have an assignment to write an essay about anything you want. How does that make you feel?</a>
+        <a data-toggle="collapse." data-parent="#accordion" href="#collapse18">You have an assignment to write an essay about anything you want. How does that make you feel?</a>
       </h4>
     </div>
     <div id="collapse18" class="panel-collapse collapse ">
@@ -600,8 +601,9 @@
   </div>
   </div>
     </div>
-
-  <input type="submit" value="submit" class="btn btn-primary btn-lg"/>
+    <label for="email">Please enter your email:</label>
+    <input type="email" id="email" name="email">
+    <input type="submit" value="submit" class="btn btn-primary btn-lg" id="submitButton" disabled/>
   </form>
   </div>
 
