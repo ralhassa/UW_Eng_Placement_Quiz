@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Recommendations</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="recommendations.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="recommendations.js"></script>
+  <script src="generated.json"></script>
+</head>
+<body>
+
+<div id="recommendation1" class="container" >
+  <h2>Your Results</h2>
+  <!-- <p>Remember that these are just suggestions.</p> -->
+  <br>
+  <div id="name_1"></div>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home_1">About</a></li>
+    <li><a data-toggle="tab" href="#menu1_1">Courses</a></li>
+    <li><a data-toggle="tab" href="#menu2_1">Careers</a></li>
+    <li><a data-toggle="tab" href="#menu3_1">Comparison</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home_1" class="tab-pane fade in active">
+      <p id="about_1"></p>
+    </div>
+    <div id="menu1_1" class="tab-pane fade">
+      <p id="courses_1"></p>
+    </div>
+    <div id="menu2_1" class="tab-pane fade">
+      <p id="careers_1"></p>
+    </div>
+    <div id="menu3_1" class="tab-pane fade">
+      <div id="minorName1_1"></div>
+      <p id="comparison1_1"></p>
+      <div id="minorName2_1"></div>
+      <p id="comparison2_1"></p>
+    </div>
+  </div>
+</div>
+
+<div id="recommendation2" class="container">
+    <div id="name_2"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_2">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_2">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_2">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_2">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_2" class="tab-pane fade in active">
+        <div id="about_2"></div>
+      </div>
+      <div id="menu1_2" class="tab-pane fade">
+        <div id="courses_2"></div>
+      </div>
+      <div id="menu2_2" class="tab-pane fade">
+        <div id="careers_2"></div>
+      </div>
+      <div id="menu3_2" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_2"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_2"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation3" class="container">
+    <div id="name_3"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_3">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_3">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_3">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_3">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_3" class="tab-pane fade in active">
+        <div id="about_3"></div>
+      </div>
+      <div id="menu1_3" class="tab-pane fade">
+        <div id="courses_3"></div>
+      </div>
+      <div id="menu2_3" class="tab-pane fade">
+        <div id="careers_3"></div>
+      </div>
+      <div id="menu3_3" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_3"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_3"></div>
+      </div>
+    </div>
+</div>
+
+<div>
+  <br><br>
+  <button id="see" style="float: right;">See More</button>
+</div>
+
+<div id="hiddenRecommendations">
+    <div id="recommendation4" class="container">
+        <div id="name_4"></div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home_4">About</a></li>
+          <li><a data-toggle="tab" href="#menu1_4">Courses</a></li>
+          <li><a data-toggle="tab" href="#menu2_4">Careers</a></li>
+          <li><a data-toggle="tab" href="#menu3_4">Comparison</a></li>
+        </ul>
+      
+        <div class="tab-content">
+          <div id="home_4" class="tab-pane fade in active">
+            <div id="about_4"></div>
+          </div>
+          <div id="menu1_4" class="tab-pane fade">
+            <div id="courses_4"></div>
+          </div>
+          <div id="menu2_4" class="tab-pane fade">
+            <div id="careers_4"></div>
+          </div>
+          <div id="menu3_4" class="tab-pane fade">
+            <h4><div id="minorName"></div> Compared To...</h4>
+            <div id="comparison1_4"></div>
+            <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+            <div id="comparison2_4"></div>
+          </div>
+        </div>
+    </div>
+
+    <div id="recommendation5" class="container">
+        <div id="name_5"></div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home_5">About</a></li>
+          <li><a data-toggle="tab" href="#menu1_5">Courses</a></li>
+          <li><a data-toggle="tab" href="#menu2_5">Careers</a></li>
+          <li><a data-toggle="tab" href="#menu3_5">Comparison</a></li>
+        </ul>
+      
+        <div class="tab-content">
+          <div id="home_5" class="tab-pane fade in active">
+            <div id="about_5"></div>
+          </div>
+          <div id="menu1_5" class="tab-pane fade">
+            <div id="courses_5"></div>
+          </div>
+          <div id="menu2_5" class="tab-pane fade">
+            <div id="careers_5"></div>
+          </div>
+          <div id="menu3_5" class="tab-pane fade">
+            <h4><div id="minorName"></div> Compared To...</h4>
+            <div id="comparison1_5"></div>
+            <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+            <div id="comparison2_5"></div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="recommendation6" class="container">
+        <div id="name_6"></div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home_6">About</a></li>
+          <li><a data-toggle="tab" href="#menu1_6">Courses</a></li>
+          <li><a data-toggle="tab" href="#menu2_6">Careers</a></li>
+          <li><a data-toggle="tab" href="#menu3_6">Comparison</a></li>
+        </ul>
+      
+        <div class="tab-content">
+          <div id="home_6" class="tab-pane fade in active">
+            <div id="about_6"></div>
+          </div>
+          <div id="menu1_6" class="tab-pane fade">
+            <div id="courses_6"></div>
+          </div>
+          <div id="menu2_6" class="tab-pane fade">
+            <div id="careers_6"></div>
+          </div>
+          <div id="menu3_6" class="tab-pane fade">
+            <h4><div id="minorName"></div> Compared To...</h4>
+            <div id="comparison1_6"></div>
+            <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+            <div id="comparison2_6"></div>
+          </div>
+        </div>
+    </div>
+
+
+<div id="recommendation7" class="container">
+    <div id="name_7"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_7">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_7">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_7">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_7">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_7" class="tab-pane fade in active">
+        <div id="about_7"></div>
+      </div>
+      <div id="menu1_7" class="tab-pane fade">
+        <div id="courses_7"></div>
+      </div>
+      <div id="menu2_7" class="tab-pane fade">
+        <div id="careers_7"></div>
+      </div>
+      <div id="menu3_7" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_7"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_7"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation8" class="container">
+    <div id="name_8"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_8">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_8">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_8">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_8">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_8" class="tab-pane fade in active">
+        <div id="about_8"></div>
+      </div>
+      <div id="menu1_8" class="tab-pane fade">
+        <div id="courses_8"></div>
+      </div>
+      <div id="menu2_8" class="tab-pane fade">
+        <div id="careers_8"></div>
+      </div>
+      <div id="menu3_8" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_8"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_8"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation9" class="container">
+    <div id="name_9"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_9">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_9">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_9">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_9">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_9" class="tab-pane fade in active">
+        <div id="about_9"></div>
+      </div>
+      <div id="menu1_9" class="tab-pane fade">
+        <div id="courses_9"></div>
+      </div>
+      <div id="menu2_9" class="tab-pane fade">
+        <div id="careers_9"></div>
+      </div>
+      <div id="menu3_9" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_9"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_9"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation10" class="container">
+    <div id="name_10"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_10">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_10">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_10">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_10">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_10" class="tab-pane fade in active">
+        <div id="about_10"></div>
+      </div>
+      <div id="menu1_10" class="tab-pane fade">
+        <div id="courses_10"></div>
+      </div>
+      <div id="menu2_10" class="tab-pane fade">
+        <div id="careers_10"></div>
+      </div>
+      <div id="menu3_10" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_10"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_10"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation11" class="container">
+    <div id="name_11"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_11">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_11">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_11">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_11">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_11" class="tab-pane fade in active">
+        <div id="about_11"></div>
+      </div>
+      <div id="menu1_11" class="tab-pane fade">
+        <div id="courses_11"></div>
+      </div>
+      <div id="menu2_11" class="tab-pane fade">
+        <div id="careers_11"></div>
+      </div>
+      <div id="menu3_11" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_11"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_11"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation12" class="container">
+    <div id="name_12"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_12">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_12">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_12">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_12">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_12" class="tab-pane fade in active">
+        <div id="about_12"></div>
+      </div>
+      <div id="menu1_12" class="tab-pane fade">
+        <div id="courses_12"></div>
+      </div>
+      <div id="menu2_12" class="tab-pane fade">
+        <div id="careers_12"></div>
+      </div>
+      <div id="menu3_12" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_12"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_12"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation13" class="container">
+    <div id="name_13"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_13">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_13">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_13">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_13">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_13" class="tab-pane fade in active">
+        <div id="about_13"></div>
+      </div>
+      <div id="menu1_13" class="tab-pane fade">
+        <div id="courses_13"></div>
+      </div>
+      <div id="menu2_13" class="tab-pane fade">
+        <div id="careers_13"></div>
+      </div>
+      <div id="menu3_13" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_13"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_13"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation14" class="container">
+    <div id="name_14"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_14">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_14">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_14">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_14">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_14" class="tab-pane fade in active">
+        <div id="about_14"></div>
+      </div>
+      <div id="menu1_14" class="tab-pane fade">
+        <div id="courses_14"></div>
+      </div>
+      <div id="menu2_14" class="tab-pane fade">
+        <div id="careers_14"></div>
+      </div>
+      <div id="menu3_14" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_14"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_14"></div>
+      </div>
+    </div>
+</div>
+
+<div id="recommendation15" class="container">
+    <div id="name_15"></div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home_15">About</a></li>
+      <li><a data-toggle="tab" href="#menu1_15">Courses</a></li>
+      <li><a data-toggle="tab" href="#menu2_15">Careers</a></li>
+      <li><a data-toggle="tab" href="#menu3_15">Comparison</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home_15" class="tab-pane fade in active">
+        <div id="about_15"></div>
+      </div>
+      <div id="menu1_15" class="tab-pane fade">
+        <div id="courses_15"></div>
+      </div>
+      <div id="menu2_15" class="tab-pane fade">
+        <div id="careers_15"></div>
+      </div>
+      <div id="menu3_15" class="tab-pane fade">
+        <h4><div id="minorName"></div> Compared To...</h4>
+        <div id="comparison1_15"></div>
+        <h4>This Is What Other Programs Have To Say about <div id="minorName"></div>...</h4>
+        <div id="comparison2_15"></div>
+      </div>
+    </div>
+</div>
+
+</div>
+
+
+</body>
+</html>
