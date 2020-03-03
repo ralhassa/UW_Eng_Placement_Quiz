@@ -29,7 +29,7 @@ def submit(request):
         print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...create) 3")
 
-def recommendations(request,post_dict):
+def recommendations(request,post_dict=False):
     if request.method == 'POST':
         context = {
             'response_message':'post'
