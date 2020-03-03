@@ -11,8 +11,8 @@ from . models import *
 from . data_load import *
 from . activate_model import *
 
-def index(request):
-    return render(request, 'quiz/form.html')
+def home(request):
+    return render(request, 'quiz/home.html')
 
 def form(request):
     return render(request, 'quiz/form.html')
