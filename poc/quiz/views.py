@@ -11,11 +11,14 @@ from . models import *
 from . data_load import *
 from . activate_model import *
 
-def index(request):
-    return HttpResponse("This is the home page")
+def home(request):
+    return render(request, 'quiz/home.html')
 
-def form(request):
-    return render(request, 'quiz/form.html')
+def quiz(request):
+    return render(request, 'quiz/quiz.html')
+
+def programs(request):
+    return render(request,'quiz/recommendations.html',context)
 
 def submit(request):
     try:
@@ -28,6 +31,17 @@ def submit(request):
     except:
         print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...create) 3")
+
+def recommendations(request,post_dict=False):
+    if request.method == 'POST':
+        context = {
+            'response_message':'post'
+        }
+    else:
+        context = {
+            'response_message':'get'
+        }
+    return render(request,'quiz/recommendations.html',context)
 
 def response(request,post_dict):
     model_name = MODEL_NAME
