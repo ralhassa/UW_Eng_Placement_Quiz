@@ -18,7 +18,7 @@ from django.urls import include, path
 from . quiz import views
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.home, name='home'),
     path('quiz/', include('poc.quiz.urls')),
     path('admin/', admin.site.urls),
 ]
