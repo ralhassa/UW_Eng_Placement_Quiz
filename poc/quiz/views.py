@@ -12,7 +12,7 @@ from . data_load import *
 from . activate_model import *
 
 def index(request):
-    return HttpResponse("This is the home page")
+    return render(request, 'quiz/form.html')
 
 def form(request):
     return render(request, 'quiz/form.html')
