@@ -17,6 +17,9 @@ def home(request):
 def quiz(request):
     return render(request, 'quiz/quiz.html')
 
+def programs(request):
+    return render(request,'quiz/recommendations.html',context)
+
 def submit(request):
     try:
         print("Accessed submit...")

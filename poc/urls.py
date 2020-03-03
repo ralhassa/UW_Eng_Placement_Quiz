@@ -19,6 +19,7 @@ from . quiz import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('programs', views.recommendations, name='programs'),
     path('quiz/', include('poc.quiz.urls')),
     path('admin/', admin.site.urls),
 ]
