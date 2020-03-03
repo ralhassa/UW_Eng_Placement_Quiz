@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from quiz.views import home
+from . quiz import views
 
 urlpatterns = [
     path('', views.index, name='home'),
