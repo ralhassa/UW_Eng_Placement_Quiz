@@ -75,7 +75,7 @@ def recommendations(request,post_dict):
 
 	# Prepare the feature vector for prediction
 
-        print("Loading new_vector....")
+    print("Loading new_vector....")
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
