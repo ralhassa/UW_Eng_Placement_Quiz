@@ -18,6 +18,18 @@ def quiz(request):
     return render(request, 'quiz/quiz.html')
 
 def programs(request):
+    program_set = Program.objects.all()
+    description_set = Description.objects.all()
+    comparison_set = Comparison.objects.all()
+    course_set = Course.objects.all()
+    career_set = Career.objects.all()
+    context ={
+            'program_set':program_set,
+            'description_set':description_set,
+            'comparison_set':comparison_set,
+            'course_set':course_set,
+            'career_set':career_set
+            }
     return render(request,'quiz/recommendations.html',context)
 
 def submit(request):
