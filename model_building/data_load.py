@@ -90,17 +90,17 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
 
     if data_balance != False:
         programs = list(READ_PROGRAMS.values())
-        b_df = df.copy()
+        b_df = data.copy()
         b_df = b_df.head(0)
 
         for program in programs:
-            temp_df = df.copy()[df.program==program]
+            temp_df = data.copy()[data.program==program]
             while len(temp_df) <= data_balance[program]:
                 temp_df = temp_df.append(temp_df)
             temp_df = temp_df.head(data_balance[program])
             b_df = b_df.append(temp_df)
             b_df = b_df.reset_index(drop=True)
-        data= False
+        data = b_df
 
     data.columns = data.columns.astype(str)
     return data
@@ -124,7 +124,7 @@ def transform_post_dict(post_dict):
     return dict(post_dict)
 
 def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
-    df = get_clean_data(directory,drop_not_happy,data_balance)
+    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance)
     df = df[column_list]
 
     col_list = list(df.columns)
@@ -166,7 +166,7 @@ def get_encoded_dict(model_name):
     return encoded_dict
 
 def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
-    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy)[0]
+    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance)[0]
     df = pd.get_dummies(df,columns=one_hot_encode)
     return df
 

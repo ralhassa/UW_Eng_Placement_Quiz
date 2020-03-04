@@ -13,14 +13,6 @@ class Description(models.Model):
     def __str__(self):
         return str(self.program)+" : "+str(self.description)
 
-class Comparison(models.Model):
-    id = models.AutoField(primary_key=True)
-    program_1 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='program+')
-    program_2 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='compared_to+')
-    comparison = models.TextField()
-    def __str__(self):
-        return str(self.program_1)+" vs. "+str(self.program_2)+" : "+str(self.comparison)
-
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
@@ -34,6 +26,25 @@ class Career(models.Model):
     career = models.TextField()
     def __str__(self):
         return str(self.program)+" : "+str(self.career)
+
+class Recommendation(models.Model):
+    id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=200)
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    career = models.ForeignKey(Career, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    description = models.ForeignKey(Description, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.code)
+
+class Comparison(models.Model):
+    id = models.AutoField(primary_key=True)
+    program_1 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='program+')
+    program_2 = models.ForeignKey(Program, on_delete=models.CASCADE,related_name='compared_to+')
+    comparison = models.TextField()
+    recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE,default=None)
+    def __str__(self):
+        return str(self.program_1)+" vs. "+str(self.program_2)+" : "+str(self.comparison)
 
 class Result(models.Model):
     id = models.AutoField(primary_key=True)

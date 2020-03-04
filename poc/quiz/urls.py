@@ -4,8 +4,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('form', views.form, name='form'),
-    path('download_to_csv',views.download_to_csv,name='download_to_csv'),
+    path('', views.quiz, name='quiz'),
+    path('recommendations', views.recommendations, name='recommendations'),
     url(r'submit', views.submit, name='submit'),
 ]

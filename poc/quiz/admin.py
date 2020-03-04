@@ -8,10 +8,30 @@ class ProgramResource(resources.ModelResource):
         model = Program
         fields = ('id', 'name', 'code',)
 
+class RecommendationResource(resources.ModelResource):
+    class Meta:
+        model = Recommendation
+        fields = ('id', 'code', 'program','career','course','description',)
+
+class DescriptionResource(resources.ModelResource):
+    class Meta:
+        model = Description
+        fields = ('id','program','description',)
+
+class ComparisonResource(resources.ModelResource):
+    class Meta:
+        model = Comparison
+        fields = ('id','program_1','program_2','comparison',)
+
 class CourseResource(resources.ModelResource):
     class Meta:
         model = Course
         fields = ('id', 'program', 'course',)
+
+class CareerResource(resources.ModelResource):
+    class Meta:
+        model = Career
+        fields = ('id','program','career',)
 
 class ResultResource(resources.ModelResource):
     class Meta:
@@ -21,15 +41,28 @@ class ResultResource(resources.ModelResource):
 class ProgramAdmin(ImportExportModelAdmin):
     resource_class = ProgramResource
 
+class RecommendationAdmin(ImportExportModelAdmin):
+    resource_class = RecommendationResource
+
+class DescriptionAdmin(ImportExportModelAdmin):
+    resource_class = DescriptionResource
+
+class ComparisonAdmin(ImportExportModelAdmin):
+    resource_class = ComparisonResource
+
 class CourseAdmin(ImportExportModelAdmin):
     resource_class = CourseResource
+
+class CareerAdmin(ImportExportModelAdmin):
+    resource_class = CareerResource
 
 class ResultAdmin(ImportExportModelAdmin):
     resource_class = ResultResource
 
 admin.site.register(Program, ProgramAdmin)
-admin.site.register(Description)
-admin.site.register(Comparison)
-admin.site.register(Career)
+admin.site.register(Recommendation, RecommendationAdmin)
+admin.site.register(Description, DescriptionAdmin)
+admin.site.register(Comparison, ComparisonAdmin)
+admin.site.register(Career, CareerAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Result, ResultAdmin)
