@@ -75,8 +75,8 @@ def recommendations(request,post_dict):
 
 	# Prepare the feature vector for prediction
 
-    print("Loading new_vector....")
-    pkl_file = open('quiz_local/exported_model_files/'+model_name+'_cat', 'rb')
+        print("Loading new_vector....")
+    pkl_file = open('poc/quiz/exported_model_files/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
@@ -108,24 +108,40 @@ def recommendations(request,post_dict):
     new_vector[24] = technology[post_dict['technology'][0]]
 
     print("Loading model")
-    pkl_file = open('quiz_local/exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     prediction = model.predict_proba([new_vector])
     print("Prediction created...")
 
     print("Creating new record...")
-    # UPDATE THIS TO CREATE NEW RECORD
-    # Need to create back-end to store results
-    # new_record = Results()
-    # new_record.name = post_dict['name']
-    # new_record.email = post_dict['email']
-    # new_record.OUTLOOK = post_dict['OUTLOOK']
-    # new_record.TEMPERATURE = post_dict['TEMPERATURE']
-    # new_record.HUMIDITY = post_dict['HUMIDITY']
-    # new_record.WINDY = post_dict['WINDY']
-    # new_record.PLAY = rm
-    # # new_record.save()
+    new_record = Result()
+    new_record.problem_type = post_dict['problem_type']
+    new_record.creative = post_dict['creative']
+    new_record.outdoors = post_dict['outdoors']
+    new_record.career = post_dict['career']
+    new_record.group_work = post_dict['group_work']
+    new_record.liked_courses = post_dict['liked_courses']
+    new_record.disliked_courses = post_dict['disliked_courses']
+    new_record.programming = post_dict['programming']
+    new_record.join_clubs = post_dict['join_clubs']
+    new_record.not_clubs = post_dict['not_clubs']
+    new_record.liked_projects = post_dict['liked_projects']
+    new_record.disliked_projects = post_dict['disliked_projects']
+    new_record.tv_shows = post_dict['tv_shows']
+    new_record.alternate_degree = post_dict['alternate_degree']
+    new_record.expensive_equipment = post_dict['expensive_equipment']
+    new_record.drawing = post_dict['drawing']
+    new_record.essay = post_dict['essay']
+    new_record.architecture = post_dict['architecture']
+    new_record.automotive = post_dict['automotive']
+    new_record.business = post_dict['business']
+    new_record.construction = post_dict['construction']
+    new_record.health = post_dict['health']
+    new_record.environment = post_dict['environment']
+    new_record.manufacturing = post_dict['manufacturing']
+    new_record.technology = post_dict['technology']
+    new_record.save()
 
     # Getting Ordered Results
     results_dict = retrieve_prediction_labels(model,prediction)
