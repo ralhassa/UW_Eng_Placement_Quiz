@@ -30,7 +30,7 @@ def programs(request):
             'course_set':course_set,
             'career_set':career_set
             }
-    return render(request,'quiz/recommendations.html',context)
+    return render(request,'quiz/programs.html',context)
 
 def submit(request):
     try:
