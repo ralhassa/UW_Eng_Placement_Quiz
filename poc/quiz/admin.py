@@ -8,6 +8,11 @@ class ProgramResource(resources.ModelResource):
         model = Program
         fields = ('id', 'name', 'code',)
 
+class RecommendationResource(resources.ModelResource):
+    class Meta:
+        model = Recommendation
+        fields = ('id', 'code', 'program','career','course','description',)
+
 class DescriptionResource(resources.ModelResource):
     class Meta:
         model = Description
@@ -36,6 +41,9 @@ class ResultResource(resources.ModelResource):
 class ProgramAdmin(ImportExportModelAdmin):
     resource_class = ProgramResource
 
+class RecommendationAdmin(ImportExportModelAdmin):
+    resource_class = RecommendationResource
+
 class DescriptionAdmin(ImportExportModelAdmin):
     resource_class = DescriptionResource
 
@@ -52,6 +60,7 @@ class ResultAdmin(ImportExportModelAdmin):
     resource_class = ResultResource
 
 admin.site.register(Program, ProgramAdmin)
+admin.site.register(Recommendation, RecommendationAdmin)
 admin.site.register(Description, DescriptionAdmin)
 admin.site.register(Comparison, ComparisonAdmin)
 admin.site.register(Career, CareerAdmin)

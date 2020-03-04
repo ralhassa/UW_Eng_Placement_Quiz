@@ -2,6 +2,10 @@ Username: ayser
 Password: quiz_test
 
 
+reset db
+heroku pg:reset DATABASE_URL --app=waterlooengineeringquiz
+
+
 heroku logs --tail --app=waterlooengineeringquiz
 
 

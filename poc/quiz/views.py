@@ -18,17 +18,11 @@ def quiz(request):
     return render(request, 'quiz/quiz.html')
 
 def programs(request):
-    program_set = Program.objects.all()
-    description_set = Description.objects.all()
+    recommendation_set = Recommendation.objects.all()
     comparison_set = Comparison.objects.all()
-    course_set = Course.objects.all()
-    career_set = Career.objects.all()
     context ={
-            'program_set':program_set,
-            'description_set':description_set,
-            'comparison_set':comparison_set,
-            'course_set':course_set,
-            'career_set':career_set
+            'recommendation_set':list(recommendation_set),
+            'comparison_set':list(comparison_set)
             }
     return render(request,'quiz/programs.html',context)
 
@@ -39,23 +33,12 @@ def submit(request):
             print("Post method received")
             post_dict = request.POST
             print(post_dict)
-            return response(request,post_dict)
+            return recommendations(request,post_dict)
     except:
         print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...create) 3")
 
-def recommendations(request,post_dict=False):
-    if request.method == 'POST':
-        context = {
-            'response_message':'post'
-        }
-    else:
-        context = {
-            'response_message':'get'
-        }
-    return render(request,'quiz/recommendations.html',context)
-
-def response(request,post_dict):
+def recommendations(request,post_dict):
     model_name = MODEL_NAME
     post_dict = transform_post_dict(post_dict)
     print("Entered Response Creation...")
@@ -93,7 +76,7 @@ def response(request,post_dict):
 	# Prepare the feature vector for prediction
 
     print("Loading new_vector....")
-    pkl_file = open('poc/quiz/exported_model_files/'+model_name+'_cat', 'rb')
+    pkl_file = open('quiz_local/exported_model_files/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
     new_vector = np.zeros(len(index_dict))
 
@@ -125,13 +108,14 @@ def response(request,post_dict):
     new_vector[24] = technology[post_dict['technology'][0]]
 
     print("Loading model")
-    pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
+    pkl_file = open('quiz_local/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     prediction = model.predict_proba([new_vector])
     print("Prediction created...")
 
     print("Creating new record...")
+    # UPDATE THIS TO CREATE NEW RECORD
     # Need to create back-end to store results
     # new_record = Results()
     # new_record.name = post_dict['name']
@@ -143,20 +127,21 @@ def response(request,post_dict):
     # new_record.PLAY = rm
     # # new_record.save()
 
-    context = {
-        'response_message':str(retrieve_prediction_labels(model,prediction)),
-        'new_record':str()
-    }
+    # Getting Ordered Results
+    results_dict = retrieve_prediction_labels(model,prediction)
+    results = list(sorted(results_dict, key=lambda key: results_dict[key],reverse=True))
+    return_list = []
+    for key in results:
+        return_list.append(Recommendation.objects.get(code=key))
+
+    print("Weights of Results")
+    print(results_dict)
     print("Response Created...")
-    return render(request,'quiz/response.html',context)
+    print(return_list)
 
-def download_to_csv(request):
-    results = Results.objects.all()
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="quiz_data.csv"'
-
-    writer = csv.writer(response)
-    for result in results:
-        writer.writerow([str(result)])
-
-    return response
+    comparison_set = Comparison.objects.all()
+    context ={
+            'recommendation_set':return_list,
+            'comparison_set':list(comparison_set)
+            }
+    return render(request,'quiz/recommendations.html',context)
