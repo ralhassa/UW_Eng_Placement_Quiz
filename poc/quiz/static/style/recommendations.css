@@ -1,0 +1,9 @@
+#hiddenRecommendations{
+    display:none;
+    }
+
+.tab-pane {
+    width: 100%;
+    height: 110px;
+    overflow: scroll;
+}
