@@ -16,7 +16,7 @@ class DescriptionResource(resources.ModelResource):
 class ComparisonResource(resources.ModelResource):
     class Meta:
         model = Comparison
-        fields = ('id','program1','program_2','comparison',)
+        fields = ('id','program_1','program_2','comparison',)
 
 class CourseResource(resources.ModelResource):
     class Meta:
