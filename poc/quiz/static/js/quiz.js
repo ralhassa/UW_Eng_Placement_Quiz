@@ -19,8 +19,9 @@ $(document).ready(function() {
     //   $("#collapse2").collapse('hide');
   }
 });
-$('input[name="industry"]').click(function() {
-    if($(this).attr('value') == 'architecture' || 'automotive' || 'business' || 'construction' || 'health'|| 'environment' || 'manufacturing' || 'technology')
+
+$('input[name="essay"]').click(function() {
+    if($(this).attr('value') == 'yes' || 'partial' || 'no')
   {
     $('html, body').animate({
       scrollTop: $("#question4").offset().top
@@ -170,12 +171,11 @@ $('input[name="drawing"]').click(function() {
   }
 });
 
-$('input[name="essay"]').click(function() {
-  if($(this).attr('value') == 'yes' || 'partial' || 'no')
-{
-  $('#submitButton').prop('disabled', false);
-  
-}
+$('input[name="industry"]').click(function() {
+    if($(this).attr('value') == 'architecture' || 'automotive' || 'business' || 'construction' || 'health'|| 'environment' || 'manufacturing' || 'technology')
+  {
+    $('#submitButton').prop('disabled', false);
+  }
 });
 });
 
@@ -183,7 +183,7 @@ $('input[name="essay"]').click(function() {
 function openRequiredQuestions() {
     var q1 = $('input[name="problem_type"]:checked');
     var q2 = $('input[name="creative"]:checked');
-    var q3 = $('input[name="industry"]:checked');
+    var q3 = $('input[name="essay"]:checked');
     var q4 = $('input[name="outdoors"]:checked');
     var q5 = $('input[name="career"]:checked');
     var q6 = $('input[name="group_work"]:checked');
@@ -198,7 +198,7 @@ function openRequiredQuestions() {
     var q15 = $('input[name="alternate_degree"]:checked');
     var q16 = $('input[name="expensive_equipment"]:checked');
     var q17 = $('input[name="drawing"]:checked');
-    var q18 = $('input[name="essay"]:checked');
+    var q18 = $('input[name="industry"]:checked');
   
     if (q1.value == null) {
         $("#collapse1").collapse('show');
