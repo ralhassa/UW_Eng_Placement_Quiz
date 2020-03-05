@@ -35,9 +35,30 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
         top: -2px;
         left: -1px;
         position: relative;
-        background-color: #57058B;
+        background-color: #D0B4E7;
         content: '';
         display: inline-block;
         visibility: visible;
         border: 2px solid white;
     }
+
+    #submitButton {
+        padding:5px 15px; 
+        background:#D0B4E7; 
+        border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+        color: #57058B;
+
+    }
+    #submitButton:hover {
+        padding:5px 15px; 
+        background:#57058B; 
+        border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+        color: #D0B4E7;
+    }
+    
