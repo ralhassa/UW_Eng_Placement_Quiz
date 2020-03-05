@@ -1042,7 +1042,7 @@
       <p>{{ recommendation_set.14.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
-      {% if crs.program.code == recommendation_set.14.code %}
+      {% if cars.program.code == recommendation_set.14.code %}
           {% if cars.career_type.option == "Sample Co-op Job" %}
           <p>{{ cars.career }}</p>
           {% endif %}
