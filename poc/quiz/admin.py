@@ -3,66 +3,88 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from .models import *
 
+# Defining Resources
 class ProgramResource(resources.ModelResource):
     class Meta:
         model = Program
-        fields = ('id', 'name', 'code',)
-
-class RecommendationResource(resources.ModelResource):
-    class Meta:
-        model = Recommendation
-        fields = ('id', 'code', 'program','career','course','description',)
+        fields = ('id', 'name',)
 
 class DescriptionResource(resources.ModelResource):
     class Meta:
         model = Description
-        fields = ('id','program','description',)
+        fields = ('id','program','description','hyperlink',)
 
-class ComparisonResource(resources.ModelResource):
+class CareerTypeResource(resources.ModelResource):
     class Meta:
-        model = Comparison
-        fields = ('id','program_1','program_2','comparison',)
+        model = CareerType
+        fields = ('id','option',)
 
-class CourseResource(resources.ModelResource):
+class CourseTypeResource(resources.ModelResource):
     class Meta:
-        model = Course
-        fields = ('id', 'program', 'course',)
+        model = CourseType
+        fields = ('id','option',)
 
 class CareerResource(resources.ModelResource):
     class Meta:
         model = Career
-        fields = ('id','program','career',)
+        fields = ('id','program','career_type','career',)
+
+class CourseResource(resources.ModelResource):
+    class Meta:
+        model = Course
+        fields = ('id', 'program','course_type','course',)
+
+class RecommendationResource(resources.ModelResource):
+    class Meta:
+        model = Recommendation
+        fields = ('id', 'program','description','code',)
+
+class ComparisonResource(resources.ModelResource):
+    class Meta:
+        model = Comparison
+        fields = ('id','program_1','program_2','comparison','recommendation',)
 
 class ResultResource(resources.ModelResource):
     class Meta:
         model = Result
         fields = ('id', 'email', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay',)
 
+# Defining Admin Objects
 class ProgramAdmin(ImportExportModelAdmin):
     resource_class = ProgramResource
-
-class RecommendationAdmin(ImportExportModelAdmin):
-    resource_class = RecommendationResource
 
 class DescriptionAdmin(ImportExportModelAdmin):
     resource_class = DescriptionResource
 
-class ComparisonAdmin(ImportExportModelAdmin):
-    resource_class = ComparisonResource
+class CareerTypeAdmin(ImportExportModelAdmin):
+    resource_class = CareerTypeResource
 
-class CourseAdmin(ImportExportModelAdmin):
-    resource_class = CourseResource
+class CourseTypeAdmin(ImportExportModelAdmin):
+    resource_class = CourseTypeResource
 
 class CareerAdmin(ImportExportModelAdmin):
     resource_class = CareerResource
 
+class CourseAdmin(ImportExportModelAdmin):
+    resource_class = CourseResource
+
+class RecommendationAdmin(ImportExportModelAdmin):
+    resource_class = RecommendationResource
+
+class ComparisonAdmin(ImportExportModelAdmin):
+    resource_class = ComparisonResource
+
 class ResultAdmin(ImportExportModelAdmin):
     resource_class = ResultResource
 
+# Registering on Admin Site
 admin.site.register(Program, ProgramAdmin)
-admin.site.register(Recommendation, RecommendationAdmin)
 admin.site.register(Description, DescriptionAdmin)
-admin.site.register(Comparison, ComparisonAdmin)
+admin.site.register(CareerType, CareerTypeAdmin)
+admin.site.register(CourseType, CourseTypeAdmin)
 admin.site.register(Career, CareerAdmin)
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Recommendation, RecommendationAdmin)
+admin.site.register(Comparison, ComparisonAdmin)
 admin.site.register(Result, ResultAdmin)
+

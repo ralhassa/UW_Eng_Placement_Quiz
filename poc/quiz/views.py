@@ -18,11 +18,21 @@ def quiz(request):
     return render(request, 'quiz/quiz.html')
 
 def programs(request):
-    recommendation_set = Recommendation.objects.all()
+    results = list(sorted(READ_PROGRAMS.keys()))
+    return_list = []
+    for key in results:
+        return_list.append(Recommendation.objects.get(code=READ_PROGRAMS[key]))
+
     comparison_set = Comparison.objects.all()
+    description_set = Description.objects.all()
+    course_set = Course.objects.all()
+    career_set = Career.objects.all()
     context ={
-            'recommendation_set':list(recommendation_set),
-            'comparison_set':list(comparison_set)
+            'recommendation_set':return_list,
+            'comparison_set':list(comparison_set),
+            'course_set':list(course_set),
+            'career_set':list(career_set),
+            'description_set':list(description_set)
             }
     return render(request,'quiz/programs.html',context)
 
@@ -156,8 +166,14 @@ def recommendations(request,post_dict):
     print(return_list)
 
     comparison_set = Comparison.objects.all()
+    description_set = Description.objects.all()
+    course_set = Course.objects.all()
+    career_set = Career.objects.all()
     context ={
             'recommendation_set':return_list,
-            'comparison_set':list(comparison_set)
+            'comparison_set':list(comparison_set),
+            'course_set':list(course_set),
+            'career_set':list(career_set),
+            'description_set':list(description_set)
             }
     return render(request,'quiz/recommendations.html',context)
