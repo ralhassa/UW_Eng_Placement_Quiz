@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.quiz, name='quiz'),
     path('recommendations', views.recommendations, name='recommendations'),
     url(r'submit', views.submit, name='submit'),
+    url(r'startQuiz', views.quiz, name='startQuiz'),
 ]

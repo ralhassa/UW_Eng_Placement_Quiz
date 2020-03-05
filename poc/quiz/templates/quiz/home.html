@@ -17,7 +17,9 @@
                 <p>Your starting point for discovery!</p>
                 <p>Learn more about the different programs offered at the University of Waterlooand which ones align most with your interests</p>
             </div>
-            <button class="quizButton" onclick="window.location.href ='quiz.html';">Start Quiz</button>
+            <form action="{% url 'startQuiz' %}">
+                <button class="quizButton">Start Quiz</button>
+            </form>
             <button class="learnButton" >Learn More</button>
             <a href="">About our programs</a>
         </div>
