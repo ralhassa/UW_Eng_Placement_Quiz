@@ -3,6 +3,8 @@ Password: quiz_test
 
 
 reset db
+
+
 heroku pg:reset DATABASE_URL --app=waterlooengineeringquiz
 
 heroku run bash --app=waterlooengineeringquiz

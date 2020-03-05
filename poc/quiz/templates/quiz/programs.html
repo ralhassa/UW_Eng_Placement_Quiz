@@ -30,14 +30,52 @@
   <div class="tab-content">
     <div id="home0" class="tab-pane fade in active">
       <p>{{ recommendation_set.0.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.0.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses0" class="tab-pane fade">
       <h3>{{ recommendation_set.0.program.name }} Courses</h3>
       <p>{{ recommendation_set.0.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.0.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.0.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers0" class="tab-pane fade">
       <h3>{{ recommendation_set.0.program.name }} Careers</h3>
       <p>{{ recommendation_set.0.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.0.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.0.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison0" class="tab-pane fade">
       <h5>{{ recommendation_set.0.program.name }} Compared To...</h5>
@@ -62,14 +100,52 @@
   <div class="tab-content">
     <div id="home1" class="tab-pane fade in active">
       <p>{{ recommendation_set.1.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.1.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses1" class="tab-pane fade">
       <h3>{{ recommendation_set.1.program.name }} Courses</h3>
       <p>{{ recommendation_set.1.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.1.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.1.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers1" class="tab-pane fade">
       <h3>{{ recommendation_set.1.program.name }} Careers</h3>
       <p>{{ recommendation_set.1.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.1.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.1.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison1" class="tab-pane fade">
       <h5>{{ recommendation_set.1.program.name }} Compared To...</h5>
@@ -82,7 +158,6 @@
   </div>
 
   <!--- End RESULT #1 -->
-
   <!--  RESULT #2 -->
   <ul class="nav nav-tabs">
     <h3>{{ recommendation_set.2.program.name }}</h3>
@@ -95,14 +170,52 @@
   <div class="tab-content">
     <div id="home2" class="tab-pane fade in active">
       <p>{{ recommendation_set.2.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.2.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses2" class="tab-pane fade">
       <h3>{{ recommendation_set.2.program.name }} Courses</h3>
       <p>{{ recommendation_set.2.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.2.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.2.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers2" class="tab-pane fade">
       <h3>{{ recommendation_set.2.program.name }} Careers</h3>
       <p>{{ recommendation_set.2.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.2.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.2.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison2" class="tab-pane fade">
       <h5>{{ recommendation_set.2.program.name }} Compared To...</h5>
@@ -115,7 +228,6 @@
   </div>
 
   <!--- End RESULT #2 -->
-
   <!--  RESULT #3 -->
   <ul class="nav nav-tabs">
     <h3>{{ recommendation_set.3.program.name }}</h3>
@@ -128,14 +240,52 @@
   <div class="tab-content">
     <div id="home3" class="tab-pane fade in active">
       <p>{{ recommendation_set.3.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.3.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses3" class="tab-pane fade">
       <h3>{{ recommendation_set.3.program.name }} Courses</h3>
       <p>{{ recommendation_set.3.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.3.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.3.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers3" class="tab-pane fade">
       <h3>{{ recommendation_set.3.program.name }} Careers</h3>
       <p>{{ recommendation_set.3.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.3.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.3.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison3" class="tab-pane fade">
       <h5>{{ recommendation_set.3.program.name }} Compared To...</h5>
@@ -160,14 +310,52 @@
   <div class="tab-content">
     <div id="home4" class="tab-pane fade in active">
       <p>{{ recommendation_set.4.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.4.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses4" class="tab-pane fade">
       <h3>{{ recommendation_set.4.program.name }} Courses</h3>
       <p>{{ recommendation_set.4.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.4.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.4.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers4" class="tab-pane fade">
       <h3>{{ recommendation_set.4.program.name }} Careers</h3>
       <p>{{ recommendation_set.4.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.4.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.4.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison4" class="tab-pane fade">
       <h5>{{ recommendation_set.4.program.name }} Compared To...</h5>
@@ -192,14 +380,52 @@
   <div class="tab-content">
     <div id="home5" class="tab-pane fade in active">
       <p>{{ recommendation_set.5.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.5.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses5" class="tab-pane fade">
       <h3>{{ recommendation_set.5.program.name }} Courses</h3>
       <p>{{ recommendation_set.5.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.5.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.5.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers5" class="tab-pane fade">
       <h3>{{ recommendation_set.5.program.name }} Careers</h3>
       <p>{{ recommendation_set.5.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.5.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.5.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison5" class="tab-pane fade">
       <h5>{{ recommendation_set.5.program.name }} Compared To...</h5>
@@ -224,14 +450,52 @@
   <div class="tab-content">
     <div id="home6" class="tab-pane fade in active">
       <p>{{ recommendation_set.6.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.6.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses6" class="tab-pane fade">
       <h3>{{ recommendation_set.6.program.name }} Courses</h3>
       <p>{{ recommendation_set.6.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.6.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.6.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers6" class="tab-pane fade">
       <h3>{{ recommendation_set.6.program.name }} Careers</h3>
       <p>{{ recommendation_set.6.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.6.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.6.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison6" class="tab-pane fade">
       <h5>{{ recommendation_set.6.program.name }} Compared To...</h5>
@@ -256,14 +520,52 @@
   <div class="tab-content">
     <div id="home7" class="tab-pane fade in active">
       <p>{{ recommendation_set.7.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.7.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses7" class="tab-pane fade">
       <h3>{{ recommendation_set.7.program.name }} Courses</h3>
       <p>{{ recommendation_set.7.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.7.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.7.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers7" class="tab-pane fade">
       <h3>{{ recommendation_set.7.program.name }} Careers</h3>
       <p>{{ recommendation_set.7.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.7.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.7.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison7" class="tab-pane fade">
       <h5>{{ recommendation_set.7.program.name }} Compared To...</h5>
@@ -288,14 +590,52 @@
   <div class="tab-content">
     <div id="home8" class="tab-pane fade in active">
       <p>{{ recommendation_set.8.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.8.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses8" class="tab-pane fade">
       <h3>{{ recommendation_set.8.program.name }} Courses</h3>
       <p>{{ recommendation_set.8.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.8.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.8.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers8" class="tab-pane fade">
       <h3>{{ recommendation_set.8.program.name }} Careers</h3>
       <p>{{ recommendation_set.8.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.8.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.8.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison8" class="tab-pane fade">
       <h5>{{ recommendation_set.8.program.name }} Compared To...</h5>
@@ -320,14 +660,52 @@
   <div class="tab-content">
     <div id="home9" class="tab-pane fade in active">
       <p>{{ recommendation_set.9.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.9.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses9" class="tab-pane fade">
       <h3>{{ recommendation_set.9.program.name }} Courses</h3>
       <p>{{ recommendation_set.9.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.9.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.9.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers9" class="tab-pane fade">
       <h3>{{ recommendation_set.9.program.name }} Careers</h3>
       <p>{{ recommendation_set.9.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.9.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.9.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison9" class="tab-pane fade">
       <h5>{{ recommendation_set.9.program.name }} Compared To...</h5>
@@ -352,14 +730,52 @@
   <div class="tab-content">
     <div id="home10" class="tab-pane fade in active">
       <p>{{ recommendation_set.10.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.10.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses10" class="tab-pane fade">
       <h3>{{ recommendation_set.10.program.name }} Courses</h3>
       <p>{{ recommendation_set.10.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.10.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.10.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers10" class="tab-pane fade">
       <h3>{{ recommendation_set.10.program.name }} Careers</h3>
       <p>{{ recommendation_set.10.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.10.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.10.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison10" class="tab-pane fade">
       <h5>{{ recommendation_set.10.program.name }} Compared To...</h5>
@@ -384,14 +800,52 @@
   <div class="tab-content">
     <div id="home11" class="tab-pane fade in active">
       <p>{{ recommendation_set.11.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.11.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses11" class="tab-pane fade">
       <h3>{{ recommendation_set.11.program.name }} Courses</h3>
       <p>{{ recommendation_set.11.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.11.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.11.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers11" class="tab-pane fade">
       <h3>{{ recommendation_set.11.program.name }} Careers</h3>
       <p>{{ recommendation_set.11.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.11.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.11.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison11" class="tab-pane fade">
       <h5>{{ recommendation_set.11.program.name }} Compared To...</h5>
@@ -416,14 +870,52 @@
   <div class="tab-content">
     <div id="home12" class="tab-pane fade in active">
       <p>{{ recommendation_set.12.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.12.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses12" class="tab-pane fade">
       <h3>{{ recommendation_set.12.program.name }} Courses</h3>
       <p>{{ recommendation_set.12.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.12.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.12.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers12" class="tab-pane fade">
       <h3>{{ recommendation_set.12.program.name }} Careers</h3>
       <p>{{ recommendation_set.12.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.12.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.12.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison12" class="tab-pane fade">
       <h5>{{ recommendation_set.12.program.name }} Compared To...</h5>
@@ -448,14 +940,52 @@
   <div class="tab-content">
     <div id="home13" class="tab-pane fade in active">
       <p>{{ recommendation_set.13.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.13.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses13" class="tab-pane fade">
       <h3>{{ recommendation_set.13.program.name }} Courses</h3>
       <p>{{ recommendation_set.13.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.13.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.13.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers13" class="tab-pane fade">
       <h3>{{ recommendation_set.13.program.name }} Careers</h3>
       <p>{{ recommendation_set.13.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.13.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.13.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison13" class="tab-pane fade">
       <h5>{{ recommendation_set.13.program.name }} Compared To...</h5>
@@ -480,14 +1010,52 @@
   <div class="tab-content">
     <div id="home14" class="tab-pane fade in active">
       <p>{{ recommendation_set.14.description.description }}</p>
+      {% for abt in description_set %}
+      {% if abt.program.code == recommendation_set.14.code %}
+      <p>{{ abt.description }}</p>
+      <p> Read More about this program  {{abt.hyperlink}}</p>
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="courses14" class="tab-pane fade">
       <h3>{{ recommendation_set.14.program.name }} Courses</h3>
       <p>{{ recommendation_set.14.course.course }}</p>
+      <h4>First Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.14.code %}
+          {% if crs.course_type.option == "First Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Upper Year Courses</h4>
+      {% for crs in course_set %}
+      {% if crs.program.code == recommendation_set.14.code %}
+          {% if crs.course_type.option == "Upper Year Course" %}
+          <p>{{ crs.course }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="careers14" class="tab-pane fade">
       <h3>{{ recommendation_set.14.program.name }} Careers</h3>
       <p>{{ recommendation_set.14.career.career }}</p>
+      <h4>Sample Co-op Jobs</h4>
+      {% for cars in career_set %}
+      {% if crs.program.code == recommendation_set.14.code %}
+          {% if cars.career_type.option == "Sample Co-op Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
+      <h4>Sample Full-Time Jobs</h4>
+      {% for cars in career_set %}
+      {% if cars.program.code == recommendation_set.14.code %}
+          {% if cars.career_type.option == "Sample Full-Time Job" %}
+          <p>{{ cars.career }}</p>
+          {% endif %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div id="comparison14" class="tab-pane fade">
       <h5>{{ recommendation_set.14.program.name }} Compared To...</h5>
@@ -498,8 +1066,8 @@
       {% endfor %}
     </div>
   </div>
-  <!--- End RESULT #14 -->
 
+  <!--- End RESULT #14 -->
 </div>
 
 </body>

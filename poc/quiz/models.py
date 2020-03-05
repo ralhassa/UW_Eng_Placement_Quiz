@@ -6,36 +6,48 @@ class Program(models.Model):
     def __str__(self):
         return str(self.name)
 
+class Recommendation(models.Model):
+    id = models.AutoField(primary_key=True)
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    code = models.CharField(max_length=200)
+    def __str__(self):
+        return str(self.program.name)
+
 class Description(models.Model):
     id = models.AutoField(primary_key=True)
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    program = models.ForeignKey(Recommendation, on_delete=models.CASCADE,default=None)
     description = models.TextField()
+    hyperlink = models.TextField()
     def __str__(self):
-        return str(self.program)+" : "+str(self.description)
+        return str(self.program.program.name)
 
-class Course(models.Model):
+class CareerType(models.Model):
     id = models.AutoField(primary_key=True)
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    course = models.TextField()
+    option = models.CharField(max_length=200)
     def __str__(self):
-        return str(self.program)+" : "+str(self.course)
+        return str(self.option)
+
+class CourseType(models.Model):
+    id = models.AutoField(primary_key=True)
+    option = models.CharField(max_length=200)
+    def __str__(self):
+        return str(self.option)
 
 class Career(models.Model):
     id = models.AutoField(primary_key=True)
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    program = models.ForeignKey(Recommendation, on_delete=models.CASCADE,default=None)
+    career_type = models.ForeignKey(CareerType, on_delete=models.CASCADE)
     career = models.TextField()
     def __str__(self):
-        return str(self.program)+" : "+str(self.career)
+        return str(self.program.program.name)+" : "+str(self.career)
 
-class Recommendation(models.Model):
+class Course(models.Model):
     id = models.AutoField(primary_key=True)
-    code = models.CharField(max_length=200)
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    career = models.ForeignKey(Career, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    description = models.ForeignKey(Description, on_delete=models.CASCADE)
+    program = models.ForeignKey(Recommendation, on_delete=models.CASCADE,default=None)
+    course_type = models.ForeignKey(CourseType, on_delete=models.CASCADE)
+    course = models.TextField()
     def __str__(self):
-        return str(self.code)
+        return str(self.program.program.name)+" : "+str(self.course)
 
 class Comparison(models.Model):
     id = models.AutoField(primary_key=True)
