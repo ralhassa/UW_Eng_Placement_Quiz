@@ -28,6 +28,10 @@ input[type='radio']:after, input[type='checkbox']:after {
     border: 2px solid white;
 }
 
+input[type='checkbox']:after {
+    padding-left: 0.4em;
+}
+
 input[type='radio']:checked:after, input[type='checkbox']:checked:after {
         width: 15px;
         height: 15px;
