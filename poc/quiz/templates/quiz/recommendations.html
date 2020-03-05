@@ -7,10 +7,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="recommendations.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/style/recommendations.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="recommendations.js"></script>
+  <script src="{% static '/js/recommendations.css' %}"></script>
   <script src="generated.json"></script>
 </head>
 
@@ -18,6 +18,7 @@
 
 <div class="container">
   <h2>Your Results</h2>
+  <p>Remember, these are just suggestions. This tool is intended to give you the program options that are most aligned with your interests and act as a starting point for further research into our programs.</p>
   <!--  RESULT #0 -->
   <ul class="nav nav-tabs">
     <h3>{{ recommendation_set.0.program.name }}</h3>
