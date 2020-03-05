@@ -50,6 +50,7 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
         -webkit-border-radius: 5px;
         border-radius: 5px; 
         color: #D0B4E7;
+        float: right;
 
     }
 
@@ -60,6 +61,6 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
         cursor:pointer;
         -webkit-border-radius: 5px;
         border-radius: 5px; 
-        color:gray;
+        color:white;
     }
     
