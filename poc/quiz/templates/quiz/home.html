@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="homepagePicture">
-            <img src="{% static '/img/homepage.css' %}" alt="">
+            <img src="{% static '/img/homepage.png' %}" alt="">
         </div>
         
         <div class="homepage">
@@ -21,7 +21,7 @@
                 <button class="quizButton">Start Quiz</button>
             </form>
             <button class="learnButton" >Learn More</button>
-            <a href="">About our programs</a>
+            <a href="{% url 'programInfo' %}">About our programs</a>
         </div>
         <div class="infoModal">
             <div class="modalContent">
