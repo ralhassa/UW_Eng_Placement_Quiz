@@ -34,6 +34,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.0.code %}
       <p>{{ abt.description }}</p>
+      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -82,9 +83,9 @@
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.0.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
-      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
+      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
     </div>
   </div>
 
