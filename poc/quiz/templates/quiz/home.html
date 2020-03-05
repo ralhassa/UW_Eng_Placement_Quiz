@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="quizHomepage.css">
-        <script src="quizHomepage.js"></script>
+        {% load static %}
+        <title>UW Program Compatibility Tool | Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/style/home.css' %}">
+        <!-- <script src="quizHomepage.js"></script> -->
     </head>
     <body>
         <div class="homepagePicture">
@@ -15,7 +17,7 @@
                 <p>Your starting point for discovery!</p>
                 <p>Learn more about the different programs offered at the University of Waterlooand which ones align most with your interests</p>
             </div>
-            <button class="quizButton" onclick="window.location.href ='form.html';">Start Quiz</button>
+            <button class="quizButton" onclick="window.location.href ='quiz.html';">Start Quiz</button>
             <button class="learnButton" >Learn More</button>
             <a href="">About our programs</a>
         </div>
