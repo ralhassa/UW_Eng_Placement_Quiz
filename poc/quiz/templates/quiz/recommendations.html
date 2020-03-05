@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-  <h2>Your Results</h2>
+  <h2>Your Recommendations</h2>
   <p>Remember, these are just suggestions. This tool is intended to give you the program options that are most aligned with your interests and act as a starting point for further research into our programs.</p>
   <!--  RESULT #0 -->
   <ul class="nav nav-tabs">
@@ -34,7 +34,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.0.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -85,7 +85,6 @@
       <p>{{ vs.comparison }}</p>
       {% endif %}
       {% endfor %}
-      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
     </div>
   </div>
 
@@ -105,7 +104,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.1.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -154,7 +153,7 @@
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.1.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
-      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -176,7 +175,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.2.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -231,6 +230,7 @@
   </div>
 
   <!--- End RESULT #2 -->
+  <div id="hiddenRecommendations">
   <!--  RESULT #3 -->
   <ul class="nav nav-tabs">
     <h3>{{ recommendation_set.3.program.name }}</h3>
@@ -246,7 +246,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.3.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -316,7 +316,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.4.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -386,7 +386,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.5.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -456,7 +456,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.6.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -526,7 +526,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.7.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -596,7 +596,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.8.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -666,7 +666,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.9.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -736,7 +736,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.10.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -806,7 +806,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.11.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -876,7 +876,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.12.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -946,7 +946,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.13.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -1016,7 +1016,7 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.14.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
+      <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -1072,7 +1072,7 @@
 
   <!--- End RESULT #14 -->
 </div>
-
+</div>
 </body>
 
 </html>
