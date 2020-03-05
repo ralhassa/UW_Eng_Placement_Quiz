@@ -25,7 +25,7 @@
     <li class="active"><a data-toggle="tab" href="#home0">About</a></li>
     <li><a data-toggle="tab" href="#courses0">Courses</a></li>
     <li><a data-toggle="tab" href="#careers0">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison0">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison0">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -34,14 +34,13 @@
       {% for abt in description_set %}
       {% if abt.program.code == recommendation_set.0.code %}
       <p>{{ abt.description }}</p>
-      <p> Read More about this program  {{abt.hyperlink}}</p>
       {% endif %}
       {% endfor %}
     </div>
     <div id="courses0" class="tab-pane fade">
-      <h3>{{ recommendation_set.0.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.0.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.0.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.0.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -59,7 +58,7 @@
       {% endfor %}
     </div>
     <div id="careers0" class="tab-pane fade">
-      <h3>{{ recommendation_set.0.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.0.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.0.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -79,10 +78,11 @@
       {% endfor %}
     </div>
     <div id="comparison0" class="tab-pane fade">
-      <h5>{{ recommendation_set.0.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.0.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.0.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
+      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -95,7 +95,7 @@
     <li class="active"><a data-toggle="tab" href="#home1">About</a></li>
     <li><a data-toggle="tab" href="#courses1">Courses</a></li>
     <li><a data-toggle="tab" href="#careers1">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison1">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison1">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -109,9 +109,9 @@
       {% endfor %}
     </div>
     <div id="courses1" class="tab-pane fade">
-      <h3>{{ recommendation_set.1.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.1.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.1.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.1.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -129,7 +129,7 @@
       {% endfor %}
     </div>
     <div id="careers1" class="tab-pane fade">
-      <h3>{{ recommendation_set.1.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.1.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.1.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -149,10 +149,11 @@
       {% endfor %}
     </div>
     <div id="comparison1" class="tab-pane fade">
-      <h5>{{ recommendation_set.1.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.1.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.1.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
+      <p> Read More about this program  <a href="{{abt.hyperlink}}">here</a></p>
       {% endif %}
       {% endfor %}
     </div>
@@ -165,7 +166,7 @@
     <li class="active"><a data-toggle="tab" href="#home2">About</a></li>
     <li><a data-toggle="tab" href="#courses2">Courses</a></li>
     <li><a data-toggle="tab" href="#careers2">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison2">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison2">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -179,9 +180,9 @@
       {% endfor %}
     </div>
     <div id="courses2" class="tab-pane fade">
-      <h3>{{ recommendation_set.2.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.2.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.2.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.2.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -199,7 +200,7 @@
       {% endfor %}
     </div>
     <div id="careers2" class="tab-pane fade">
-      <h3>{{ recommendation_set.2.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.2.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.2.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -219,7 +220,7 @@
       {% endfor %}
     </div>
     <div id="comparison2" class="tab-pane fade">
-      <h5>{{ recommendation_set.2.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.2.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.2.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -235,7 +236,7 @@
     <li class="active"><a data-toggle="tab" href="#home3">About</a></li>
     <li><a data-toggle="tab" href="#courses3">Courses</a></li>
     <li><a data-toggle="tab" href="#careers3">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison3">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison3">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -249,9 +250,9 @@
       {% endfor %}
     </div>
     <div id="courses3" class="tab-pane fade">
-      <h3>{{ recommendation_set.3.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.3.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.3.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.3.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -269,7 +270,7 @@
       {% endfor %}
     </div>
     <div id="careers3" class="tab-pane fade">
-      <h3>{{ recommendation_set.3.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.3.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.3.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -289,7 +290,7 @@
       {% endfor %}
     </div>
     <div id="comparison3" class="tab-pane fade">
-      <h5>{{ recommendation_set.3.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.3.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.3.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -305,7 +306,7 @@
     <li class="active"><a data-toggle="tab" href="#home4">About</a></li>
     <li><a data-toggle="tab" href="#courses4">Courses</a></li>
     <li><a data-toggle="tab" href="#careers4">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison4">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison4">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -319,9 +320,9 @@
       {% endfor %}
     </div>
     <div id="courses4" class="tab-pane fade">
-      <h3>{{ recommendation_set.4.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.4.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.4.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.4.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -339,7 +340,7 @@
       {% endfor %}
     </div>
     <div id="careers4" class="tab-pane fade">
-      <h3>{{ recommendation_set.4.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.4.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.4.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -359,7 +360,7 @@
       {% endfor %}
     </div>
     <div id="comparison4" class="tab-pane fade">
-      <h5>{{ recommendation_set.4.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.4.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.4.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -375,7 +376,7 @@
     <li class="active"><a data-toggle="tab" href="#home5">About</a></li>
     <li><a data-toggle="tab" href="#courses5">Courses</a></li>
     <li><a data-toggle="tab" href="#careers5">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison5">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison5">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -389,9 +390,9 @@
       {% endfor %}
     </div>
     <div id="courses5" class="tab-pane fade">
-      <h3>{{ recommendation_set.5.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.5.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.5.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.5.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -409,7 +410,7 @@
       {% endfor %}
     </div>
     <div id="careers5" class="tab-pane fade">
-      <h3>{{ recommendation_set.5.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.5.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.5.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -429,7 +430,7 @@
       {% endfor %}
     </div>
     <div id="comparison5" class="tab-pane fade">
-      <h5>{{ recommendation_set.5.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.5.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.5.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -445,7 +446,7 @@
     <li class="active"><a data-toggle="tab" href="#home6">About</a></li>
     <li><a data-toggle="tab" href="#courses6">Courses</a></li>
     <li><a data-toggle="tab" href="#careers6">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison6">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison6">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -461,7 +462,7 @@
     <div id="courses6" class="tab-pane fade">
       <h3>{{ recommendation_set.6.program.name }} Courses</h3>
       <p>{{ recommendation_set.6.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.6.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -479,7 +480,7 @@
       {% endfor %}
     </div>
     <div id="careers6" class="tab-pane fade">
-      <h3>{{ recommendation_set.6.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.6.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.6.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -499,7 +500,7 @@
       {% endfor %}
     </div>
     <div id="comparison6" class="tab-pane fade">
-      <h5>{{ recommendation_set.6.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.6.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.6.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -515,7 +516,7 @@
     <li class="active"><a data-toggle="tab" href="#home7">About</a></li>
     <li><a data-toggle="tab" href="#courses7">Courses</a></li>
     <li><a data-toggle="tab" href="#careers7">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison7">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison7">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -529,9 +530,9 @@
       {% endfor %}
     </div>
     <div id="courses7" class="tab-pane fade">
-      <h3>{{ recommendation_set.7.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.7.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.7.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.7.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -549,7 +550,7 @@
       {% endfor %}
     </div>
     <div id="careers7" class="tab-pane fade">
-      <h3>{{ recommendation_set.7.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.7.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.7.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -569,7 +570,7 @@
       {% endfor %}
     </div>
     <div id="comparison7" class="tab-pane fade">
-      <h5>{{ recommendation_set.7.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.7.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.7.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -585,7 +586,7 @@
     <li class="active"><a data-toggle="tab" href="#home8">About</a></li>
     <li><a data-toggle="tab" href="#courses8">Courses</a></li>
     <li><a data-toggle="tab" href="#careers8">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison8">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison8">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -599,9 +600,9 @@
       {% endfor %}
     </div>
     <div id="courses8" class="tab-pane fade">
-      <h3>{{ recommendation_set.8.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.8.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.8.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.8.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -619,7 +620,7 @@
       {% endfor %}
     </div>
     <div id="careers8" class="tab-pane fade">
-      <h3>{{ recommendation_set.8.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.8.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.8.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -639,7 +640,7 @@
       {% endfor %}
     </div>
     <div id="comparison8" class="tab-pane fade">
-      <h5>{{ recommendation_set.8.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.8.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.8.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -655,7 +656,7 @@
     <li class="active"><a data-toggle="tab" href="#home9">About</a></li>
     <li><a data-toggle="tab" href="#courses9">Courses</a></li>
     <li><a data-toggle="tab" href="#careers9">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison9">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison9">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -669,9 +670,9 @@
       {% endfor %}
     </div>
     <div id="courses9" class="tab-pane fade">
-      <h3>{{ recommendation_set.9.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.9.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.9.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.9.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -689,7 +690,7 @@
       {% endfor %}
     </div>
     <div id="careers9" class="tab-pane fade">
-      <h3>{{ recommendation_set.9.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.9.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.9.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -709,7 +710,7 @@
       {% endfor %}
     </div>
     <div id="comparison9" class="tab-pane fade">
-      <h5>{{ recommendation_set.9.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.9.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.9.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -725,7 +726,7 @@
     <li class="active"><a data-toggle="tab" href="#home10">About</a></li>
     <li><a data-toggle="tab" href="#courses10">Courses</a></li>
     <li><a data-toggle="tab" href="#careers10">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison10">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison10">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -739,9 +740,9 @@
       {% endfor %}
     </div>
     <div id="courses10" class="tab-pane fade">
-      <h3>{{ recommendation_set.10.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.10.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.10.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.10.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -759,7 +760,7 @@
       {% endfor %}
     </div>
     <div id="careers10" class="tab-pane fade">
-      <h3>{{ recommendation_set.10.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.10.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.10.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -779,7 +780,7 @@
       {% endfor %}
     </div>
     <div id="comparison10" class="tab-pane fade">
-      <h5>{{ recommendation_set.10.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.10.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.10.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -795,7 +796,7 @@
     <li class="active"><a data-toggle="tab" href="#home11">About</a></li>
     <li><a data-toggle="tab" href="#courses11">Courses</a></li>
     <li><a data-toggle="tab" href="#careers11">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison11">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison11">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -809,9 +810,9 @@
       {% endfor %}
     </div>
     <div id="courses11" class="tab-pane fade">
-      <h3>{{ recommendation_set.11.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.11.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.11.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.11.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -829,7 +830,7 @@
       {% endfor %}
     </div>
     <div id="careers11" class="tab-pane fade">
-      <h3>{{ recommendation_set.11.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.11.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.11.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -849,7 +850,7 @@
       {% endfor %}
     </div>
     <div id="comparison11" class="tab-pane fade">
-      <h5>{{ recommendation_set.11.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.11.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.11.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -865,7 +866,7 @@
     <li class="active"><a data-toggle="tab" href="#home12">About</a></li>
     <li><a data-toggle="tab" href="#courses12">Courses</a></li>
     <li><a data-toggle="tab" href="#careers12">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison12">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison12">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -879,9 +880,9 @@
       {% endfor %}
     </div>
     <div id="courses12" class="tab-pane fade">
-      <h3>{{ recommendation_set.12.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.12.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.12.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.12.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -899,7 +900,7 @@
       {% endfor %}
     </div>
     <div id="careers12" class="tab-pane fade">
-      <h3>{{ recommendation_set.12.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.12.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.12.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -919,7 +920,7 @@
       {% endfor %}
     </div>
     <div id="comparison12" class="tab-pane fade">
-      <h5>{{ recommendation_set.12.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.12.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.12.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -935,7 +936,7 @@
     <li class="active"><a data-toggle="tab" href="#home13">About</a></li>
     <li><a data-toggle="tab" href="#courses13">Courses</a></li>
     <li><a data-toggle="tab" href="#careers13">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison13">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison13">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -949,9 +950,9 @@
       {% endfor %}
     </div>
     <div id="courses13" class="tab-pane fade">
-      <h3>{{ recommendation_set.13.program.name }} Courses</h3>
+      <!-- <h3>{{ recommendation_set.13.program.name }} Courses</h3> -->
       <p>{{ recommendation_set.13.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.13.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -969,7 +970,7 @@
       {% endfor %}
     </div>
     <div id="careers13" class="tab-pane fade">
-      <h3>{{ recommendation_set.13.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.13.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.13.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -989,7 +990,7 @@
       {% endfor %}
     </div>
     <div id="comparison13" class="tab-pane fade">
-      <h5>{{ recommendation_set.13.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.13.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.13.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
@@ -1005,7 +1006,7 @@
     <li class="active"><a data-toggle="tab" href="#home14">About</a></li>
     <li><a data-toggle="tab" href="#courses14">Courses</a></li>
     <li><a data-toggle="tab" href="#careers14">Careers</a></li>
-    <li><a data-toggle="tab" href="#comparison14">Comparison</a></li>
+    <li><a data-toggle="tab" href="#comparison14">Compared To</a></li>
   </ul>
 
   <div class="tab-content">
@@ -1021,7 +1022,7 @@
     <div id="courses14" class="tab-pane fade">
       <h3>{{ recommendation_set.14.program.name }} Courses</h3>
       <p>{{ recommendation_set.14.course.course }}</p>
-      <h4>First Year Courses</h4>
+      <h4>Sample First Year Courses</h4>
       {% for crs in course_set %}
       {% if crs.program.code == recommendation_set.14.code %}
           {% if crs.course_type.option == "First Year Course" %}
@@ -1039,7 +1040,7 @@
       {% endfor %}
     </div>
     <div id="careers14" class="tab-pane fade">
-      <h3>{{ recommendation_set.14.program.name }} Careers</h3>
+      <!-- <h3>{{ recommendation_set.14.program.name }} Careers</h3> -->
       <p>{{ recommendation_set.14.career.career }}</p>
       <h4>Sample Co-op Jobs</h4>
       {% for cars in career_set %}
@@ -1059,7 +1060,7 @@
       {% endfor %}
     </div>
     <div id="comparison14" class="tab-pane fade">
-      <h5>{{ recommendation_set.14.program.name }} Compared To...</h5>
+      <!-- <h5>{{ recommendation_set.14.program.name }} Compared To...</h5> -->
       {% for vs in comparison_set %}
       {% if vs.recommendation.code == recommendation_set.14.code %} <p><strong>{{vs.program_2.name}}</strong></p>
       <p>{{ vs.comparison }}</p>
