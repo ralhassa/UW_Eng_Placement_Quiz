@@ -72,6 +72,19 @@ button {
     text-decoration: none;
 }
 
+a:link {
+    color: #57058B;
+  }
+a:visited {
+    color: #733787;
+  }
+a:hover {
+    color: #57058B;
+  }
+a:active {
+    color: #733787;
+  }
+
 /* The Modal (background) */
 .infoModal {
     display: none; /* Hidden by default */
