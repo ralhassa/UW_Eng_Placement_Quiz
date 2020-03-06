@@ -29,7 +29,9 @@ input[type='radio']:after, input[type='checkbox']:after {
 }
 
 input[type='checkbox']:after {
-    margin-right: 10px;
+    margin-right: 20px;
+    left: 0;
+
 }
 
 input[type='radio']:checked:after, input[type='checkbox']:checked:after {

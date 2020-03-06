@@ -93,22 +93,29 @@
                                     <div id="courses13" class="tab-pane fade">
                                       <!-- <h3>{{ recommendation_set.13.program.name }} Courses</h3> -->
                                       <p>{{ recommendation_set.13.course.course }}</p>
-                                      <h4>Sample First Year Courses</h4>
-                                      {% for crs in course_set %}
-                                      {% if crs.program.code == recommendation_set.13.code %}
-                                          {% if crs.course_type.option == "First Year Course" %}
-                                          <p>{{ crs.course }}</p>
-                                          {% endif %}
-                                      {% endif %}
-                                      {% endfor %}
-                                      <h4>Sample Upper Year Courses</h4>
-                                      {% for crs in course_set %}
-                                      {% if crs.program.code == recommendation_set.13.code %}
-                                          {% if crs.course_type.option == "Upper Year Course" %}
-                                          <p>{{ crs.course }}</p>
-                                          {% endif %}
-                                      {% endif %}
-                                      {% endfor %}
+                                      <div class="row">
+                                          <div class="column">
+                                                <h4>Sample First Year Courses</h4>
+                                                {% for crs in course_set %}
+                                                {% if crs.program.code == recommendation_set.13.code %}
+                                                    {% if crs.course_type.option == "First Year Course" %}
+                                                    <p>{{ crs.course }}</p>
+                                                    {% endif %}
+                                                {% endif %}
+                                                {% endfor %}
+
+                                          </div>
+                                          <div class="column">
+                                                <h4>Sample Upper Year Courses</h4>
+                                                {% for crs in course_set %}
+                                                {% if crs.program.code == recommendation_set.13.code %}
+                                                    {% if crs.course_type.option == "Upper Year Course" %}
+                                                    <p>{{ crs.course }}</p>
+                                                    {% endif %}
+                                                {% endif %}
+                                                {% endfor %}
+                                          </div>
+                                      </div>
                                     </div>
                                     <div id="careers13" class="tab-pane fade">
                                       <!-- <h3>{{ recommendation_set.13.program.name }} Careers</h3> -->

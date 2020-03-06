@@ -12,6 +12,16 @@
     overflow: scroll;
 
 }
+.column {
+    float: left;
+    width: 50%;
+    }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
 a, a:hover, a:after, a:visited {
     color: red;
 }

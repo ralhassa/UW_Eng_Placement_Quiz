@@ -17,6 +17,18 @@ a, a:hover, a:after, a:visited {
     height: 100px;
     top: 0;
     background-color: white;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .nav.nav-tabs {
