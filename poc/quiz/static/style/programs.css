@@ -23,12 +23,15 @@ a, a:hover, a:after, a:visited {
 .column {
     float: left;
     width: 50%;
+    position: relative;
+    padding-left: 20px;
 }
 
 .row:after {
     content: "";
     display: table;
     clear: both;
+    position: relative;
 }
 
 .nav.nav-tabs {
