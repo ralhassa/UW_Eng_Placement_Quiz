@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
     <div class="title">
-        <h2>These are the suggestions for you</h2>
+        <h2>These Are Your Results</h2>
     </div>
             <div class="sidenav">
                     <div class="link">
@@ -202,7 +202,6 @@
                                 {% for vs in comparison_set %}
                                 {% if vs.recommendation.code == recommendation_set.1.code %} <p><strong>{{vs.program_2.name}}</strong></p>
                                 <p>{{ vs.comparison }}</p>
-                                <p> Read more about this program  <a href="{{abt.hyperlink}}">here</a></p>
                                 {% endif %}
                                 {% endfor %}
                               </div>
