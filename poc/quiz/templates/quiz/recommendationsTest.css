@@ -12,6 +12,9 @@
     overflow: scroll;
 
 }
+a, a:hover, a:after, a:visited {
+    color: red;
+}
 
 .program{
     display:none;

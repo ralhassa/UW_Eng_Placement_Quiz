@@ -26,6 +26,9 @@
     overflow: scroll;
 
 }
+a, a:hover, a:after, a:visited {
+    color: #58058B;
+}
 .sidenav a {
     display: block;
     padding: 16px;
