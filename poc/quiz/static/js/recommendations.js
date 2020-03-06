@@ -1,8 +1,11 @@
 $(document).ready(function() {
-  // getting the information from the backend
-
-    $("#see").click(function() {
-        $("#hiddenRecommendations").slideDown();
-        $("#see").hide();
-    });
-  });
+  $("#link0").toggleClass("activelink");
+  $("#link1").toggleClass("activelink");
+  $("#program0").toggle();
+  $("#program1").toggle();
+  $(".link > a").click(function() {             
+      $(this).toggleClass("activelink");          
+      $(this.hash).toggle();
+  })
+  
+});
