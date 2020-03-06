@@ -1,0 +1,36 @@
+.content {
+    padding: 0px 10px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-top: 20px;
+    overflow: scroll;
+
+}
+a, a:hover, a:after, a:visited {
+    color: #58058B;
+}
+.title {
+    width: 100%;
+    height: 100px;
+    top: 0;
+    background-color: white;
+}
+
+.nav.nav-tabs {
+    background: #D0B4E7;
+    /* color: #57058B; */
+}
+.nav.nav-tabs a {
+    color: #57058B;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    background-color: #57058B;
+    color: #D0B4E7;
+}
+
+.tab-content{
+    background-color: #FAFAFA;
+}
