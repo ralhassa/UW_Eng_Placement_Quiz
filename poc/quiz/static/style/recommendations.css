@@ -1,8 +1,5 @@
 .content {
-    /* margin-left: 160px; Same as the width of the sidenav */
-    /* font-size: 28px; Increased text to enable scrolling */
     padding: 0px 10px;
-    /* background-color: yellow; */
     height: calc(100% - 100px);
     width: calc(100% - 220px);
     position: absolute;
@@ -18,7 +15,7 @@
 }
 
 .sidenav { 
-    min-height: calc(100% - 100px);
+    height: calc(100% - 100px);
     width: 220px;
     position: absolute;
     z-index: 1;
