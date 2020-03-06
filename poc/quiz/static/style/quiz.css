@@ -28,9 +28,9 @@ input[type='radio']:after, input[type='checkbox']:after {
     border: 2px solid white;
 }
 
-input[type='checkbox']:after {
-    margin-right: 20px;
-    left: 0;
+input[type='checkbox']{
+    margin-right: -20px;
+    margin-left: 0;
 
 }
 
