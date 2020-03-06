@@ -1,6 +1,6 @@
 .content {
     padding: 0px 10px;
-    height: 100%;
+    height: calc(100% - 100px);
     width: 100%;
     position: absolute;
     left: 0;
