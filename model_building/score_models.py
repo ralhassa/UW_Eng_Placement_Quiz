@@ -59,6 +59,17 @@ def get_mclass_accuracy(temp_model_name,model,test_array,test_actual):
     accuracy = metrics.accuracy_score(test_pred,test_actual)
     return accuracy
 
+def get_mclass_topN(temp_model_name,model,test_array,test_actual,topN):
+    topN_scores = []
+    for i in range(len(test_array)):
+        prediction = model.predict_proba([test_array[i]])
+        probs = sort_probability_dict(retrieve_prediction_labels(model,prediction))[2][:topN]
+        if INV_INDEX_PROGRAM[test_actual[i]] in probs:
+            topN_scores.append(1)
+        else:
+            topN_scores.append(0)
+    return mean(topN_scores)
+
 def get_mclass_t3(temp_model_name,model,test_array,test_actual):
     t3_scores = []
     for i in range(len(test_array)):
@@ -72,7 +83,6 @@ def get_mclass_t3(temp_model_name,model,test_array,test_actual):
         except:
             t3 = 0
         t3_scores.append(t3)
-
     return mean(t3_scores)
 
 def get_mclass_rr(temp_model_name,model,test_array,test_actual):
@@ -143,6 +153,102 @@ def get_mclass_reassignment(temp_model_name,model):
             'drawing',
             'essay'
         ]
+    m0 =  [
+        'problem_type',
+        'creative',
+        'outdoors',
+        'career',
+        'group_work',
+        'liked_courses',
+        'disliked_courses',
+        'programming',
+        'join_clubs',
+        'not_clubs',
+        'liked_projects',
+        'disliked_projects',
+        'tv_shows',
+        'alternate_degree',
+        'expensive_equipment',
+        'drawing',
+        'essay'
+        ]
+
+    m2 =  [
+            'career',
+            'liked_courses',
+            'join_clubs',
+            'alternate_degree'
+            ]
+
+    m3 =  [
+            'career'
+            ]
+
+    m4 =  [
+            'liked_courses'
+            ]
+
+    m5 =  [
+            'join_clubs'
+            ]
+
+    m6 =  [
+            'alternate_degree'
+            ]
+
+    m7 =  [
+            'career',
+            'liked_courses'
+            ]
+
+    m8 =  [
+            'career',
+            'join_clubs'
+            ]
+
+    m9 =  [
+            'career',
+            'alternate_degree'
+            ]
+
+    m10 =  [
+            'liked_courses',
+            'join_clubs'
+            ]
+
+    m11 =  [
+            'liked_courses',
+            'alternate_degree'
+            ]
+
+    m12 =  [
+            'join_clubs',
+            'alternate_degree'
+            ]
+
+    m13 =  [
+            'career',
+            'liked_courses',
+            'join_clubs'
+            ]
+
+    m14 =  [
+            'career',
+            'join_clubs',
+            'alternate_degree'
+            ]
+
+    m15 =  [
+            'career',
+            'liked_courses',
+            'alternate_degree'
+            ]
+
+    m16 =  [
+            'liked_courses',
+            'join_clubs',
+            'alternate_degree'
+            ]
 
     # Loading unhappy data
     if 'le' in model_name:
@@ -155,6 +261,134 @@ def get_mclass_reassignment(temp_model_name,model):
 
     elif 'ohe' in model_name:
         tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm0' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m0,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm2' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m2,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm3' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m3,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm4' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m4,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm5' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m5,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm6' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m6,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm7' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m7,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm8' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m8,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm9' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m9,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm10' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m10,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm11' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m11,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm12' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m12,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm13' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m13,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm14' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m14,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm15' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m15,column_list = column_list,drop_not_happy='NH',data_balance=False)
+
+        tG_df = tG_df.reset_index()
+        tG_df = tG_df.drop(['id'], axis=1)
+        model_data = pd.read_csv('exported_model_files/dataframes/'+model_name+'.csv',dtype=str)
+        tG_df = tG_df[list(model_data.columns)].head(30)
+
+    elif 'm16' in model_name:
+        tG_df = get_merged_encoded_data(directory = directory,model_name =model_name,one_hot_encode=m16,column_list = column_list,drop_not_happy='NH',data_balance=False)
 
         tG_df = tG_df.reset_index()
         tG_df = tG_df.drop(['id'], axis=1)
