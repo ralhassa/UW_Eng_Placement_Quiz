@@ -50,6 +50,10 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
     data.expensive_equipment = data.expensive_equipment.map(READ_EQUIPMENT)
     data.drawing = data.drawing.map(READ_DRAWING)
     data.essay = data.essay.map(READ_ESSAY)
+    try:
+        data.new_programming = data.new_programming.map(READ_NEW_PROGRAMMING)
+    except:
+        print("new programming question not included")
 
     # Cleaning industry data
     data.index.name = 'id'

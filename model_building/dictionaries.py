@@ -20,7 +20,8 @@ READ_HEADERS = {
                 'How do you feel about working with expensive equipment?':'expensive_equipment',
                 'How would you describe your drawing abilities?':'drawing',
                 'You have an assignment to write an essay about anything you want. How does that make you feel?':'essay',
-                "What is your gender?  **We're asking this to discover any gender biases in our questions**":'gender'
+                "What is your gender?  **We're asking this to discover any gender biases in our questions**":'gender',
+                "What was the extent of your programming experience prior to entering Engineering at the University of Waterloo?":'new_programming'
                 }
 
 READ_PROGRAMS = {
@@ -173,6 +174,13 @@ READ_ESSAY = {
             'Annoyed. I would much rather be given a topic with clear instructions.':'no',
             'A bit apprehensive. I get overwhelmed with so many options.':'partial'
             }
+
+READ_NEW_PROGRAMMING = {
+                'No experience':'none',
+                'Minimal experience':'minimal',
+                'A decent amount of experience':'decent',
+                'Lots of experience':'lots'
+                }
 
 INDEX_PROGRAM = {
                 'mech': 9,
