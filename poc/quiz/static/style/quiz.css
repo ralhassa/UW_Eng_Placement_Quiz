@@ -33,6 +33,11 @@ input[type='checkbox']{
     margin-right: 0;
 
 }
+input[type='checkbox'].label-text{
+    margin-left: 20px;
+    margin-right: 0;
+
+}
 
 input[type='radio']:checked:after, input[type='checkbox']:checked:after {
         width: 15px;

@@ -1,3 +1,8 @@
+.title {
+    font-size: 48px;
+    text-align: center;
+    font-weight: bolder;
+}
 .content {
     /* margin-left: 160px; Same as the width of the sidenav */
     /* font-size: 28px; Increased text to enable scrolling */
