@@ -92,3 +92,19 @@ a, a:hover, a:after, a:visited {
 .tab-content{
     background-color: #FAFAFA;
 }
+
+#submitButton {
+    padding:7px 120px; 
+    background:#57058B; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color: white;
+    position: absolute;
+    margin-left: -150px;
+    margin-right: 0;
+}
+.button {
+    text-align: center;
+}

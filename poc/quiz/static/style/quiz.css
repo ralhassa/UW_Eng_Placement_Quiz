@@ -35,38 +35,45 @@ input[type='checkbox']{
 }
 
 input[type='radio']:checked:after, input[type='checkbox']:checked:after {
-        width: 15px;
-        height: 15px;
-        border-radius: 15px;
-        top: -2px;
-        left: -1px;
-        position: relative;
-        background-color: #57058B;
-        content: '';
-        display: inline-block;
-        visibility: visible;
-        border: 2px solid white;
-    }
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #57058B;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+.button {
+    text-align: center;
+}
 
-    #submitButton {
-        padding:5px 15px; 
-        background:#57058B; 
-        border:0 none;
-        cursor:pointer;
-        -webkit-border-radius: 5px;
-        border-radius: 5px; 
-        color: white;
-        float: right;
+#submitButton {
+    padding:7px 120px; 
+    background:#57058B; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color: white;
+    position: absolute;
+    margin-left: -150px;
+    margin-right: 0;
+}
 
-    }
-
-    #submitButton:disabled{
-        padding:5px 15px; 
-        background:gray; 
-        border:0 none;
-        cursor:pointer;
-        -webkit-border-radius: 5px;
-        border-radius: 5px; 
-        color:white;
-    }
+#submitButton:disabled{
+    padding:7px 120px; 
+    background:gray; 
+    border:0 none;
+    cursor:not-allowed;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color: white;
+    position: absolute;
+    margin-left: -150px;
+    margin-right: 0;
+}
     
