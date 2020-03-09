@@ -530,3 +530,65 @@ def get_bclass_reassignment(test_array,model_name,test_data_t7):
     reassignment = 1 - metrics.accuracy_score(test_pred,test_actual)
 
     return reassignment
+
+def check_gender_bias(directory,model_name,column_list):
+    drop_gender=False
+
+    gender_data = get_clean_data(directory,drop_gender=drop_gender)[['program','gender']]
+    gender_data = gender_data.reset_index()
+    gender_data = gender_data.drop(['id'], axis=1)
+
+    test_data = get_encoded_data(directory,model_name)[0]
+    test_data = test_data[column_list]
+    test_data = test_data.reset_index()
+    test_data = test_data.drop(['program','id'], axis=1)
+
+    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
+    index_dict = pickle.load(pkl_file)
+    new_vector = np.zeros(len(index_dict))
+
+    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
+    model = pickle.load(pkl_file)
+
+    predictions ={}
+    for i in range(0,len(test_data)):
+        vector = np.asarray(test_data.loc[i,])
+        vector = np.array(vector).reshape(1, -1)
+        predictions[i] = INV_INDEX_PROGRAM[model.predict(vector)[0]]
+
+    gender_data['predicted_program'] = pd.Series(predictions)
+    gender_count = {}
+    for i in range(0,len(gender_data)):
+        try:
+            program_count = gender_count[gender_data.loc[i,'gender']]
+            try:
+                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
+            except:
+                program_count[gender_data.loc[i,'predicted_program']] = 0
+
+            gender_count[gender_data.loc[i,'gender']] = program_count
+        except:
+            gender_count[gender_data.loc[i,'gender']] = {
+                                                            'mech': 0,
+                                                            'bmed': 0,
+                                                            'swe': 0,
+                                                            'tron': 0,
+                                                            'cive': 0,
+                                                            'chem': 0,
+                                                            'syde': 0,
+                                                            'msci': 0,
+                                                            'ce': 0,
+                                                            'elec': 0,
+                                                            'nano': 0,
+                                                            'geo': 0,
+                                                            'env': 0,
+                                                            'arch-e': 0,
+                                                            'arch': 0
+                                                            }
+            program_count = gender_count[gender_data.loc[i,'gender']]
+            try:
+                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
+            except:
+                program_count[gender_data.loc[i,'predicted_program']] = 0
+            gender_count[gender_data.loc[i,'gender']] = program_count
+    return gender_count

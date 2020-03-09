@@ -127,9 +127,13 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
-def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
-    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance)
-    df = df[column_list]
+def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False,drop_gender=True):
+    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance,drop_gender=drop_gender)
+    if drop_gender:
+        df = df[column_list]
+    else:
+        column_list.append('gender')
+        df = df[column_list]
 
     col_list = list(df.columns)
     encoded_dict_list = []
@@ -169,8 +173,8 @@ def get_encoded_dict(model_name):
         encoded_dict[col] = row
     return encoded_dict
 
-def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
-    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance)[0]
+def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False,drop_gender=True):
+    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance,drop_gender=drop_gender)[0]
     df = pd.get_dummies(df,columns=one_hot_encode)
     return df
 
@@ -405,68 +409,6 @@ def check_skew(model_name,column_list):
 
     return re
 
-def check_gender_bias(directory,model_name,column_list):
-    drop_gender=False
-
-    gender_data = get_clean_data(directory,drop_gender=drop_gender)[['program','gender']]
-    gender_data = gender_data.reset_index()
-    gender_data = gender_data.drop(['id'], axis=1)
-
-    test_data = get_encoded_data(directory,model_name)[0]
-    test_data = test_data[column_list]
-    test_data = test_data.reset_index()
-    test_data = test_data.drop(['program','id'], axis=1)
-
-    pkl_file = open('exported_model_files/metadata/'+model_name+'_cat', 'rb')
-    index_dict = pickle.load(pkl_file)
-    new_vector = np.zeros(len(index_dict))
-
-    pkl_file = open('exported_model_files/models/'+model_name+'.pkl', 'rb')
-    model = pickle.load(pkl_file)
-
-    predictions ={}
-    for i in range(0,len(test_data)):
-        vector = np.asarray(test_data.loc[i,])
-        vector = np.array(vector).reshape(1, -1)
-        predictions[i] = INV_INDEX_PROGRAM[model.predict(vector)[0]]
-
-    gender_data['predicted_program'] = pd.Series(predictions)
-    gender_count = {}
-    for i in range(0,len(gender_data)):
-        try:
-            program_count = gender_count[gender_data.loc[i,'gender']]
-            try:
-                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
-            except:
-                program_count[gender_data.loc[i,'predicted_program']] = 0
-
-            gender_count[gender_data.loc[i,'gender']] = program_count
-        except:
-            gender_count[gender_data.loc[i,'gender']] = {
-                                                            'mech': 0,
-                                                            'bmed': 0,
-                                                            'swe': 0,
-                                                            'tron': 0,
-                                                            'cive': 0,
-                                                            'chem': 0,
-                                                            'syde': 0,
-                                                            'msci': 0,
-                                                            'ce': 0,
-                                                            'elec': 0,
-                                                            'nano': 0,
-                                                            'geo': 0,
-                                                            'env': 0,
-                                                            'arch-e': 0,
-                                                            'arch': 0
-                                                            }
-            program_count = gender_count[gender_data.loc[i,'gender']]
-            try:
-                program_count[gender_data.loc[i,'predicted_program']] =program_count[gender_data.loc[i,'predicted_program']] + 1
-            except:
-                program_count[gender_data.loc[i,'predicted_program']] = 0
-            gender_count[gender_data.loc[i,'gender']] = program_count
-    return gender_count
-
 def check_happy_bias(directory,model_name,column_list):
     drop_gender = True
     drop_not_happy = 'NH'
@@ -548,24 +490,3 @@ def check_happy_bias(directory,model_name,column_list):
 
             pred_to_orig[str(happy_data.loc[i,'predicted_program']+'-orig')] = prediction_count
     return pred_to_orig
-'''
-Might need these later
-
-#
-# def merged_encoding(directory,label_encode,one_hot_encode,drop_pref=False):
-#
-#     df = get_clean_data(directory)
-#
-#     if drop_pref == True:
-#         df = df[df['current_average']!='Prefer not to say']
-#
-#     for col in label_encode:
-#         keys = df[col].unique()
-#         le = preprocessing.LabelEncoder()
-#         le.fit(list(keys))
-#         df[col] = le.transform(list(df[col]))
-#
-#     df = pd.get_dummies(df,columns=one_hot_encode)
-#
-#     return df
-'''
