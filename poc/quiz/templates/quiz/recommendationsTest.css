@@ -4,10 +4,7 @@
     font-weight: bolder;
 }
 .content {
-    /* margin-left: 160px; Same as the width of the sidenav */
-    /* font-size: 28px; Increased text to enable scrolling */
     padding: 0px 10px;
-    /* background-color: yellow; */
     height: calc(100% - 100px);
     width: calc(100% - 220px);
     position: absolute;
@@ -39,32 +36,35 @@ a, a:hover, a:after, a:visited {
 }
 
 .sidenav { 
-    height: calc(100% - 100px);
+    height: calc(100% - 200px);
     width: 220px;
     position: absolute;
     z-index: 1;
-    bottom: 0;
+    bottom: 100px;
     left: 0;
     padding-top: 20px;
-    border-right: 5px solid #EEEEEE;
+    /* border-right: 5px solid #EEEEEE; */
     overflow: scroll;
-
 }
 .sidenav a {
     display: block;
     padding: 16px;
     text-decoration: none;
     color: #000000;
+    border-right: 5px solid #EEEEEE;
 }
 .sidenav a:hover {
     background-color: #DFDFDF;
     text-decoration: none;
     color: #000000;
-
+    border-right: 5px solid #EEEEEE;
 }
 .activelink {
     background-color: #EEEEEE;
     color: #58058B !important;
+    /* border-right: 5px solid #58058B !important; */
+    border: 3px solid #58058B !important;
+    /* box-shadow: -5px 0px 0px 0px #58058B, 5px 0px 0px 0px #58058B; */
 }
 .title {
     width: 100%;
@@ -72,11 +72,6 @@ a, a:hover, a:after, a:visited {
     top: 0;
     background-color: white;
 }  
-  
-
-
-
-
 .nav.nav-tabs {
     background: #D0B4E7;
     /* color: #57058B; */
