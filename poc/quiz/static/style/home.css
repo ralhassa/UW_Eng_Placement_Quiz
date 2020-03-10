@@ -54,20 +54,24 @@
   text-align: center;
   transition: all 0.3s ease-out;
 } */
+.links {
+  margin: auto;
+}
 .button {
   padding:7px 120px; 
   background:#D0B4E7; 
-  border:0 solid #57058B;
+  border:2px solid #57058B;
   cursor:pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px; 
-  color: white;
+  color: #57058B;
   position: absolute;
   margin-left: -150px;
   margin-right: 0;
   text-align: center;
   transition: all 0.3s ease-out;
-  display: inline-block;
+  display: block;
+  text-decoration: none;
 }
 
 /* button:hover {
