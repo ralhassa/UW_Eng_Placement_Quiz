@@ -21,9 +21,11 @@
                 <button class="quizButton">Start Quiz</button>
             </form> -->
             <div class="links">
-                <a class="button" href="{% url 'startQuiz' %}">Start Quiz</a>
-                <a class="button" href="#infoPopup">About</a>
-                <a class="button" href="{% url 'programInfo' %}" target="_blank">Programs</a>
+                <ul>
+                    <a class="button" href="{% url 'startQuiz' %}">Start Quiz</a>
+                    <a class="button" href="#infoPopup">About</a>
+                    <a class="button" href="{% url 'programInfo' %}" target="_blank">Programs</a>
+                </ul>
             </div>
         </div>
         <div class="infoPopup" id="infoPopup">
