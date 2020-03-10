@@ -29,16 +29,22 @@
     }
 
 .sidenav { 
-    height: calc(100% - 100px);
+    height: calc(100% - 250px);
     width: 220px;
     position: absolute;
     z-index: 1;
-    bottom: 0;
+    bottom: 150px;
     left: 0;
     padding-top: 20px;
     border-right: 5px solid #EEEEEE;
     overflow: scroll;
 
+}
+.sidenav.emailSection {
+    width: 220px;
+    bottom: 0;
+    height: 150px;
+    left: 0;
 }
 a, a:hover, a:after, a:visited {
     color: #58058B;
