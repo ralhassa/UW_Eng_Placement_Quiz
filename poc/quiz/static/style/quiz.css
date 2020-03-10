@@ -49,6 +49,7 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
 }
 .button {
     text-align: center;
+    height: 150px;
 }
 
 #submitButton {
@@ -62,8 +63,6 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
     position: absolute;
     margin-left: -150px;
     margin-right: 0;
-    padding-bottom: 40px;
-    padding-top: 20px;
 }
 
 #submitButton:disabled{
