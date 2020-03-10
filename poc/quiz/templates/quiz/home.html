@@ -17,9 +17,10 @@
                 <p>Your starting point for discovery!</p>
                 <p>Learn more about the different programs offered at the University of Waterlooand which ones align most with your interests</p>
             </div>
-            <form action="{% url 'startQuiz' %}">
+            <!-- <form action="{% url 'startQuiz' %}">
                 <button class="quizButton">Start Quiz</button>
-            </form>
+            </form> -->
+            <a class="button" href="{% url 'startQuiz' %}">Start Quiz</a>
             <a class="button" href="#infoPopup">About</a>
             <a class="button" href="{% url 'programInfo' %}" target="_blank">Programs</a>
         </div>
