@@ -40,7 +40,7 @@
   font-size: medium;
   font-weight: bold;
 }
-button {
+/* button {
   padding:7px 120px; 
   background:#D0B4E7; 
   border:0 solid #57058B;
@@ -53,7 +53,7 @@ button {
   margin-right: 0;
   text-align: center;
   transition: all 0.3s ease-out;
-}
+} */
 .button {
   padding:7px 120px; 
   background:#D0B4E7; 
@@ -67,11 +67,12 @@ button {
   margin-right: 0;
   text-align: center;
   transition: all 0.3s ease-out;
+  display: inline-block;
 }
 
-button:hover {
+/* button:hover {
   background:#57058B; 
-}
+} */
 .button:hover {
   background:#57058B; 
   color: #D0B4E7;
@@ -84,7 +85,7 @@ button:hover {
   right: 20%;
 }
 
-.homepage > a {
+/* .homepage > a {
   position: absolute;
   display: inline-block;
   right: 0;
@@ -103,7 +104,7 @@ a:hover {
 }
 a:active {
   color: #733787;
-}
+} */
 
 .infoPopup {
   position: fixed;
