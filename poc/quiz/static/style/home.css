@@ -54,8 +54,25 @@ button {
   text-align: center;
   transition: all 0.3s ease-out;
 }
+.button {
+  padding:7px 120px; 
+  background:#D0B4E7; 
+  border:0 solid #57058B;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  color: white;
+  position: absolute;
+  margin-left: -150px;
+  margin-right: 0;
+  text-align: center;
+  transition: all 0.3s ease-out;
+}
 
 button:hover {
+  background:#57058B; 
+}
+.button:hover {
   background:#57058B; 
 }
 .quizButton {

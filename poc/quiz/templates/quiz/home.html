@@ -20,10 +20,10 @@
             <form action="{% url 'startQuiz' %}">
                 <button class="quizButton">Start Quiz</button>
             </form>
-            <button class="learnButton" >Learn More</button>
-            <a href="{% url 'programInfo' %}" target="_blank">Programs</a>
+            <a class="button" href="#infoPopup">About</a>
+            <a class="button" href="{% url 'programInfo' %}" target="_blank">Programs</a>
         </div>
-        <div class="infoPopup">
+        <div class="infoPopup" id="infoPopup">
             <div class="popup">
                     <h2>About</h2>
                     <a class="close" href="#">&times;</a>
