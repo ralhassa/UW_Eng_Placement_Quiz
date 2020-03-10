@@ -74,6 +74,7 @@ button:hover {
 }
 .button:hover {
   background:#57058B; 
+  color: #D0B4E7;
 }
 .quizButton {
   left: 20%;
