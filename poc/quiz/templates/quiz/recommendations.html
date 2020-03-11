@@ -15,8 +15,12 @@
 
 <body>
     <div class="wrapper">
+        <form>
+          <a href="https://waterlooengineeringquiz.herokuapp.com/quiz/" class="button">Go Back To Quiz</a>
+            <!-- <input type="button" value="No, really, go back!" onclick="history.go(-1)"> -->
+          </form>
     <div class="title">
-        <h2>These Are Your Results</h2>
+        <h2>Your Results Are In</h2>
         <p>The engineering programs listed to the left are all the programs offered at the University of Waterloo, listed in descending order, in terms of best fit. </p>
     </div>
             <div class="sidenav">
@@ -70,7 +74,7 @@
                       <form action="/email_results.php">
                         <p>Enter your email below to get your results mailed to you</p>
                         <input type="email" id="email" name="email">
-                        <input type="submit" id="emailSubmit">
+                        <input type="submit" class="button" id="emailSubmit">
                       </form>
                     </div>
             <div class="content">
