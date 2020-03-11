@@ -74,7 +74,7 @@ $('input[name="disliked_courses"]').click(function() {
     if($(this).attr('value') == 'autoshop' || 'biology' || 'business' || 'chemistry' || 'computer_science'|| 'geography' || 'history' || 'language_arts' || 'math'|| 'physics' || 'visual_arts')
   {
     $('html, body').animate({
-      scrollTop: $("#question9").offset().top
+      scrollTop: $("#question10").offset().top
     }, 600);
     $("#collapse10").collapse('show');
     //   $("#collapse8").collapse('hide');
@@ -124,7 +124,7 @@ $('input[name="disliked_projects"]').click(function() {
     if($(this).attr('value') == 'prototyping_instrument' || 'olympic_village' || 'robot' || 'supercomputer' || 'mars_water_treatment'|| 'battery' || 'uber_pool')
   {
     $('html, body').animate({
-      scrollTop: $("#question14").offset().top
+      scrollTop: $("#question15").offset().top
     }, 600);
     $("#collapse15").collapse('show');
     //   $("#collapse13").collapse('hide');
@@ -144,7 +144,7 @@ $('input[name="alternate_degree"]').click(function() {
     if($(this).attr('value') == 'applied_science' || 'business' || 'cs' || 'econ' || 'lit'|| 'env' || 'fin' || 'geo' || 'design'|| 'health' || 'marketing' || 'math' || 'poli_sci'|| 'psych' || 'visual_arts')
   {
     $('html, body').animate({
-      scrollTop: $("#question16").offset().top
+      scrollTop: $("#question17").offset().top
     }, 600);
     $("#collapse17").collapse('show');
     //   $("#collapse15").collapse('hide');
