@@ -1,14 +1,14 @@
 $(document).ready(function() {
-	$('input[name="problem_type"]').click(function() {
-  	if($(this).attr('value') == 'defined' || 'investigate' || 'discover')
-    {
-      $('html, body').animate({
-        scrollTop: $("#question2").offset().top
-    }, 600);
-      $("#collapse2").collapse('show');
-        // $("#collapse1").collapse('hide');
-    }
-});
+// 	$('input[name="problem_type"]').click(function() {
+//   	if($(this).attr('value') == 'defined' || 'investigate' || 'discover')
+//     {
+//       $('html, body').animate({
+//         scrollTop: $("#question2").offset().top
+//     }, 600);
+//       $("#collapse2").collapse('show');
+//         // $("#collapse1").collapse('hide');
+//     }
+// });
   $('input[name="creative"]').click(function() {
     if($(this).attr('value') == 'creative' || 'somewhat_creative' || 'not_creative')
   {
@@ -76,20 +76,20 @@ $('input[name="disliked_courses"]').click(function() {
     $('html, body').animate({
       scrollTop: $("#question9").offset().top
     }, 600);
-    $("#collapse9").collapse('show');
+    $("#collapse10").collapse('show');
     //   $("#collapse8").collapse('hide');
   }
 });
-$('input[name="programming"]').click(function() {
-    if($(this).attr('value') == 'complete' || 'partial' || 'interested' || 'no')
-  {
-    $('html, body').animate({
-      scrollTop: $("#question10").offset().top
-    }, 600);
-    $("#collapse10").collapse('show');
-    //   $("#collapse9").collapse('hide');
-  }
-});
+// $('input[name="programming"]').click(function() {
+//     if($(this).attr('value') == 'complete' || 'partial' || 'interested' || 'no')
+//   {
+//     $('html, body').animate({
+//       scrollTop: $("#question10").offset().top
+//     }, 600);
+//     $("#collapse10").collapse('show');
+//     //   $("#collapse9").collapse('hide');
+//   }
+// });
 $('input[name="join_clubs"]').click(function() {
     if($(this).attr('value') == 'art/design' || 'autoshop' || 'business' || 'consulting' || 'environment'|| 'robotics' || 'hacker_club' || 'student_council')
   {
@@ -126,40 +126,40 @@ $('input[name="disliked_projects"]').click(function() {
     $('html, body').animate({
       scrollTop: $("#question14").offset().top
     }, 600);
-    $("#collapse14").collapse('show');
+    $("#collapse15").collapse('show');
     //   $("#collapse13").collapse('hide');
   }
 });
-$('input[name="tv_shows"]').click(function() {
-    if($(this).attr('value') == 'big_bang_theory' || 'breaking_bad' || 'greys_anatomy' || 'house_hunters' || 'myth_busters'|| 'planet_earth' || 'silicon_valley')
-  {
-    $('html, body').animate({
-      scrollTop: $("#question15").offset().top
-    }, 600);
-    $("#collapse15").collapse('show');
-    //   $("#collapse14").collapse('hide');
-  }
-});
+// $('input[name="tv_shows"]').click(function() {
+//     if($(this).attr('value') == 'big_bang_theory' || 'breaking_bad' || 'greys_anatomy' || 'house_hunters' || 'myth_busters'|| 'planet_earth' || 'silicon_valley')
+//   {
+//     $('html, body').animate({
+//       scrollTop: $("#question15").offset().top
+//     }, 600);
+//     $("#collapse15").collapse('show');
+//     //   $("#collapse14").collapse('hide');
+//   }
+// });
 $('input[name="alternate_degree"]').click(function() {
     if($(this).attr('value') == 'applied_science' || 'business' || 'cs' || 'econ' || 'lit'|| 'env' || 'fin' || 'geo' || 'design'|| 'health' || 'marketing' || 'math' || 'poli_sci'|| 'psych' || 'visual_arts')
   {
     $('html, body').animate({
       scrollTop: $("#question16").offset().top
     }, 600);
-    $("#collapse16").collapse('show');
+    $("#collapse17").collapse('show');
     //   $("#collapse15").collapse('hide');
   }
 });
-$('input[name="expensive_equipment"]').click(function() {
-    if($(this).attr('value') == 'yes' || 'maybe' || 'no')
-  {
-    $('html, body').animate({
-      scrollTop: $("#question17").offset().top
-    }, 600);
-    $("#collapse17").collapse('show');
-    //   $("#collapse16").collapse('hide');
-  }
-});
+// $('input[name="expensive_equipment"]').click(function() {
+//     if($(this).attr('value') == 'yes' || 'maybe' || 'no')
+//   {
+//     $('html, body').animate({
+//       scrollTop: $("#question17").offset().top
+//     }, 600);
+//     $("#collapse17").collapse('show');
+//     //   $("#collapse16").collapse('hide');
+//   }
+// });
 $('input[name="drawing"]').click(function() {
     if($(this).attr('value') == 'good' || 'partial' || 'no')
   {
