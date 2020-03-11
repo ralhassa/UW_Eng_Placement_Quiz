@@ -7,7 +7,7 @@ $(document).ready(function() {
   $("#program2").toggle();
   $(".link > a").click(function() {             
       $(this).toggleClass("activelink");          
-      $(this.hash).toggle();
+      $(this.name).toggle();
   })
   
 });
