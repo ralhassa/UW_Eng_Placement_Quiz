@@ -9,5 +9,8 @@ $(document).ready(function() {
       $(this).toggleClass("activelink");          
       $(this.name).toggle();
   })
-  
 });
+
+function goBack() {
+  window.history.go(-2);
+}
