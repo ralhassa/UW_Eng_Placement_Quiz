@@ -9,6 +9,11 @@ class ProgramResource(resources.ModelResource):
         model = Program
         fields = ('id', 'name',)
 
+class EmailResource(resources.ModelResource):
+    class Meta:
+        model = Email
+        fields = ('id', 'email',)
+
 class DescriptionResource(resources.ModelResource):
     class Meta:
         model = Description
@@ -47,11 +52,14 @@ class ComparisonResource(resources.ModelResource):
 class ResultResource(resources.ModelResource):
     class Meta:
         model = Result
-        fields = ('id', 'email', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay',)
+        fields = ('id', 'time', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay',)
 
 # Defining Admin Objects
 class ProgramAdmin(ImportExportModelAdmin):
     resource_class = ProgramResource
+
+class EmailAdmin(ImportExportModelAdmin):
+    resource_class = EmailResource
 
 class DescriptionAdmin(ImportExportModelAdmin):
     resource_class = DescriptionResource
@@ -79,6 +87,7 @@ class ResultAdmin(ImportExportModelAdmin):
 
 # Registering on Admin Site
 admin.site.register(Program, ProgramAdmin)
+admin.site.register(Email, EmailAdmin)
 admin.site.register(Description, DescriptionAdmin)
 admin.site.register(CareerType, CareerTypeAdmin)
 admin.site.register(CourseType, CourseTypeAdmin)
@@ -87,4 +96,3 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(Recommendation, RecommendationAdmin)
 admin.site.register(Comparison, ComparisonAdmin)
 admin.site.register(Result, ResultAdmin)
-
