@@ -6,6 +6,12 @@ class Program(models.Model):
     def __str__(self):
         return str(self.name)
 
+class Email(models.Model):
+    id = models.AutoField(primary_key=True)
+    email = models.CharField(max_length=200)
+    def __str__(self):
+        return str(self.email)
+
 class Recommendation(models.Model):
     id = models.AutoField(primary_key=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
@@ -60,7 +66,7 @@ class Comparison(models.Model):
 
 class Result(models.Model):
     id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length=200)
+    time = models.CharField(max_length=200)
     problem_type = models.CharField(max_length=200)
     creative = models.CharField(max_length=200)
     outdoors = models.CharField(max_length=200)

@@ -49,3 +49,6 @@ python poc/manage.py migrate --fake routingslip zero
 
 
 python poc/manage.py migrate --fake-initial
+
+
+password = qwerty@12
