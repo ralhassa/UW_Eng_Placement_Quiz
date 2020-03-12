@@ -8,7 +8,17 @@ $msg = wordwrap($msg,70);
 // send email
 mail("someone@example.com","My subject",$msg);
 ?>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+<!-- adding the php to the html page
+    <form name="emailresultsform" method="post" action="emailresults.php"> -->
+>>>>>>> Stashed changes
+=======
+<!-- adding the php to the html page
+    <form name="emailresultsform" method="post" action="emailresults.php"> -->
+>>>>>>> Stashed changes
 
 <?php $yourname		= $_POST['yourname'];
 $youremail		= $_POST['youremail'];
