@@ -36,6 +36,17 @@ body {
 }
 a, a:hover, a:after, a:visited {
     color: red;
+    display: block !important;
+}
+
+ul {
+    position: relative;
+    width: 60%;
+    margin: auto;
+}
+li {
+    list-style-type: none;
+    text-align: center;
 }
 
 .program{
@@ -141,4 +152,22 @@ a, a:hover, a:after, a:visited {
 }
 .hide {
     visibility: hidden;
+}
+.homepageLinks {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    border: 0;
+    color: #FFF;
+    margin: 0px;
+    text-decoration: none;
+    font-family: "Abel";
+    font-size: 160%;
+    }
+.homepageLinks > a {
+    clear: both;
+    display: block;
 }

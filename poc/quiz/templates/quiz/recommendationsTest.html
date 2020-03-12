@@ -9,6 +9,13 @@
     <script type="text/javascript" src= "recommendationsTest.js"></script>
 </head>
 <body>
+        <div class="homepageLinks">
+            <ul>
+                <li><a class="button" id="one" href="{% url 'startQuiz' %}">Start Quiz</a></li>
+                <li><a class="button" id="two" href="{% url 'about' %}" target="_blank">About</a></li>
+                <li><a class="button" id="three" href="{% url 'programInfo' %}" target="_blank">Programs</a></li>
+            </ul>  
+        </div>
     <div class="wrapper">
         <input type="submit" value="&#8249;  Back to Quiz" class="button" id="backButton" onclick="goBack()">
     <div class="title">
@@ -72,6 +79,8 @@
                     </div>
                     <div class="program" id="program2">
                         <p>this is program three</p>
+                        <a>hello</a>
+                        <a>hi</a>
                     </div>
                     <div class="program" id="program3">
                             <h3>{{ recommendation_set.13.program.name }}</h3>
