@@ -11,6 +11,9 @@ from . models import *
 from . data_load import *
 from . activate_model import *
 
+def about(request):
+    return render(request, 'quiz/about.html')
+
 def home(request):
     return render(request, 'quiz/home.html')
 

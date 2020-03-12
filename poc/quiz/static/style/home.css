@@ -1,17 +1,9 @@
-/* .homepage img {
-    max-width: 100%;
-    max-height: 100%;
-} */
-.homepagePicture{
-  min-height: 100%;
-  min-width: 1024px;
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
+body {
+  background-image: url("{% static '/img/homepage.png' %}");
+  background-attachment: fixed ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .homepage {
@@ -58,6 +50,7 @@
   margin: auto;
 }
 .button {
+  display: block;
   padding:7px 120px; 
   background:#D0B4E7; 
   border:2px solid #57058B;
@@ -70,7 +63,6 @@
   margin-right: 0;
   text-align: center;
   transition: all 0.3s ease-out;
-  display: block;
   text-decoration: none;
 }
 
@@ -81,13 +73,7 @@
   background:#57058B; 
   color: #D0B4E7;
 }
-.quizButton {
-  left: 20%;
-}
 
-.learnButton {
-  right: 20%;
-}
 
 /* .homepage > a {
   position: absolute;
@@ -109,52 +95,3 @@ a:hover {
 a:active {
   color: #733787;
 } */
-
-.infoPopup {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.infoPopup:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: gray;
-}
-.popup .close:hover {
-  color:black;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}

@@ -1,3 +1,10 @@
+body {
+    background-image: url('background.png');
+    background-attachment: fixed ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .title {
     font-size: 48px;
     text-align: center;
@@ -19,14 +26,14 @@
     width: 50%;
     position: relative;
     padding-left: 20px;
-    }
+}
 
 .row:after {
     content: "";
     display: table;
     clear: both;
     position: relative;
-    }
+}
 a, a:hover, a:after, a:visited {
     color: red;
 }
@@ -35,6 +42,13 @@ a, a:hover, a:after, a:visited {
     display:none;
 }
 
+.sideBar {
+    width: 220px;
+    height: 100%;
+}
+#backButton {
+
+}
 .sidenav { 
     height: calc(100% - 200px);
     width: 220px;
@@ -63,7 +77,7 @@ a, a:hover, a:after, a:visited {
     background-color: #EEEEEE;
     color: #58058B !important;
     /* border-right: 5px solid #58058B !important; */
-    border: 3px solid #58058B !important;
+    /* border: 3px solid #58058B !important; */
     /* box-shadow: -5px 0px 0px 0px #58058B, 5px 0px 0px 0px #58058B; */
 }
 .title {
@@ -88,67 +102,43 @@ a, a:hover, a:after, a:visited {
     background-color: #FAFAFA;
 }
 
-#submitButton {
-    padding:7px 120px; 
-    background:#57058B; 
-    border:0 none;
+.button {
+    display: block;
+    padding:7px 10px; 
+    background:#D0B4E7; 
+    border:2px solid #57058B;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-    color: white;
+    color: #57058B;
     position: absolute;
-    margin-left: -150px;
-    margin-right: 0;
-}
-.button {
+    /* margin-left: -150px; */
+    /* margin-right: 0; */
     text-align: center;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
 }
 
-.infoPopup {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-  }
-  
-  .infoPopup:target {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .popup {
-    margin: 70px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    width: 30%;
-    position: relative;
-    transition: all 5s ease-in-out;
-  }
-  .popup h2 {
-    margin-top: 0;
-    color: #333;
-  }
-  
-  .popup .close {
+.button:hover {
+    background:#57058B; 
+    color: #D0B4E7;
+}
+
+#backButton {
+    position: relative; 
+    text-align: center;
+    /* left: 0; */
+}
+.fa-eye {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: gray;
-  }
-  .popup .close:hover {
-    color:black;
-  }
-  .popup .content {
-    max-height: 30%;
-    overflow: auto;
-  }
+    right: 0;
+    display: inline;
+    visibility: hidden;
+    padding-right: 5px;
+}
+.show {
+    visibility: visible !important;
+}
+.hide {
+    visibility: hidden;
+}
