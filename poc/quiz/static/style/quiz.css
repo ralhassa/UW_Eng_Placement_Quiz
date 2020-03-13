@@ -64,7 +64,7 @@ input[type='radio']:checked:after, input[type='checkbox']:checked:after {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-    color: white;
+    color: #D0B4E7;
     position: relative;
     margin: auto;
 }
