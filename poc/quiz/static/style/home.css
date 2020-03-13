@@ -22,6 +22,7 @@ ul {
   position: relative;
   width: 60%;
   margin: auto;
+  left: -20px;
 }
 li {
   list-style-type: none;
