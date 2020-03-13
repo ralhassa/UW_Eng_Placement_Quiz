@@ -143,6 +143,9 @@ a, a:hover, a:after, a:visited {
 .hide {
     visibility: hidden;
 }
+#afterSubmit {
+    visibility: hidden;
+}
 
 /* Let's get this party started */
 ::-webkit-scrollbar {

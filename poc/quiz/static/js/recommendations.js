@@ -20,8 +20,13 @@ $(document).ready(function() {
       $("i", this).toggleClass("show hide");
       $(".content").animate({ scrollTop: $(document).height() }, "slow");
   })
+  $('#emailSubmit').bind('click', function(){
+    $('#beforeSubmit').toggleClass("hide");
+    $('#afterSubmit').toggleClass("show");
+  });
 });
 
 function goBack() {
   window.history.go(-1);
 }
+
