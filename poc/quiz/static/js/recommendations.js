@@ -18,7 +18,7 @@ $(document).ready(function() {
       $(this).toggleClass("activelink");          
       $(this.name).toggle();
       $("i", this).toggleClass("show hide");
-      $(".content").animate({ scrollTop: $(document).height() }, "slow");
+      // $(".content").animate({ scrollTop: $(document).height() }, "slow");
   })
   $('#emailSubmit').bind('click', function(){
     $('#beforeSubmit').toggleClass("hide");
