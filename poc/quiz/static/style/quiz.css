@@ -31,7 +31,7 @@ input[type='radio']:after, input[type='checkbox']:after {
 input[type='checkbox']{
     margin-left: -20px;
     margin-right: 7px;
-
+    border-radius: 0 !important;
 }
 
 input[type='radio']:checked:after, input[type='checkbox']:checked:after {
