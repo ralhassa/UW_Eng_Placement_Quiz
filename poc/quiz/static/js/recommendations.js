@@ -20,13 +20,30 @@ $(document).ready(function() {
       $("i", this).toggleClass("show hide");
       // $(".content").animate({ scrollTop: $(document).height() }, "slow");
   })
-  $('#emailSubmit').bind('click', function(){
-    $('#beforeSubmit').toggleClass("hide");
-    $('#afterSubmit').toggleClass("show");
+  // $('#emailSubmit').bind('click', function(){
+  //   $('#beforeSubmit').toggleClass("hide");
+  //   $('#afterSubmit').toggleClass("show");
+  // });
+
+  $('#email').submit(function() {
+        // kick off AJAX
+    $.ajax({
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize(),
+      success: function() {
+        $('#beforeSubmit').toggleClass("hide");
+        $('#afterSubmit').toggleClass("show");
+      }
+    });
+    return false;
   });
+
 });
 
 function goBack() {
   window.history.go(-1);
 }
+
+
 
