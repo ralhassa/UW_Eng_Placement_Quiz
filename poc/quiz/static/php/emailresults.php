@@ -15,4 +15,5 @@ $toSubject 		= "Here are your results";
 $emailBody 		= "$uwatlogo $welcomecopy";
 $message 		= $emailBody;
 // echo "Result have been emailed to $youremail";
-mail($to, $toSubject, $message, $headers);?>
+mail($to, $toSubject, $message, $headers);
+?>
