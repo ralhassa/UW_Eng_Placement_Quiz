@@ -72,7 +72,7 @@
                     </div>
                   </div>
                   <div class="emailSection" id="beforeSubmit">
-                      <form class="email" method="post" action="static/php/emailResults.php">
+                      <form class="email" method="post" action="{% static '/php/emailResults.php' %}">
                         <p>Enter your email below to get your results mailed to you</p>
                         <input type="email" id="email" name="email" required>
                         <input type="submit" class="button" id="emailSubmit" value="&#62;">
