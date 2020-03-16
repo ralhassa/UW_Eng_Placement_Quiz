@@ -3,7 +3,7 @@ body {
 }
 .content {
     padding: 0px 10px;
-    height: calc(100% - 100px);
+    height: calc(100% - 150px);
     width: calc(100% - 245px);
     position: absolute;
     right: 0;
@@ -31,7 +31,7 @@ body {
     }
 
 .sidenav { 
-    height: calc(100% - 250px);
+    height: calc(100% - 300px);
     width: 245px;
     position: absolute;
     z-index: 1;
@@ -75,7 +75,7 @@ a, a:hover, a:after, a:visited {
     color: #58058B !important;
 }
 .title {
-    height: 100px;
+    height: 150px;
     top: 0;
     background-color: white;
     width: calc(100% - 245px);
