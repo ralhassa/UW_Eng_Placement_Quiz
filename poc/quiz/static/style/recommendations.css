@@ -126,6 +126,18 @@ a, a:hover, a:after, a:visited {
     top: 0; 
     padding-top: 10px;
     padding-left: 5px;
+    background:#D0B4E7; 
+    border:2px solid #57058B;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color: #57058B;
+    position: absolute;
+    margin-left: -150px;
+    margin-right: 0;
+    text-align: center;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
 }
 
 .back {
