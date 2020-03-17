@@ -123,6 +123,7 @@ def recommendations(request,post_dict):
     new_vector[20] = technology[post_dict['technology'][0]]
 
     print("Loading model")
+    print(model_name)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
