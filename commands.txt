@@ -12,6 +12,7 @@ python poc/manage.py migrate
 
 ^ use this for making migrations
 
+heroku ps:copy --app=waterlooengineeringquiz
 
 
 heroku logs --tail --app=waterlooengineeringquiz
