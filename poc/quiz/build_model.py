@@ -432,6 +432,7 @@ def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop
     return df
 
 def save_model(model,cat,model_name):
+    df.to_csv ('poc/quiz/exported_model_files/'+model_name+'.csv', index = None, header=True)
     with open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
     with open('poc/quiz/exported_model_files/'+model_name+'_cat', 'wb') as fid:
