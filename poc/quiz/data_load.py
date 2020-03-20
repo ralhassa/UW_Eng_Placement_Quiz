@@ -108,10 +108,10 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         cd = dict(zip(keys,vals))
         row = {str(col):cd}
         encoded_dict_list.append(row)
-        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+        with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(row,f,cls=NpEncoder)
 
-    with open('exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+    with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')
@@ -135,9 +135,9 @@ def get_encoded_dict(model_name):
     return encoded_dict
 
 def save_model(model,cat,model_name):
-    with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
+    with open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
-    with open('exported_model_files/'+model_name+'_cat', 'wb') as fid:
+    with open('poc/quiz/exported_model_files/'+model_name+'_cat', 'wb') as fid:
         pickle.dump(cat, fid,2)
 
 def retrieve_prediction_labels(model,prediction):
