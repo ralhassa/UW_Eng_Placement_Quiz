@@ -223,6 +223,15 @@ import json
 import pickle
 import numpy as np
 import sys
+import itertools
+import json
+import numpy as np
+import pandas as pd
+import pickle
+from sklearn import metrics, tree, svm, preprocessing
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
+from sklearn.naive_bayes import MultinomialNB
 
 # Functions from data load
 
@@ -237,11 +246,14 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-def get_clean_data(directory,drop_not_happy):
+def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=False):
     '''
     Should we drop "Are you happy with your program?"
     '''
     data = pd.read_csv(directory,dtype=str)
+
+    # dropping PII + skill_test + timestamp + year + raw_industry
+    data = data.drop(data.columns[[0,1,3,24]], axis=1)
 
     # renaming data for readability
     data = data.rename(index=str,columns = READ_HEADERS)
@@ -263,6 +275,10 @@ def get_clean_data(directory,drop_not_happy):
     data.expensive_equipment = data.expensive_equipment.map(READ_EQUIPMENT)
     data.drawing = data.drawing.map(READ_DRAWING)
     data.essay = data.essay.map(READ_ESSAY)
+    try:
+        data.new_programming = data.new_programming.map(READ_NEW_PROGRAMMING)
+    except:
+        print("new programming question not included")
 
     # Cleaning industry data
     data.index.name = 'id'
@@ -271,6 +287,7 @@ def get_clean_data(directory,drop_not_happy):
     binary_industry_data = np.array([np.arange(len(data))]*8).T
     binary_industry_data = pd.DataFrame(binary_industry_data, columns=READ_INDUSTRY.values())
     binary_industry_data.index.name = 'id'
+
     for col in binary_industry_data.columns:
         binary_industry_data[col].values[:] = '0'
 
@@ -284,13 +301,37 @@ def get_clean_data(directory,drop_not_happy):
     data.index = data.index.map(int)
     binary_industry_data.index = binary_industry_data.index.map(int)
     data = (data.merge(binary_industry_data, left_on='id', right_on='id',how='left'))
+    data = data.drop(['industry'], axis=1)
 
     # if drop where all values are unhapppy
-    if drop_not_happy:
+    if drop_not_happy == 'H':
         data = data[data.happy == 'Yes']
+        data = data.drop(['happy'], axis=1)
+    if drop_not_happy == 'NH':
+        data = data[data.happy == 'No']
+
+    # drop gender data
+    if drop_gender:
+        data = data.drop(['gender'], axis=1)
+
     data.index = data.index.map(int)
-    # dropping PII + gender + skill_test + timestamp + year + raw_industry
-    data = data.drop(data.columns[[0,1,3,4,8,24]], axis=1)
+    # data = data.sample(frac=1).reset_index(drop=True) ##Shuffle
+
+    if data_balance != False:
+        programs = list(READ_PROGRAMS.values())
+        b_df = data.copy()
+        b_df = b_df.head(0)
+
+        for program in programs:
+            temp_df = data.copy()[data.program==program]
+            while len(temp_df) <= data_balance[program]:
+                temp_df = temp_df.append(temp_df)
+            temp_df = temp_df.head(data_balance[program])
+            b_df = b_df.append(temp_df)
+            b_df = b_df.reset_index(drop=True)
+        data = b_df
+
+    data.columns = data.columns.astype(str)
     return data
 
 def transform_post_dict(post_dict):
@@ -311,9 +352,13 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
-def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
-    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance)
-    df = df[column_list]
+def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False,drop_gender=True):
+    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance,drop_gender=drop_gender)
+    if drop_gender:
+        df = df[column_list]
+    else:
+        column_list.append('gender')
+        df = df[column_list]
 
     col_list = list(df.columns)
     encoded_dict_list = []
@@ -379,8 +424,8 @@ def get_encoded_dict(model_name):
         encoded_dict[col] = row
     return encoded_dict
 
-def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
-    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance)[0]
+def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False,drop_gender=True):
+    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance,drop_gender=drop_gender)[0]
     df = pd.get_dummies(df,columns=one_hot_encode)
     return df
 
