@@ -554,7 +554,6 @@ model_name = model_name
 temp_model_name = model_name
 
 model_data = pd.read_csv('poc/quiz/exported_model_files/'+model_name+'.csv',dtype=str)
-ohe = ohe_main
 # Loading test data
 if 'le' in model_name:
     test_data_t7 = get_label_encoded_data('poc/quiz/exported_model_files/t7.csv',model_name='t7',column_list=column_list,drop_not_happy='H',data_balance=False)[0]
