@@ -419,6 +419,14 @@ b7 = {
 
 v0 = 1
 
+#model_name = 'model-type_encoding_directory_datastructure_column-set_version'
+# experiment_model_name = 'dataSet_dataBalance_columnSet_dataBalanceMultiple'
+experiment_model_name = 'd0_b7_c36_v0'
+directory = d0
+data_balance = b7
+column_list = c36
+data_balance_multiple = v0 # Ratio of other programs to program in binary classifier. 2 means double of other programs, 0.5 means half
+
 ohe =  [
         'problem_type',
         'creative',
@@ -440,15 +448,6 @@ ohe =  [
         ]
 
 ohe = [value for value in ohe if value in  column_list]
-
-#model_name = 'model-type_encoding_directory_datastructure_column-set_version'
-# experiment_model_name = 'dataSet_dataBalance_columnSet_dataBalanceMultiple'
-experiment_model_name = 'd0_b7_c36_v0'
-directory = d0
-data_balance = b7
-column_list = c36
-data_balance_multiple = v0 # Ratio of other programs to program in binary classifier. 2 means double of other programs, 0.5 means half
-
 
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")
