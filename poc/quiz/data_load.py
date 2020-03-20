@@ -128,8 +128,10 @@ def get_encoded_dict(model_name):
             # add item to the list
             cols.append(currentPlace)
     encoded_dict = {}
+    print(cols)
     for col in cols:
         with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+            print(f)
             row = json.loads(f.read())
         encoded_dict[col] = row
     return encoded_dict
