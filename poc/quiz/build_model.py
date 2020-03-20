@@ -560,7 +560,7 @@ def get_mclass_t3(temp_model_name,model,test_array,test_actual):
             t3 = 0
         t3_scores.append(t3)
 
-    return mean(t3_scores)
+    return statistics.mean(t3_scores)
 
 def get_mclass_rr(temp_model_name,model,test_array,test_actual):
     rr_scores = []
@@ -575,7 +575,7 @@ def get_mclass_rr(temp_model_name,model,test_array,test_actual):
         except:
             rr = 0
         rr_scores.append(rr)
-    return mean(rr_scores)
+    return statistics.mean(rr_scores)
 
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")
