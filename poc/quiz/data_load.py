@@ -120,9 +120,7 @@ def get_encoded_data(directory,model_name,drop_not_happy):
 
 def get_encoded_dict(model_name):
     cols = []
-    import os
-    print(os.getcwd())
-
+    print('poc/quiz/exported_model_files/'+model_name+'_cols.txt')
     with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
             # remove linebreak which is the last character of the string
