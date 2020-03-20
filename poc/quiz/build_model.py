@@ -1,3 +1,29 @@
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
+import numpy as np
+import pandas as pd
+import pickle
+from sklearn import metrics, tree, svm
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
+from sklearn.naive_bayes import MultinomialNB
+import csv
+from datetime import datetime
+import json
+import pickle
+import numpy as np
+import sys
+import itertools
+import json
+import numpy as np
+import pandas as pd
+import pickle
+from statistics import mean
+from sklearn import metrics, tree, svm, preprocessing
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
+from sklearn.naive_bayes import MultinomialNB
+
 # Changing questions into column headers for readability
 READ_HEADERS = {
                 'What Engineering program are you in?':'program',
@@ -208,34 +234,6 @@ INV_INDEX_PROGRAM= {
             1:'arch-e',
             0:'arch'
             }
-import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure
-import numpy as np
-import pandas as pd
-import pickle
-from sklearn import metrics, tree, svm
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
-from sklearn.naive_bayes import MultinomialNB
-import csv
-from datetime import datetime
-import json
-import pickle
-import numpy as np
-import sys
-import itertools
-import json
-import numpy as np
-import pandas as pd
-import pickle
-from statistics import mean
-from sklearn import metrics, tree, svm, preprocessing
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
-from sklearn.naive_bayes import MultinomialNB
-import os
-print(os.getcwd())
-
 # Functions from data load
 
 class NpEncoder(json.JSONEncoder):
@@ -560,7 +558,7 @@ def get_mclass_t3(temp_model_name,model,test_array,test_actual):
             t3 = 0
         t3_scores.append(t3)
 
-    return statistics.mean(t3_scores)
+    return mean(t3_scores)
 
 def get_mclass_rr(temp_model_name,model,test_array,test_actual):
     rr_scores = []
@@ -575,7 +573,7 @@ def get_mclass_rr(temp_model_name,model,test_array,test_actual):
         except:
             rr = 0
         rr_scores.append(rr)
-    return statistics.mean(rr_scores)
+    return mean(rr_scores)
 
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")

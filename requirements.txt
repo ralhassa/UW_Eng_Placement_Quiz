@@ -74,6 +74,7 @@ six==1.11.0
 sklearn==0.0
 sqlparse==0.3.0
 static3==0.7.0
+statistics==1.0.3.5
 tablib==1.1.0
 terminado==0.8.1
 testpath==0.4.2
