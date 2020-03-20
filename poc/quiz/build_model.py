@@ -353,6 +353,11 @@ def get_encoded_dict(model_name):
         encoded_dict[col] = row
     return encoded_dict
 
+def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
+    df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance)[0]
+    df = pd.get_dummies(df,columns=one_hot_encode)
+    return df
+
 def save_model(model,cat,model_name):
     with open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
