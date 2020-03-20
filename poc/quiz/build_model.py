@@ -393,7 +393,10 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         keys = df[col].unique()
         le = preprocessing.LabelEncoder()
         le.fit(list(keys))
+        print(col)
+        print(df[col])
         df[col] = le.transform(list(df[col]))
+        print(df[col])
         vals = df[col].unique()
         keys = list(le.inverse_transform(vals))
         cd = dict(zip(keys,vals))
@@ -428,6 +431,7 @@ def get_encoded_dict(model_name):
 def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False,drop_gender=True):
     df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance,drop_gender=drop_gender)[0]
     df = pd.get_dummies(df,columns=one_hot_encode)
+    print(df)
     return df
 
 def save_model(df,model,cat,model_name):
