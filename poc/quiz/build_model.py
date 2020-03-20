@@ -208,8 +208,6 @@ INV_INDEX_PROGRAM= {
             1:'arch-e',
             0:'arch'
             }
-
-
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
 import numpy as np
@@ -219,6 +217,12 @@ from sklearn import metrics, tree, svm
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
 from sklearn.naive_bayes import MultinomialNB
+import csv
+from datetime import datetime
+import json
+import pickle
+import numpy as np
+import sys
 
 # Functions from data load
 
@@ -447,7 +451,7 @@ data_balance_multiple = v0 # Ratio of other programs to program in binary classi
 
 
 # Supporting Functions for RE-Building the model on the Heroku Server
-
+print("building model...")
 # Building New model
 model_name = 'nb_ohe_f0_'+ experiment_model_name
 data = get_merged_encoded_data(directory,model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='H',data_balance=data_balance)
@@ -467,6 +471,7 @@ cat = dict(zip(cat.columns,range(cat.shape[1])))
 save_model(data,model,cat,model_name)
 
 # Scoring models
+print("Scoring model")
 model_name = model_name
 temp_model_name = model_name
 
