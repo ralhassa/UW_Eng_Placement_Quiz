@@ -540,6 +540,11 @@ def get_mclass_accuracy(temp_model_name,model,test_array,test_actual):
     accuracy = metrics.accuracy_score(test_pred,test_actual)
     return accuracy
 
+def sort_probability_dict(p_df):
+    ordered_probabilties = sorted(p_df.values(),reverse=True)
+    ordered_programs = sorted(p_df, key=p_df.get,reverse=True)
+    return [p_df, ordered_probabilties, ordered_programs]
+
 def get_mclass_t3(temp_model_name,model,test_array,test_actual):
     t3_scores = []
     for i in range(len(test_array)):

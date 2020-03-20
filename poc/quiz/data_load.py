@@ -120,6 +120,8 @@ def get_encoded_data(directory,model_name,drop_not_happy):
 
 def get_encoded_dict(model_name):
     cols = []
+    import os
+    print(os.getcwd())
 
     with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
