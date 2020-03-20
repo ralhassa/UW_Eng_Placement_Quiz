@@ -232,6 +232,8 @@ from sklearn import metrics, tree, svm, preprocessing
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold,cross_val_score,train_test_split,LeaveOneOut
 from sklearn.naive_bayes import MultinomialNB
+import os
+print(os.getcwd())
 
 # Functions from data load
 
