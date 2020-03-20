@@ -120,18 +120,32 @@ def get_encoded_data(directory,model_name,drop_not_happy):
 
 def get_encoded_dict(model_name):
     cols = []
-    print('poc/quiz/exported_model_files/'+model_name+'_cols.txt')
-    with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
-        for line in f:
-            # remove linebreak which is the last character of the string
-            currentPlace = line[:-1]
-            # add item to the list
-            cols.append(currentPlace)
-    encoded_dict = {}
-    for col in cols:
-        with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
-            row = json.loads(f.read())
-        encoded_dict[col] = row
+    try:
+        print('poc/quiz/exported_model_files/'+model_name+'_cols.txt')
+        with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+            for line in f:
+                # remove linebreak which is the last character of the string
+                currentPlace = line[:-1]
+                # add item to the list
+                cols.append(currentPlace)
+        encoded_dict = {}
+        for col in cols:
+            with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+                row = json.loads(f.read())
+            encoded_dict[col] = row
+    except:
+        print('exported_model_files/'+model_name+'_cols.txt')
+        with open('exported_model_files/'+model_name+'_cols.txt', 'r') as f:
+            for line in f:
+                # remove linebreak which is the last character of the string
+                currentPlace = line[:-1]
+                # add item to the list
+                cols.append(currentPlace)
+        encoded_dict = {}
+        for col in cols:
+            with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'r') as f:
+                row = json.loads(f.read())
+            encoded_dict[col] = row
     return encoded_dict
 
 def save_model(model,cat,model_name):

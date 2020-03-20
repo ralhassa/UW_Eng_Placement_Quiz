@@ -624,7 +624,6 @@ test_actual = np.array(test_data_t7_temp["program"])
 mclass_t3 = get_mclass_t3(temp_model_name,model,test_array,test_actual)
 mclass_RR = get_mclass_rr(temp_model_name,model,test_array,test_actual)
 mclass_accuracy = get_mclass_accuracy(temp_model_name,model,test_array,test_actual)
-mclass_reassignment = get_mclass_reassignment(temp_model_name,model)
 
 print("Model:  "+model_name)
 print("t3:  "+str(mclass_t3))
