@@ -317,36 +317,3 @@ def heatmapify(df,one_var,list_one,two_var,list_two):
         (return_list).append((new_list))
     heatmapdf = pd.DataFrame(return_list, index=list_one, columns=list_two)
     return heatmapdf
-
-# def fix_industry
-# fdf
-'''
-Might need these later
-
-# def get_one_hot_encoded_data(directory):
-#     df = get_clean_data(directory)
-#     keys = df['current_average'].unique()
-#     le = preprocessing.LabelEncoder()
-#     le.fit(list(keys))
-#     df['current_average'] = le.transform(list(df['current_average']))
-#
-#     df = pd.get_dummies(df)
-#     return df
-#
-# def merged_encoding(directory,label_encode,one_hot_encode,drop_pref=False):
-#
-#     df = get_clean_data(directory)
-#
-#     if drop_pref == True:
-#         df = df[df['current_average']!='Prefer not to say']
-#
-#     for col in label_encode:
-#         keys = df[col].unique()
-#         le = preprocessing.LabelEncoder()
-#         le.fit(list(keys))
-#         df[col] = le.transform(list(df[col]))
-#
-#     df = pd.get_dummies(df,columns=one_hot_encode)
-#
-#     return df
-'''
