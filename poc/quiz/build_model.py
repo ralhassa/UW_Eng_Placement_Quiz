@@ -311,6 +311,32 @@ def transform_post_dict(post_dict):
         post_dict[industry] = '1'
     return dict(post_dict)
 
+def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
+    df = get_clean_data(directory,drop_not_happy,data_balance=data_balance)
+    df = df[column_list]
+
+    col_list = list(df.columns)
+    encoded_dict_list = []
+    for col in col_list:
+        keys = df[col].unique()
+        le = preprocessing.LabelEncoder()
+        le.fit(list(keys))
+        df[col] = le.transform(list(df[col]))
+        vals = df[col].unique()
+        keys = list(le.inverse_transform(vals))
+        cd = dict(zip(keys,vals))
+        row = {str(col):cd}
+        encoded_dict_list.append(row)
+        with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+            json.dump(str(row),f,cls=NpEncoder)
+
+    with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+        for col in col_list:
+            f.write(col)
+            f.write('\n')
+
+    return [df,encoded_dict_list]
+
 def get_encoded_data(directory,model_name,drop_not_happy):
     df = get_clean_data(directory,drop_not_happy)
     df = df.drop(['happy'], axis=1)
