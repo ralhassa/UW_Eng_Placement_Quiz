@@ -528,6 +528,49 @@ ohe =  [
 
 ohe = [value for value in ohe if value in  column_list]
 
+def save_scores(scoring_dictionary,experiment_model_name):
+    df = pd.DataFrame(scoring_dictionary)
+    df = df.T
+    df.to_csv("exported_model_files/scores/"+experiment_model_name+".csv", header=True)
+
+def get_mclass_accuracy(temp_model_name,model,test_array,test_actual):
+    test_pred = []
+    for i in range(len(test_array)):
+        test_pred.append(model.predict([test_array[i]]))
+    accuracy = metrics.accuracy_score(test_pred,test_actual)
+    return accuracy
+
+def get_mclass_t3(temp_model_name,model,test_array,test_actual):
+    t3_scores = []
+    for i in range(len(test_array)):
+        prediction = model.predict_proba([test_array[i]])
+        probs = sort_probability_dict(retrieve_prediction_labels(model,prediction))[2][:3]
+        n_probs = []
+        for prob in probs:
+            n_probs.append(INDEX_PROGRAM[prob])
+        try:
+            t3 = (1/(n_probs.index(test_actual[i])+1))
+        except:
+            t3 = 0
+        t3_scores.append(t3)
+
+    return mean(t3_scores)
+
+def get_mclass_rr(temp_model_name,model,test_array,test_actual):
+    rr_scores = []
+    for i in range(len(test_array)):
+        prediction = model.predict_proba([test_array[i]])
+        probs = sort_probability_dict(retrieve_prediction_labels(model,prediction))[2]
+        n_probs = []
+        for prob in probs:
+            n_probs.append(INDEX_PROGRAM[prob])
+        try:
+            rr = (1/(n_probs.index(test_actual[i])+1))
+        except:
+            rr = 0
+        rr_scores.append(rr)
+    return mean(rr_scores)
+
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")
 # Building New model
