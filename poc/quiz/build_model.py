@@ -597,8 +597,8 @@ def get_mclass_rr(temp_model_name,model,test_array,test_actual):
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")
 # Building New model
-model_name = 'nb_ohe_f0_'+ experiment_model_name
-data = get_merged_encoded_data(directory,model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='H',data_balance=data_balance)
+model_name = 'nb_le_f0_'+ experiment_model_name
+data = get_label_encoded_data(directory,model_name,column_list,'H',data_balance=data_balance)[0]
 
 x_df = data.drop(axis=1,columns=["program"])
 y_df = data["program"]
@@ -611,6 +611,8 @@ model = mnb.fit(X, Y) # fit the model using training data
 
 cat = data.drop('program',axis=1)
 cat = dict(zip(cat.columns,range(cat.shape[1])))
+
+print(INV_INDEX_PROGRAM[model.predict(test_vector)[0]])
 
 save_model(data,model,cat,model_name)
 

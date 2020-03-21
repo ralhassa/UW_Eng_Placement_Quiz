@@ -176,7 +176,6 @@ def recommendations(request,post_dict):
     print("Weights of Results")
     print(results_dict)
     print("Response Created...")
-    print(return_list)
 
     comparison_set = Comparison.objects.all()
     description_set = Description.objects.all()
