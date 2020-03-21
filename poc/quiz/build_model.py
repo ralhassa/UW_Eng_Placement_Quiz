@@ -447,7 +447,7 @@ def retrieve_prediction_labels(model,prediction):
     return results_dict
 
 # Define Parameters
-MODEL_NAME = 'nb_ohe_f0_d0_b7_c36_v0'
+MODEL_NAME = 'nb_le_f0_d0_b7_c36_v0'
 
 d0 = 'poc/quiz/exported_model_files/d0.csv'
 
