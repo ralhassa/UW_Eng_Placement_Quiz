@@ -283,6 +283,7 @@ def get_clean_data(directory,drop_not_happy='H',drop_gender=True,data_balance=Fa
 
     # Cleaning industry data
     data.index.name = 'id'
+    print(data)
     industry_data = data["industry"].str.split(";", expand = True)
     industry_data = industry_data.replace(READ_INDUSTRY)
     binary_industry_data = np.array([np.arange(len(data))]*8).T
@@ -350,6 +351,7 @@ def transform_post_dict(post_dict):
     post_dict['manufacturing'] = '0'
     post_dict['technology'] = '0'
     for industry in industries:
+        print(industry)
         post_dict[industry] = '1'
     return dict(post_dict)
 
