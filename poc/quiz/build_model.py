@@ -612,8 +612,6 @@ model = mnb.fit(X, Y) # fit the model using training data
 cat = data.drop('program',axis=1)
 cat = dict(zip(cat.columns,range(cat.shape[1])))
 
-print(INV_INDEX_PROGRAM[model.predict(test_vector)[0]])
-
 save_model(data,model,cat,model_name)
 
 # Scoring models
