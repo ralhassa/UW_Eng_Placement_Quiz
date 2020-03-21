@@ -524,28 +524,6 @@ data_balance = b0
 column_list = c36
 data_balance_multiple = v0 # Ratio of other programs to program in binary classifier. 2 means double of other programs, 0.5 means half
 
-ohe =  [
-        'problem_type',
-        'creative',
-        'outdoors',
-        'career',
-        'group_work',
-        'liked_courses',
-        'disliked_courses',
-        'programming',
-        'join_clubs',
-        'not_clubs',
-        'liked_projects',
-        'disliked_projects',
-        'tv_shows',
-        'alternate_degree',
-        'expensive_equipment',
-        'drawing',
-        'essay'
-        ]
-
-ohe = [value for value in ohe if value in  column_list]
-
 def save_scores(scoring_dictionary,experiment_model_name):
     df = pd.DataFrame(scoring_dictionary)
     df = df.T
