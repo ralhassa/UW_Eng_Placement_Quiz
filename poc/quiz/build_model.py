@@ -367,9 +367,7 @@ def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',d
         keys = df[col].unique()
         le = preprocessing.LabelEncoder()
         le.fit(list(keys))
-        print(df[col])
         df[col] = le.transform(list(df[col]))
-        print(df[col])
         vals = df[col].unique()
         keys = list(le.inverse_transform(vals))
         cd = dict(zip(keys,vals))
@@ -395,10 +393,7 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         keys = df[col].unique()
         le = preprocessing.LabelEncoder()
         le.fit(list(keys))
-        print(col)
-        print(df[col])
         df[col] = le.transform(list(df[col]))
-        print(df[col])
         vals = df[col].unique()
         keys = list(le.inverse_transform(vals))
         cd = dict(zip(keys,vals))
@@ -500,13 +495,32 @@ b7 = {
     'arch': 100
     }
 
+b1 = {
+    'mech': 100,
+    'bmed': 100,
+    'swe': 100,
+    'tron': 100,
+    'cive': 100,
+    'chem': 100,
+    'syde': 100,
+    'msci': 100,
+    'ce': 100,
+    'elec': 100,
+    'nano': 100,
+    'geo': 100,
+    'env': 100,
+    'arch-e': 100,
+    'arch': 100
+    }
+
+
 v0 = 1
 
 #model_name = 'model-type_encoding_directory_datastructure_column-set_version'
 # experiment_model_name = 'dataSet_dataBalance_columnSet_dataBalanceMultiple'
-experiment_model_name = 'd0_b7_c36_v0'
+experiment_model_name = 'd0_b0_c36_v0'
 directory = d0
-data_balance = b7
+data_balance = b0
 column_list = c36
 data_balance_multiple = v0 # Ratio of other programs to program in binary classifier. 2 means double of other programs, 0.5 means half
 
