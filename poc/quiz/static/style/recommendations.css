@@ -123,6 +123,9 @@ a, a:hover, a:after, a:visited {
 }
 
 .back {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 245px;
     height: 150px;
     padding-top: 10px;
