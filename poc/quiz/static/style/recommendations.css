@@ -134,10 +134,15 @@ a, a:hover, a:after, a:visited {
 #backButton {
     position: relative;
     margin: auto;
-    top: 30%;
+    top: 20%;
+    width: 125px;
+    height: 60px;
 }
 #email {
     width: 165px;
+}
+.email p {
+    padding-left: 20px;
 }
 .fa-eye {
     position: absolute;
