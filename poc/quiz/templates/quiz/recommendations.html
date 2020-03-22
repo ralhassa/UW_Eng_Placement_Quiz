@@ -17,7 +17,7 @@
 <body>
     <div class="wrapper">
       <form class="back">
-        <input type="button" class="button" id="backButton" value="Back to Quiz" onclick="goBack()">
+        <input type="button" class="button" id="backButton" value="&#60; Back to Quiz" onclick="goBack()">
       </form>
            
     <div class="title">
@@ -75,7 +75,7 @@
                   <div class="emailSection" id="beforeSubmit">
                       <form class="email" method="post">
                           {% csrf_token %}
-                          
+
                         <p>Enter your email below to recieve information about Engineering at the University of Waterloo</p>
                         <input type="email" id="email" name="email" required>
                         <input type="submit" class="button" id="emailSubmit" value="&#62;">
