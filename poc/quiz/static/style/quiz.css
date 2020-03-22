@@ -30,7 +30,7 @@ input[type='radio']:after, input[type='checkbox']:after {
     border: 2px solid white;
 }
 
-input[type='checkbox'] {
+input[type='checkbox'], input[type='checkbox']:after,input[type='checkbox']:checked:after {
     margin-left: -20px;
     margin-right: 7px;
     border-radius: 0 !important;
