@@ -53,6 +53,8 @@ body {
     display: inline;
     position: absolute;
     right: 0;
+    margin-left: -150px;
+    margin-right: 0;
 }
 
 a, a:hover, a:after, a:visited {
@@ -99,19 +101,7 @@ a, a:hover, a:after, a:visited {
 .tab-content{
     background-color: #FAFAFA;
 }
-.backButton {
-    background:#D0B4E7; 
-    border:2px solid #57058B;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-    color: #57058B;
-    position: absolute;
-    margin-left: -150px;
-    margin-right: 0;
-    text-align: center;
-    transition: all 0.3s ease-out;
-}
+
 .button {
     background:#D0B4E7; 
     border:2px solid #57058B;
@@ -130,26 +120,6 @@ a, a:hover, a:after, a:visited {
 .button:hover {
     background:#57058B; 
     color: #D0B4E7;
-}
-
-#backButton {
-    text-align: center;
-    left: 0;
-    top: 0; 
-    padding-top: 10px;
-    padding-left: 5px;
-    background:#D0B4E7; 
-    border:2px solid #57058B;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-    color: #57058B;
-    position: absolute;
-    margin-left: -150px;
-    margin-right: 0;
-    text-align: center;
-    transition: all 0.3s ease-out;
-    text-decoration: none;
 }
 
 .back {
