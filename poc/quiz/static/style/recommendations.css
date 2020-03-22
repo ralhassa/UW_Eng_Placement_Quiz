@@ -123,8 +123,14 @@ a, a:hover, a:after, a:visited {
 }
 
 .back {
+    width: 245px;
+    height: 150px;
     padding-top: 10px;
     padding-left: 5px;
+}
+#backButton {
+    position: relative;
+    margin: auto;
 }
 .fa-eye {
     position: absolute;
