@@ -134,9 +134,9 @@ a, a:hover, a:after, a:visited {
 #backButton {
     position: relative;
     margin: auto;
-    top: 20%;
+    top: 30%;
     width: 125px;
-    height: 60px;
+    height: 40px;
 }
 #email {
     width: 165px;
