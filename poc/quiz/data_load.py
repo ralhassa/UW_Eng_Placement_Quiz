@@ -108,10 +108,10 @@ def get_encoded_data(directory,model_name,drop_not_happy):
         cd = dict(zip(keys,vals))
         row = {str(col):cd}
         encoded_dict_list.append(row)
-        with open('exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
+        with open('poc/quiz/exported_model_files/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(row,f,cls=NpEncoder)
 
-    with open('exported_model_files/'+model_name+'_cols.txt', 'w') as f:
+    with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')
@@ -120,7 +120,6 @@ def get_encoded_data(directory,model_name,drop_not_happy):
 
 def get_encoded_dict(model_name):
     cols = []
-
     with open('poc/quiz/exported_model_files/'+model_name+'_cols.txt', 'r') as f:
         for line in f:
             # remove linebreak which is the last character of the string
@@ -135,9 +134,9 @@ def get_encoded_dict(model_name):
     return encoded_dict
 
 def save_model(model,cat,model_name):
-    with open('exported_model_files/'+model_name+'.pkl', 'wb') as fid:
+    with open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'wb') as fid:
         pickle.dump(model, fid,2)
-    with open('exported_model_files/'+model_name+'_cat', 'wb') as fid:
+    with open('poc/quiz/exported_model_files/'+model_name+'_cat', 'wb') as fid:
         pickle.dump(cat, fid,2)
 
 def retrieve_prediction_labels(model,prediction):
@@ -148,138 +147,6 @@ def retrieve_prediction_labels(model,prediction):
     for i in range(len(results)):
         results_dict[INV_INDEX_PROGRAM[labels[i]]] = np.round(results[i],4)
     return results_dict
-
-def check_skew(model_name, problem_type = True , creative = True, outdoors = True, career = True, group_work = True, liked_courses = True, disliked_courses = True, programming = True,join_clubs = True,not_clubs = True,liked_projects = True,disliked_projects = True,tv_shows = True,alternate_degree = True,expensive_equipment = True,drawing = True,essay = True,architecture = True,automotive = True,business = True,construction = True,health = True,environment = True,manufacturing = True,technology = True):
-    encoded_dictionary = get_encoded_dict(model_name)
-
-    problem_type = encoded_dictionary['problem_type']['problem_type']
-    creative = encoded_dictionary['creative']['creative']
-    outdoors = encoded_dictionary['outdoors']['outdoors']
-    career = encoded_dictionary['career']['career']
-    group_work = encoded_dictionary['group_work']['group_work']
-    liked_courses = encoded_dictionary['liked_courses']['liked_courses']
-    disliked_courses = encoded_dictionary['disliked_courses']['disliked_courses']
-    programming = encoded_dictionary['programming']['programming']
-    join_clubs = encoded_dictionary['join_clubs']['join_clubs']
-    not_clubs = encoded_dictionary['not_clubs']['not_clubs']
-    liked_projects = encoded_dictionary['liked_projects']['liked_projects']
-    disliked_projects = encoded_dictionary['disliked_projects']['disliked_projects']
-    tv_shows = encoded_dictionary['tv_shows']['tv_shows']
-    alternate_degree = encoded_dictionary['alternate_degree']['alternate_degree']
-    expensive_equipment = encoded_dictionary['expensive_equipment']['expensive_equipment']
-    drawing = encoded_dictionary['drawing']['drawing']
-    essay = encoded_dictionary['essay']['essay']
-    architecture = encoded_dictionary['architecture']['architecture']
-    automotive = encoded_dictionary['automotive']['automotive']
-    business = encoded_dictionary['business']['business']
-    construction = encoded_dictionary['construction']['construction']
-    health = encoded_dictionary['health']['health']
-    environment = encoded_dictionary['environment']['environment']
-    manufacturing = encoded_dictionary['manufacturing']['manufacturing']
-    technology = encoded_dictionary['technology']['technology']
-
-    print("Loading..")
-    test_variables = []
-    if problem_type:
-        test_variables.append(list(problem_type.values()))
-    if creative:
-        test_variables.append(list(creative.values()))
-    if outdoors:
-        test_variables.append(list(outdoors.values()))
-    if career:
-        test_variables.append(list(career.values()))
-    if group_work:
-        test_variables.append(list(group_work.values()))
-    if liked_courses:
-        test_variables.append(list(liked_courses.values()))
-    if disliked_courses:
-        test_variables.append(list(disliked_courses.values()))
-    if programming:
-        test_variables.append(list(programming.values()))
-    if join_clubs:
-        test_variables.append(list(join_clubs.values()))
-    if not_clubs:
-        test_variables.append(list(not_clubs.values()))
-    if liked_projects:
-        test_variables.append(list(liked_projects.values()))
-    if disliked_projects:
-        test_variables.append(list(disliked_projects.values()))
-    if tv_shows:
-        test_variables.append(list(tv_shows.values()))
-    if alternate_degree:
-        test_variables.append(list(alternate_degree.values()))
-    if expensive_equipment:
-        test_variables.append(list(expensive_equipment.values()))
-    if drawing:
-        test_variables.append(list(drawing.values()))
-    if essay:
-        test_variables.append(list(essay.values()))
-    if architecture:
-        test_variables.append(list(architecture.values()))
-    if automotive:
-        test_variables.append(list(automotive.values()))
-    if business:
-        test_variables.append(list(business.values()))
-    if construction:
-        test_variables.append(list(construction.values()))
-    if health:
-        test_variables.append(list(health.values()))
-    if environment:
-        test_variables.append(list(environment.values()))
-    if manufacturing:
-        test_variables.append(list(manufacturing.values()))
-    if technology:
-        test_variables.append(list(technology.values()))
-
-    print('permutations')
-    permutations = np.array(list(itertools.product(*test_variables)))
-    print('permutations resolved')
-    program_count = {
-            'mech': 0,
-            'bmed': 0,
-            'swe': 10,
-            'tron': 0,
-            'cive': 0,
-            'chem': 0,
-            'syde': 0,
-            'msci': 0,
-            'ce': 0,
-            'elec': 0,
-            'nano': 0,
-            'geo': 0,
-            'env': 0,
-            'arch-e': 0,
-            'arch': 0
-            }
-
-    print("Loading CAT file...")
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
-    index_dict = pickle.load(pkl_file)
-    new_vector = np.zeros(len(index_dict))
-
-    print("Loading model...")
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
-    model = pickle.load(pkl_file)
-
-    for p in permutations:
-        p = np.array([p])
-        result = INV_INDEX_PROGRAM[model.predict(p)[0]]
-        program_count[result] = program_count[result] + 1
-
-    return program_count
-
-def test_model(model_name,vector):
-    print("Loading CAT file...")
-    pkl_file = open('exported_model_files/'+model_name+'_cat', 'rb')
-    index_dict = pickle.load(pkl_file)
-    new_vector = np.zeros(len(index_dict))
-
-    print("Loading model...")
-    pkl_file = open('exported_model_files/'+model_name+'.pkl', 'rb')
-    model = pickle.load(pkl_file)
-    prediction = model.predict_proba(vector)
-    print("Results:")
-    print(retrieve_prediction_labels(model,prediction))
 
 # Defining methods to help normaliz the data
 def normalize_3_variables(df3,x,y,column,hue):
@@ -317,36 +184,3 @@ def heatmapify(df,one_var,list_one,two_var,list_two):
         (return_list).append((new_list))
     heatmapdf = pd.DataFrame(return_list, index=list_one, columns=list_two)
     return heatmapdf
-
-# def fix_industry
-# fdf
-'''
-Might need these later
-
-# def get_one_hot_encoded_data(directory):
-#     df = get_clean_data(directory)
-#     keys = df['current_average'].unique()
-#     le = preprocessing.LabelEncoder()
-#     le.fit(list(keys))
-#     df['current_average'] = le.transform(list(df['current_average']))
-#
-#     df = pd.get_dummies(df)
-#     return df
-#
-# def merged_encoding(directory,label_encode,one_hot_encode,drop_pref=False):
-#
-#     df = get_clean_data(directory)
-#
-#     if drop_pref == True:
-#         df = df[df['current_average']!='Prefer not to say']
-#
-#     for col in label_encode:
-#         keys = df[col].unique()
-#         le = preprocessing.LabelEncoder()
-#         le.fit(list(keys))
-#         df[col] = le.transform(list(df[col]))
-#
-#     df = pd.get_dummies(df,columns=one_hot_encode)
-#
-#     return df
-'''

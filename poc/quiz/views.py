@@ -55,6 +55,7 @@ def submit(request):
 def recommendations(request,post_dict):
     model_name = MODEL_NAME
     post_dict = transform_post_dict(post_dict)
+    print(post_dict)
     print("Entered Response Creation...")
     encoded_dictionary = get_encoded_dict(model_name)
     print("encoded_dictionary retrieved...")
@@ -121,12 +122,16 @@ def recommendations(request,post_dict):
     new_vector[18] = environment[post_dict['environment'][0]]
     new_vector[19] = manufacturing[post_dict['manufacturing'][0]]
     new_vector[20] = technology[post_dict['technology'][0]]
+    print(new_vector)
 
     print("Loading model")
+    print(model_name)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
 
     prediction = model.predict_proba([new_vector])
+    print(prediction)
+    print(model.predict([new_vector]))
     print("Prediction created...")
 
     print("Creating new record...")
@@ -171,7 +176,6 @@ def recommendations(request,post_dict):
     print("Weights of Results")
     print(results_dict)
     print("Response Created...")
-    print(return_list)
 
     comparison_set = Comparison.objects.all()
     description_set = Description.objects.all()
