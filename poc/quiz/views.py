@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime
 from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 import json
@@ -49,7 +49,7 @@ def email(request):
                                 email = Email()
                                 email.email = request.POST.get('email')
                                 email.save()
-                                return JsonResponse({"success":True}, status=200)
+                                return HttpResponseRedirect(request.path_info)
         except:
                 print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...couldn't save email")
