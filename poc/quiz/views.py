@@ -42,7 +42,7 @@ def programs(request):
 
 def email(request):
         try:
-            print("Accessed submit...")
+                print("Accessed submit...")
                 if request.method == 'POST':
                         if request.POST.get('email'):
                                 email = Email()
