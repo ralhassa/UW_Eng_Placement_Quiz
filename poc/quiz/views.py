@@ -40,6 +40,20 @@ def programs(request):
             }
     return render(request,'quiz/programs.html',context)
 
+def email(request):
+        try:
+            print("Accessed submit...")
+                if request.method == 'POST':
+                        if request.POST.get('email'):
+                                email = Email()
+                                email.email = request.POST.get('email')
+                                email.save()
+                                return JsonResponse({"success":True}, status=200)
+        except:
+        print("Unexpected error:", sys.exc_info()[0])
+        return HttpResponse("Something went wrong...couldn't save email")
+
+
 def submit(request):
     try:
         print("Accessed submit...")
