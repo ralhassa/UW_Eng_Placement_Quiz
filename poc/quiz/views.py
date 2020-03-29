@@ -111,7 +111,7 @@ def recommendations(request,post_dict):
     print("Loading new_vector....")
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'_cat', 'rb')
     index_dict = pickle.load(pkl_file)
-    new_vector = np.zeros(len(index_dict))
+    new_vector = np.zeros(21)
 
     print("Loading response into new_vector...")
 
@@ -140,8 +140,10 @@ def recommendations(request,post_dict):
     new_vector[18] = environment[post_dict['environment'][0]]
     new_vector[19] = manufacturing[post_dict['manufacturing'][0]]
     new_vector[20] = technology[post_dict['technology'][0]]
+    print(new_vector)
 
     if 'ohe' in model_name:
+        print("entered ohe model handling")
         new_vector = list(new_vector)
         for i in range(len(new_vector)):
             new_vector[i]  = str(int(new_vector[i]))
@@ -179,7 +181,6 @@ def recommendations(request,post_dict):
         t7 = t7.append(data_to_append, ignore_index = True)
         t7 = pd.get_dummies(t7,columns=columns)
         new_vector = np.array(t7[len(t7)-1:len(t7)])
-
 
     print(new_vector)
 
