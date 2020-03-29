@@ -132,12 +132,54 @@ def recommendations(request,post_dict):
     new_vector[13] = architecture[post_dict['architecture'][0]]
     new_vector[14] = automotive[post_dict['automotive'][0]]
     new_vector[15] = business[post_dict['business'][0]]
-    new_vector[15] = construction[post_dict['construction'][0]]
+    new_vector[16] = construction[post_dict['construction'][0]]
     new_vector[17] = health[post_dict['health'][0]]
     new_vector[18] = environment[post_dict['environment'][0]]
     new_vector[19] = manufacturing[post_dict['manufacturing'][0]]
     new_vector[20] = technology[post_dict['technology'][0]]
+
+    if 'ohe' in model_name:
+        new_vector = list(new_vector)
+        for i in range(len(new_vector)):
+            new_vector[i]  = str(int(new_vector[i]))
+
+        columns = [
+                    'creative',
+                    'outdoors',
+                    'career',
+                    'group_work',
+                    'liked_courses',
+                    'disliked_courses',
+                    'join_clubs',
+                    'not_clubs',
+                    'liked_projects',
+                    'disliked_projects',
+                    'alternate_degree',
+                    'drawing',
+                    'essay',
+                    'architecture',
+                    'automotive',
+                    'business',
+                    'construction',
+                    'health',
+                    'environment',
+                    'manufacturing',
+                    'technology'
+        ]
+        t7 = get_label_encoded_data('data/t7.csv',model_name='t7',column_list=columns,drop_not_happy='H',data_balance=False)[0]
+
+        # t7.append(df)
+        print(len(columns))
+        data_to_append = {}
+        for i in range(len(columns)):
+            data_to_append[t7.columns[i]] = int(new_vector[i])
+        t7 = t7.append(data_to_append, ignore_index = True)
+        t7 = pd.get_dummies(t7,columns=columns)
+        new_vector = np.array(t7[len(t7)-1:len(t7)])
+
+
     print(new_vector)
+
 
     print("Loading model")
     print(model_name)
