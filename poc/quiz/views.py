@@ -166,7 +166,7 @@ def recommendations(request,post_dict):
                     'manufacturing',
                     'technology'
         ]
-        t7 = get_label_encoded_data('data/t7.csv',model_name='t7',column_list=columns,drop_not_happy='H',data_balance=False)[0]
+        t7 = get_label_encoded_data('poc/quiz/exported_model_files/t7.csv',model_name='t7',column_list=columns,drop_not_happy='H',data_balance=False)[0]
 
         # t7.append(df)
         print(len(columns))
