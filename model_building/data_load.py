@@ -124,11 +124,14 @@ def transform_post_dict(post_dict):
     return dict(post_dict)
 
 def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',data_balance=False):
+    print("getting label encoded data...")
     df = get_clean_data(directory,drop_not_happy,data_balance=data_balance)
+    print("Retrieved label encodede data...")
     df = df[column_list]
 
     col_list = list(df.columns)
     encoded_dict_list = []
+    print("encoding columns")
     for col in col_list:
         keys = df[col].unique()
         le = preprocessing.LabelEncoder()
@@ -141,12 +144,12 @@ def get_label_encoded_data(directory,model_name,column_list,drop_not_happy='H',d
         encoded_dict_list.append(row)
         with open('exported_model_files/metadata/'+model_name+'_'+col+'_encoded_dictionary.json', 'w') as f:
             json.dump(str(row),f,cls=NpEncoder)
-
+    print("writing columns...")
     with open('exported_model_files/metadata/'+model_name+'_cols.txt', 'w') as f:
         for col in col_list:
             f.write(col)
             f.write('\n')
-
+    print("returning label encoded data...")
     return [df,encoded_dict_list]
 
 def get_encoded_dict(model_name):
@@ -166,7 +169,9 @@ def get_encoded_dict(model_name):
     return encoded_dict
 
 def get_merged_encoded_data(directory,model_name,one_hot_encode,column_list,drop_not_happy='H',data_balance=False):
+    print("getting merged encoded data...")
     df = get_label_encoded_data(directory,model_name,column_list,drop_not_happy,data_balance)[0]
+    print("received merged encoded data...")
     df = pd.get_dummies(df,columns=one_hot_encode)
     return df
 
