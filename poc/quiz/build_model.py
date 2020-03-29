@@ -475,6 +475,26 @@ c36 = ['creative',
        'program'
 ]
 
+ohe =  [
+        'problem_type',
+        'creative',
+        'outdoors',
+        'career',
+        'group_work',
+        'liked_courses',
+        'disliked_courses',
+        'programming',
+        'join_clubs',
+        'not_clubs',
+        'liked_projects',
+        'disliked_projects',
+        'tv_shows',
+        'alternate_degree',
+        'expensive_equipment',
+        'drawing',
+        'essay'
+        ]
+
 b0 = False # this is only relevant when we want to use untreated data for code d0
 
 b7 = {
