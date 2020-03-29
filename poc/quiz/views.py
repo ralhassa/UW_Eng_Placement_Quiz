@@ -147,7 +147,7 @@ def recommendations(request,post_dict):
         new_vector = list(new_vector)
         for i in range(len(new_vector)):
             new_vector[i]  = str(int(new_vector[i]))
-
+        print("1111111")
         columns = [
                     'creative',
                     'outdoors',
@@ -171,16 +171,19 @@ def recommendations(request,post_dict):
                     'manufacturing',
                     'technology'
         ]
+        print(22222)
         t7 = get_label_encoded_data('poc/quiz/exported_model_files/t7.csv',model_name='t7',column_list=columns,drop_not_happy='H',data_balance=False)[0]
-
-        # t7.append(df)
-        print(len(columns))
+        print(333333)
         data_to_append = {}
         for i in range(len(columns)):
             data_to_append[t7.columns[i]] = int(new_vector[i])
+        print(4444)
         t7 = t7.append(data_to_append, ignore_index = True)
+        print(5555)
         t7 = pd.get_dummies(t7,columns=columns)
+        print(6666)
         new_vector = np.array(t7[len(t7)-1:len(t7)])
+        print(7777)
 
     print(new_vector)
 
