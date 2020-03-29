@@ -447,7 +447,7 @@ def retrieve_prediction_labels(model,prediction):
     return results_dict
 
 # Define Parameters
-MODEL_NAME = 'nb_le_f0_d0_b7_c36_v0'
+MODEL_NAME = 'nb_ohe_f0_d0_b7_c36_v0'
 
 d0 = 'poc/quiz/exported_model_files/d0.csv'
 
@@ -518,7 +518,7 @@ v0 = 1
 
 #model_name = 'model-type_encoding_directory_datastructure_column-set_version'
 # experiment_model_name = 'dataSet_dataBalance_columnSet_dataBalanceMultiple'
-experiment_model_name = 'd0_b0_c36_v0'
+experiment_model_name = 'd0_b7_c36_v0'
 directory = d0
 data_balance = b0
 column_list = c36
@@ -574,21 +574,38 @@ def get_mclass_rr(temp_model_name,model,test_array,test_actual):
 
 # Supporting Functions for RE-Building the model on the Heroku Server
 print("building model...")
-# Building New model
-model_name = 'nb_le_f0_'+ experiment_model_name
-data = get_label_encoded_data(directory,model_name,column_list,'H',data_balance=data_balance)[0]
+if 'le' in model_name:
+    # Building New model
+    model_name = 'nb_le_f0_'+ experiment_model_name
+    data = get_label_encoded_data(directory,model_name,column_list,'H',data_balance=data_balance)[0]
 
-x_df = data.drop(axis=1,columns=["program"])
-y_df = data["program"]
+    x_df = data.drop(axis=1,columns=["program"])
+    y_df = data["program"]
 
-X = np.array(x_df) # convert dataframe into np array
-Y = np.array(y_df) # convert dataframe into np array
+    X = np.array(x_df) # convert dataframe into np array
+    Y = np.array(y_df) # convert dataframe into np array
 
-mnb = MultinomialNB()
-model = mnb.fit(X, Y) # fit the model using training data
+    mnb = MultinomialNB()
+    model = mnb.fit(X, Y) # fit the model using training data
 
-cat = data.drop('program',axis=1)
-cat = dict(zip(cat.columns,range(cat.shape[1])))
+    cat = data.drop('program',axis=1)
+    cat = dict(zip(cat.columns,range(cat.shape[1])))
+
+elif 'ohe' in model_name:
+    model_name = 'nb_ohe_f0_'+ experiment_model_name
+    data = get_merged_encoded_data(directory,model_name,one_hot_encode=ohe,column_list = column_list,drop_not_happy='H',data_balance=data_balance)
+
+    x_df = data.drop(axis=1,columns=["program"])
+    y_df = data["program"]
+
+    X = np.array(x_df) # convert dataframe into np array
+    Y = np.array(y_df) # convert dataframe into np array
+
+    mnb = MultinomialNB()
+    model = mnb.fit(X, Y) # fit the model using training data
+
+    cat = data.drop('program',axis=1)
+    cat = dict(zip(cat.columns,range(cat.shape[1])))
 
 save_model(data,model,cat,model_name)
 
