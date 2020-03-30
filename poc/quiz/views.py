@@ -235,7 +235,7 @@ def recommendations(request,post_dict):
     new_record.manufacturing = post_dict['manufacturing']
     new_record.technology = post_dict['technology']
     new_record.arch = prediction['arch']
-    new_record.arche = rediction['arch-e']
+    new_record.arche = prediction['arch-e']
     new_record.bmed = prediction['bmed']
     new_record.ce = prediction['ce']
     new_record.cive = prediction['chem']
