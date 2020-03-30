@@ -70,7 +70,6 @@ def submit(request):
 def recommendations(request,post_dict):
     model_name = MODEL_NAME
     post_dict = transform_post_dict(post_dict)
-    print(post_dict)
     print("Entered Response Creation...")
     model_name = 'nb_le_f0_d0_b0_c36_v0'
     encoded_dictionary = get_encoded_dict(model_name)
@@ -138,7 +137,6 @@ def recommendations(request,post_dict):
     new_vector[18] = environment[post_dict['environment'][0]]
     new_vector[19] = manufacturing[post_dict['manufacturing'][0]]
     new_vector[20] = technology[post_dict['technology'][0]]
-    print(new_vector)
 
     if 'ohe' in model_name:
         print("entered ohe model handling")
@@ -203,8 +201,18 @@ def recommendations(request,post_dict):
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
     prediction = model.predict_proba([new_vector])
-    print(prediction)
     print("Prediction created...")
+
+    # Getting Ordered Results
+    results_dict = retrieve_prediction_labels(model,prediction)
+    results = list(sorted(results_dict, key=lambda key: results_dict[key],reverse=True))
+    return_list = []
+    for key in results:
+        return_list.append(Recommendation.objects.get(code=key))
+
+    print("Weights of Results")
+    print(results_dict)
+    print("Response Created...")
 
     print("Creating new record...")
     new_record = Result()
@@ -234,51 +242,26 @@ def recommendations(request,post_dict):
     new_record.environment = post_dict['environment']
     new_record.manufacturing = post_dict['manufacturing']
     new_record.technology = post_dict['technology']
-    print(prediction['arch'])
-    new_record.arch = prediction['arch']
-    print(prediction['arch-e'])
-    new_record.arche = prediction['arch-e']
-    print(prediction['bmed'])
-    new_record.bmed = prediction['bmed']
-    print(prediction['ce'])
-    new_record.ce = prediction['ce']
-    print(prediction['chem'])
-    new_record.cive = prediction['chem']
-    print(prediction['cive'])
-    new_record.chem = prediction['cive']
-    print(prediction['elec'])
-    new_record.env = prediction['elec']
-    print(prediction['env'])
-    new_record.elec = prediction['env']
-    print(prediction['geo'])
-    new_record.geo = prediction['geo']
-    print(prediction['mech'])
-    new_record.mech = prediction['mech']
-    print(prediction['msci'])
-    new_record.msci = prediction['msci']
-    print(prediction['nano'])
-    new_record.nano = prediction['nano']
-    print(prediction['swe'])
-    new_record.syde = prediction['swe']
-    print(prediction['syde'])
-    new_record.swe = prediction['syde']
-    print(prediction['tron'])
-    new_record.tron = prediction['tron']
+
+    new_record.arch = results_dict['arch']
+    new_record.arche = results_dict['arch-e']
+    new_record.bmed = results_dict['bmed']
+    new_record.ce = results_dict['ce']
+    new_record.cive = results_dict['chem']
+    new_record.chem = results_dict['cive']
+    new_record.env = results_dict['elec']
+    new_record.elec = results_dict['env']
+    new_record.geo = results_dict['geo']
+    new_record.mech = results_dict['mech']
+    new_record.msci = results_dict['msci']
+    new_record.nano = results_dict['nano']
+    new_record.syde = results_dict['swe']
+    new_record.swe = results_dict['syde']
+    new_record.tron = results_dict['tron']
     print("new record information collected...")
 
     new_record.save()
     print("new record saved...")
-
-    # Getting Ordered Results
-    results_dict = retrieve_prediction_labels(model,prediction)
-    results = list(sorted(results_dict, key=lambda key: results_dict[key],reverse=True))
-    return_list = []
-    for key in results:
-        return_list.append(Recommendation.objects.get(code=key))
-
-    print("Weights of Results")
-    print(results_dict)
-    print("Response Created...")
 
     comparison_set = Comparison.objects.all()
     description_set = Description.objects.all()
