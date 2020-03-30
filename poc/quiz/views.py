@@ -210,7 +210,7 @@ def recommendations(request,post_dict):
     model = pickle.load(pkl_file)
     print(22222)
 
-    prediction = model.predict_proba([new_vector])
+    prediction = model.predict_proba(new_vector)
     print(33333)
     print(prediction)
     print(44444)
