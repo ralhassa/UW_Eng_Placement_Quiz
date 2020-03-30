@@ -198,14 +198,11 @@ def recommendations(request,post_dict):
         t7 = t7.drop(drop_columns, axis=1)
         new_vector = np.array(t7[len(t7)-1:len(t7)])
 
-    print(new_vector)
-
-
-    print("Loading model")
-    print(model_name)
+    print("Loading model...")
+    print(MODEL_NAME)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
-    prediction = model.predict_proba(new_vector)
+    prediction = model.predict_proba([new_vector])
     print(prediction)
     print("Prediction created...")
 
