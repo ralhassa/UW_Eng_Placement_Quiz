@@ -205,9 +205,8 @@ def recommendations(request,post_dict):
     print(model_name)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
-    prediction = model.predict_proba([new_vector])
+    prediction = model.predict_proba(new_vector)
     print(prediction)
-    print(model.predict(new_vector))
     print("Prediction created...")
 
     print("Creating new record...")
