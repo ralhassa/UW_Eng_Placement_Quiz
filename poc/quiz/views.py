@@ -175,6 +175,29 @@ def recommendations(request,post_dict):
             data_to_append[t7.columns[i]] = int(new_vector[i])
         t7 = t7.append(data_to_append, ignore_index = True)
         t7 = pd.get_dummies(t7,columns=columns)
+        rename_columns = {
+            'architecture_1':'architecture',
+            'automotive_1':'automotive',
+            'business_1':'business',
+            'construction_1':'construction',
+            'health_1':'health',
+            'environment_1':'environment',
+            'manufacturing_1':'manufacturing',
+            'technology_1':'technology'
+        }
+        drop_columns = [
+            'architecture_0',
+            'automotive_0',
+            'business_0',
+            'construction_0',
+            'health_0',
+            'environment_0',
+            'manufacturing_0',
+            'technology_0'
+        ]
+        t7 = t7.rename(index=str,columns = rename_columns)
+        t7 = t7.drop(drop_columns, axis=1)
+
         new_vector = np.array(t7[len(t7)-1:len(t7)])
 
     print(new_vector)
@@ -187,7 +210,7 @@ def recommendations(request,post_dict):
     model = pickle.load(pkl_file)
     print(22222)
 
-    prediction = model.predict_proba(new_vector)
+    prediction = model.predict_proba([new_vector])
     print(33333)
     print(prediction)
     print(44444)
