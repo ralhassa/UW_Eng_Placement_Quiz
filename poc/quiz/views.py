@@ -74,7 +74,6 @@ def recommendations(request,post_dict):
     print("Entered Response Creation...")
     model_name = 'nb_le_f0_d0_b0_c36_v0'
     encoded_dictionary = get_encoded_dict(model_name)
-    model_name = 'nb_ohe_f0_d0_b7_c36_v0'
     print("encoded_dictionary retrieved...")
 
     # problem_type = encoded_dictionary['problem_type']['problem_type']
@@ -197,7 +196,6 @@ def recommendations(request,post_dict):
         ]
         t7 = t7.rename(index=str,columns = rename_columns)
         t7 = t7.drop(drop_columns, axis=1)
-
         new_vector = np.array(t7[len(t7)-1:len(t7)])
 
     print(new_vector)
@@ -206,16 +204,10 @@ def recommendations(request,post_dict):
     print("Loading model")
     print(model_name)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
-    print(11111)
     model = pickle.load(pkl_file)
-    print(22222)
-
-    prediction = model.predict_proba(new_vector)
-    print(33333)
+    prediction = model.predict_proba([new_vector])
     print(prediction)
-    print(44444)
     print(model.predict(new_vector))
-    print(5555555)
     print("Prediction created...")
 
     print("Creating new record...")
