@@ -234,7 +234,23 @@ def recommendations(request,post_dict):
     new_record.environment = post_dict['environment']
     new_record.manufacturing = post_dict['manufacturing']
     new_record.technology = post_dict['technology']
+    new_record.arch = prediction['arch']
+    new_record.arche = rediction['arch-e']
+    new_record.bmed = prediction['bmed']
+    new_record.ce = prediction['ce']
+    new_record.cive = prediction['chem']
+    new_record.chem = prediction['cive']
+    new_record.env = prediction['elec']
+    new_record.elec = prediction['env']
+    new_record.geo = prediction['geo']
+    new_record.mech = prediction['mech']
+    new_record.msci = prediction['msci']
+    new_record.nano = prediction['nano']
+    new_record.syde = prediction['swe']
+    new_record.swe = prediction['syde']
+    new_record.tron = prediction['tron']
     print("new record information collected...")
+
     new_record.save()
     print("new record saved...")
 

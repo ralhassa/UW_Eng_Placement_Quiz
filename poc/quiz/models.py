@@ -92,6 +92,21 @@ class Result(models.Model):
     environment = models.CharField(max_length=200)
     manufacturing = models.CharField(max_length=200)
     technology = models.CharField(max_length=200)
+    arch = models.CharField(max_length=200.default=None)
+    arche = models.CharField(max_length=200.default=None)
+    bmed = models.CharField(max_length=200.default=None)
+    ce = models.CharField(max_length=200.default=None)
+    cive = models.CharField(max_length=200.default=None)
+    chem = models.CharField(max_length=200.default=None)
+    env = models.CharField(max_length=200.default=None)
+    elec = models.CharField(max_length=200.default=None)
+    geo = models.CharField(max_length=200.default=None)
+    mech = models.CharField(max_length=200.default=None)
+    msci = models.CharField(max_length=200.default=None)
+    nano = models.CharField(max_length=200.default=None)
+    syde = models.CharField(max_length=200.default=None)
+    swe = models.CharField(max_length=200.default=None)
+    tron = models.CharField(max_length=200.default=None)
 
     def __str__(self):
         return_value = (
@@ -119,6 +134,21 @@ class Result(models.Model):
                         str(self.health) + " , " +
                         str(self.environment) + " , " +
                         str(self.manufacturing) + " , " +
-                        str(self.technology)
+                        str(self.technology) + " , " +
+                        str(self.arch) + " , " +
+                        str(self.arche) + " , " +
+                        str(self.bmed) + " , " +
+                        str(self.ce) + " , " +
+                        str(self.cive) + " , " +
+                        str(self.chem) + " , " +
+                        str(self.env) + " , " +
+                        str(self.elec) + " , " +
+                        str(self.geo) + " , " +
+                        str(self.mech) + " , " +
+                        str(self.msci) + " , " +
+                        str(self.nano) + " , " +
+                        str(self.syde) + " , " +
+                        str(self.swe) + " , " +
+                        str(self.tron)
                         )
         return return_value

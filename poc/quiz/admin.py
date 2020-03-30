@@ -52,7 +52,10 @@ class ComparisonResource(resources.ModelResource):
 class ResultResource(resources.ModelResource):
     class Meta:
         model = Result
-        fields = ('id', 'time', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay',)
+        fields = ('id', 'time', 'problem_type','creative','outdoors','career','group_work','liked_courses','disliked_courses','programming','join_clubs','not_clubs','liked_projects','disliked_projects','tv_shows','alternate_degree','expensive_equipment','drawing','essay','arch','arche','bmed','ce','cive','chem','env','elec','geo','mech','msci','nano','syde','swe','tron',)
+
+
+
 
 # Defining Admin Objects
 class ProgramAdmin(ImportExportModelAdmin):
