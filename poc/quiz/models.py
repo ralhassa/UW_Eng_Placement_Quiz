@@ -100,7 +100,7 @@ class Result(models.Model):
     chem = models.CharField(max_length=200,default=None)
     env = models.CharField(max_length=200,default=None)
     elec = models.CharField(max_length=200,default=None)
-    geo = models.CharField(max_length=200.default=None)
+    geo = models.CharField(max_length=200,default=None)
     mech = models.CharField(max_length=200,default=None)
     msci = models.CharField(max_length=200,default=None)
     nano = models.CharField(max_length=200,default=None)
