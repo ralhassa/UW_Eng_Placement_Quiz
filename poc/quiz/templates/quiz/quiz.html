@@ -19,44 +19,19 @@
 
 <body class="page_body">
   <div class="container">
-    <!-- <h2>Engineering Placement Quiz</h2>
-    <p><strong>Note:</strong> We’ve surveyed Waterloo Engineering students to find out what makes them tick. Take our quiz to see what students who share your interests are studying, and where you might fit.</p> -->
     <!-- Submitting a form-->
     <div class="panel-group" id="accordion">
         <form id="submit" action="{% url 'submit' %}" method='post' onsubmit="return openRequiredQuestions();">
           {% csrf_token %}
 
-          <!--  Question 1 -->
-          <!-- <div class="panel panel-default" id="question1">
-            <div class="panel-heading" id="panel-heading">
-              <h4 class="panel-title" id ="panel-title">
-                What kind of problems do you enjoy solving?
-                 <a data-toggle="collapsein" data-parent="#accordion" href="#collapse1">What kind of problems do you enjoy solving?</a> 
-              </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse in">
-              <div class="panel-body" id="panel-body">
-                <div class="radio">
-                  <label><input type="radio" name="problem_type" value="defined">Problems that are well defined</label>
-                </div>
-                <div class="radio">
-                  <label><input type="radio" name="problem_type" value="investigate">Problems that require some investigation</label>
-                </div>
-                <div class="radio">
-                  <label><input type="radio" name="problem_type" value="discover">Problems with very limited information</label>
-                </div>
-              </div>
-            </div>
-          </div> -->
-  <!--  Question 2 -->
+  <!--  Question 1 -->
   <div class="panel panel-default" id="question2">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         Would you consider yourself as being creative?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse2">Would you consider yourself as being creative?    <span class="warning" id="warning_2">THIS QUESTION IS REQUIRED</span></a> -->
       </h4>
     </div>
-    <div id="collapse2" class="panel-collapse collapse in">
+    <div id="collapse1" class="panel-collapse collapse in">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="creative" value="creative">I am very creative</label>
@@ -70,15 +45,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 3 -->
-  <div class="panel panel-default" id="question3">
+  <!--  Question 2 -->
+  <div class="panel panel-default" id="question2">
       <div class="panel-heading" id="panel-heading">
         <h4 class="panel-title" id ="panel-title">
           You have an assignment to write an essay about anything you want. How does that make you feel?
-          <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse18">You have an assignment to write an essay about anything you want. How does that make you feel?</a> -->
         </h4>
       </div>
-      <div class="collapse" id="collapse3" class="panel-collapse collapse ">
+      <div class="collapse" id="collapse2" class="panel-collapse collapse ">
         <div class="panel-body" id="panel-body">
           <div class="radio">
             <label><input type="radio" name="essay" value="yes">Excited! I can share my theories with the world</label>
@@ -92,15 +66,14 @@
         </div>
       </div>
     </div>
-  <!--  Question 4 -->
-  <div class="panel panel-default" id="question4">
+  <!--  Question 3 -->
+  <div class="panel panel-default" id="question3">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         How comfortable are you working in the outdoors?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse4">How comfortable are you working in the outdoors?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse4" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse3" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="outdoors" value="outdoors">I love the outdoors and wish I could work outside every day</label>
@@ -114,15 +87,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 5 -->
-  <div class="panel panel-default" id="question5">
+  <!--  Question 4 -->
+  <div class="panel panel-default" id="question4">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What can you see yourself doing in the future?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse5">What can you see yourself doing in the future?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse5" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse4" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="career" value="moving_parts">Building things with moving parts</label>
@@ -148,15 +120,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 6 -->
-  <div class="panel panel-default" id="question6">
+  <!--  Question 5 -->
+  <div class="panel panel-default" id="question5">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         How do you feel about group work?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse6">How do you feel about group work?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse6" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse5" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="group_work" value="yes">I enjoy working with others</label>
@@ -170,15 +141,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 7 -->
-  <div class="panel panel-default" id="question7">
+  <!--  Question 6 -->
+  <div class="panel panel-default" id="question6">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What high school class did you enjoy the most?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse7">What high school class did you enjoy the most?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse7" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse6" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="liked_courses" value="autoshop">Autoshop</label>
@@ -216,15 +186,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 8 -->
-  <div class="panel panel-default" id="question8">
+  <!--  Question 7 -->
+  <div class="panel panel-default" id="question7">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What high school class did you enjoy the least?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse8">What high school class did you enjoy the least?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse8" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse7" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="disliked_courses" value="autoshop">Autoshop</label>
@@ -262,40 +231,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 9 -->
-  <!-- <div class="panel panel-default" id="question9">
-    <div class="panel-heading" id="panel-heading">
-      <h4 class="panel-title" id ="panel-title">
-        How do you feel about computer programming?
-        <a data-toggle="collapse." data-parent="#accordion" href="#collapse9">How do you feel about computer programming?</a>
-      </h4>
-    </div>
-    <div id="collapse9" class="panel-collapse collapse ">
-      <div class="panel-body" id="panel-body">
-        <div class="radio">
-          <label><input type="radio" name="programming" value="complete">I code, I enjoy it and I'm good at it</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="programming" value="partial">I can code but it's not my favourite thing to do</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="programming" value="interested">I don't code but I am interested in trying it</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="programming" value="no">I don’t code and I have no desire to learn</label>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!--  Question 10 -->
-  <div class="panel panel-default" id="question10">
+  <!--  Question 8 -->
+  <div class="panel panel-default" id="question8">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What type of club would you consider joining?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse10">What type of club would you consider joining?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse10" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse8" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="join_clubs" value="art/design">Art or design club (i.e. Fashion for Change)</label>
@@ -324,15 +267,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 11 -->
-  <div class="panel panel-default" id="question11">
+  <!--  Question 9 -->
+  <div class="panel panel-default" id="question9">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What type of club would you NOT want to join?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse11">What type of club would you NOT want to join?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse11" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse9" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="not_clubs" value="art/design">Art or design club (i.e. Fashion for Change)</label>
@@ -361,15 +303,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 12 -->
-  <div class="panel panel-default" id="question12">
+  <!--  Question 10 -->
+  <div class="panel panel-default" id="question10">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What project would you want to be a part of?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse12">What project would you want to be a part of?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse12" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse10" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="liked_projects" value="prototyping_instrument">Prototyping a musical instrument for children</label>
@@ -395,15 +336,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 13 -->
-  <div class="panel panel-default" id="question13">
+  <!--  Question 11 -->
+  <div class="panel panel-default" id="question11">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         What project do you find the least interesting?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse13">What project do you find the least interesting?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse13" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse11" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="disliked_projects" value="prototyping_instrument">Prototyping a musical instrument for children</label>
@@ -429,49 +369,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 14 -->
-  <!-- <div class="panel panel-default" id="question14">
-    <div class="panel-heading" id="panel-heading">
-      <h4 class="panel-title" id ="panel-title">
-        If you could only watch one TV show for the rest of your life, what would it be?
-        <a data-toggle="collapse." data-parent="#accordion" href="#collapse14">If you could only watch one TV show for the rest of your life, what would it be?</a> 
-      </h4>
-    </div>
-    <div id="collapse14" class="panel-collapse collapse ">
-      <div class="panel-body" id="panel-body">
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="big_bang_theory">Big Bang Theory</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="breaking_bad">Breaking Bad</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="greys_anatomy">Grey’s Anatomy</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="house_hunters">House Hunters</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="myth_busters">Myth Busters</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="planet_earth">Planet Earth</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="tv_shows" value="silicon_valley">Silicon Valley</label>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!--  Question 15 -->
-  <div class="panel panel-default" id="question15">
+  <!--  Question 12 -->
+  <div class="panel panel-default" id="question12">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         If engineering didn’t exist, what would you consider studying?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse15">If engineering didn’t exist, what would you consider studying?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse15" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse12" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="alternate_degree" value="applied_science">Applied Science</label>
@@ -521,37 +426,14 @@
       </div>
     </div>
   </div>
-  <!--  Question 16 -->
-  <!-- <div class="panel panel-default" id="question16">
-    <div class="panel-heading" id="panel-heading">
-      <h4 class="panel-title" id ="panel-title">
-        How do you feel about working with expensive equipment?
-        <a data-toggle="collapse." data-parent="#accordion" href="#collapse16">How do you feel about working with expensive equipment?</a>
-      </h4>
-    </div>
-    <div id="collapse16" class="panel-collapse collapse ">
-      <div class="panel-body" id="panel-body">
-        <div class="radio">
-          <label><input type="radio" name="expensive_equipment" value="yes">That sounds cool</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="expensive_equipment" value="maybe">Could be cool, but I don't really care about fancy equipment or how much it costs</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="expensive_equipment" value="no">That scares me and I don't want to touch it</label>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!--  Question 17 -->
-  <div class="panel panel-default" id="question17">
+  <!--  Question 13 -->
+  <div class="panel panel-default" id="question13">
     <div class="panel-heading" id="panel-heading">
       <h4 class="panel-title" id ="panel-title">
         How would you describe your drawing abilities?
-        <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse17">How would you describe your drawing abilities?</a> -->
       </h4>
     </div>
-    <div class="collapse" id="collapse17" class="panel-collapse collapse ">
+    <div class="collapse" id="collapse13" class="panel-collapse collapse ">
       <div class="panel-body" id="panel-body">
         <div class="radio">
           <label><input type="radio" name="drawing" value="good">Really good, I can draw just about anything</label>
@@ -565,54 +447,44 @@
       </div>
     </div>
   </div>
-  <!--  Question 18 -->
-  <div class="panel panel-default" id="question18">
+  <!--  Question 14 -->
+  <div class="panel panel-default" id="question14">
       <div class="panel-heading" id="panel-heading">
         <h4 class="panel-title" id ="panel-title">
           What industry can you see yourself working in, in the future? Select all that apply.
-          <!-- <a data-toggle="collapse." data-parent="#accordion" href="#collapse3">What industry can you see yourself working in, in the future? Select all that apply.</a> -->
         </h4>
       </div>
-      <div class="collapse" id="collapse18" class="panel-collapse collapse">
+      <div class="collapse" id="collapse14" class="panel-collapse collapse">
         <div class="panel-body" id="panel-body">
-  
-  
           <div class="checkbox">
               <label><input type="checkbox" name="industry" value="architecture">Architecture (i.e. Designing a building taller than the CN Tower)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="automotive">Automotive (i.e. Designing a new autonomous car)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="business">Entrepreneurship (i.e. Starting your own consulting company)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="construction">Construction (i.e. Building a smart city)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="health">Health (i.e. Creating technology for minimally invasive surgeries)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="environment">Environment (i.e. Producing energy in sustainable ways)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="manufacturing">Manufacturing (i.e. Optimization or automation of manufacturing processes)</label>
           </div>
-  
           <div class="checkbox">
             <label><input type="checkbox" name="industry" value="technology">Technology (i.e. Working with cloud based software)</label>
           </div>
-  
         </div>
       </div>
     </div>
     </div>
+
     <div class="button">
         <input type="submit" value="Submit" class="btn btn-primary btn-lg" id="submitButton" disabled/>
     </div>
@@ -620,7 +492,5 @@
   </form>
   </div>
 
-
 </body>
-
 </html>
