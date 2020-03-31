@@ -16,7 +16,8 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $("#question3").offset().top
   }, 600);
-    $("#collapse3").collapse('show');
+    $("#collapse3").removeClass("collapse").add("collapse in")
+    // $("#collapse3").collapse('show');
     //   $("#collapse2").collapse('hide');
   }
 });
