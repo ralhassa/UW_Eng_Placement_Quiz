@@ -3,6 +3,7 @@ $(document).ready(function() {
   if(sessionStorage.getItem("pageState")) {
     $(".collapse").collapse('show');
     $('#submitButton').prop('disabled', false);
+    sessionStorage.clear();
   }
 
 // 	$('input[name="problem_type"]').click(function() {
