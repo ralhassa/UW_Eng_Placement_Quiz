@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  
-  if (sessionStorage.getItem('page_html')) {
-    content.innerHTML = sessionStorage.getItem('page_html');
-  }
+
 // 	$('input[name="problem_type"]').click(function() {
 //   	if($(this).attr('value') == 'defined' || 'investigate' || 'discover')
 //     {
@@ -181,9 +178,6 @@ $('input[name="industry"]').click(function() {
     $('#submitButton').prop('disabled', false);
   }
 });
-
-sessionStorage.setItem('page_html', this.innerHTML);
-
 });
 
 
