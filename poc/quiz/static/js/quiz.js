@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  if(sessionStorage.getItem("pageState")) {
+    $(".collapse").collapse('show');
+  }
+
 // 	$('input[name="problem_type"]').click(function() {
 //   	if($(this).attr('value') == 'defined' || 'investigate' || 'discover')
 //     {
@@ -16,8 +20,7 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $("#question3").offset().top
   }, 600);
-    $("#collapse3").removeClass("collapse").add("collapse in")
-    // $("#collapse3").collapse('show');
+    $("#collapse3").collapse('show');
     //   $("#collapse2").collapse('hide');
   }
 });
@@ -177,7 +180,10 @@ $('input[name="industry"]').click(function() {
     if($(this).attr('value') == 'architecture' || 'automotive' || 'business' || 'construction' || 'health'|| 'environment' || 'manufacturing' || 'technology')
   {
     $('#submitButton').prop('disabled', false);
+    var pageState = 1;
+    sessionStorage.setItem("pageState", pageState);
   }
+
 });
 });
 
