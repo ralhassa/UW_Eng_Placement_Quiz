@@ -182,11 +182,14 @@ $('input[name="industry"]').click(function() {
     if($(this).attr('value') == 'architecture' || 'automotive' || 'business' || 'construction' || 'health'|| 'environment' || 'manufacturing' || 'technology')
   {
     $('#submitButton').prop('disabled', false);
-    var pageState = 1;
-    sessionStorage.setItem("pageState", pageState);
   }
 
 });
+
+$("#submit").submit(function() {
+    var pageState = 1;
+    sessionStorage.setItem("pageState", pageState);
+})
 });
 
 
