@@ -49,7 +49,7 @@ def email(request):
                                 email = Email()
                                 email.email = request.POST.get('email')
                                 email.save()
-                                return HttpResponseRedirect('/submit')
+                                return HttpResponseRedirect(self.request.path)
         except:
                 print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("Something went wrong...couldn't save email")
