@@ -5,7 +5,6 @@ $(document).ready(function() {
 
     $('#beforeSubmit').addClass("hide");
     $('#afterSubmit').addClass("show");
-    sessionStorage.clear();
   }
 
   $("#link0").toggleClass("activelink");
