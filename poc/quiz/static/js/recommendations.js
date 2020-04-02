@@ -33,23 +33,10 @@ $(document).ready(function() {
   //   $('#beforeSubmit').toggleClass("hide");
   //   $('#afterSubmit').toggleClass("show");
   // });
-  $('#submit').submit(function() {
+  $("#submit").submit(function() {
     var recommendationsPageState = 1;
     sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
-  });
-
-  $('#email').submit(function() {
-        // kick off AJAX
-    $.ajax({
-      url: this.action,
-      type: this.method,
-      data: $(this).serialize(),
-      success: function() {
-      }
-    });
-    return false;
-  });
-
+})
 });
 
 function goBack() {
