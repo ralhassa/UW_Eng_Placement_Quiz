@@ -3,8 +3,8 @@ $(document).ready(function() {
   if(sessionStorage.getItem("recommendationsPageState")) {
     // on page reload, from recommendations page
 
-    $('#beforeSubmit').toggleClass("hide");
-    $('#afterSubmit').toggleClass("show");
+    $('#beforeSubmit').addClass("hide");
+    $('#afterSubmit').addClass("show");
     sessionStorage.clear();
   }
 
@@ -33,17 +33,16 @@ $(document).ready(function() {
   //   $('#beforeSubmit').toggleClass("hide");
   //   $('#afterSubmit').toggleClass("show");
   // });
-
+  
   $('#email').submit(function() {
+    var recommendationsPageState = 1;
+        sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
         // kick off AJAX
-
     $.ajax({
       url: this.action,
       type: this.method,
       data: $(this).serialize(),
       success: function() {
-        var recommendationsPageState = 1;
-        sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
       }
     });
     return false;
