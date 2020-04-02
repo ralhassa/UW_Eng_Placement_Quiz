@@ -31,7 +31,7 @@ $(document).ready(function() {
       url: this.action,
       type: this.method,
       data: $(this).serialize(),
-      success: function() {
+      success: function(response) {
         $('#beforeSubmit').toggleClass("hide");
         $('#afterSubmit').toggleClass("show");
       }
