@@ -73,7 +73,7 @@
                     </div>
                   </div>
                   <div class="emailSection" id="beforeSubmit">
-                      <form class="email" method="POST" action="{% url 'emailSubmit' %}">
+                      <form id="submit" class="email" method="POST" action="{% url 'emailSubmit' %}">
                           {% csrf_token %}
 
                         <p>Enter your email below to recieve information about Engineering at the University of Waterloo</p>

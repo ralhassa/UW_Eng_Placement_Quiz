@@ -33,7 +33,7 @@ $(document).ready(function() {
   //   $('#beforeSubmit').toggleClass("hide");
   //   $('#afterSubmit').toggleClass("show");
   // });
-  $('#emailSubmit').submit(function() {
+  $('#submit').submit(function() {
     var recommendationsPageState = 1;
     sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
   });
