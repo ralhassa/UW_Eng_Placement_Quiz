@@ -28,6 +28,7 @@ body {
     display: table;
     clear: both;
     position: relative;
+    width: 100%;
     }
 
 .sidenav { 

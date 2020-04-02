@@ -37,7 +37,7 @@ $(document).ready(function() {
   $('#email').submit(function() {
 
     var recommendationsPageState = 1;
-    sessionStorage.setItem("pageState", pageState);
+    sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
         // kick off AJAX
 
     $.ajax({
