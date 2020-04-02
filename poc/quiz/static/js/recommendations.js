@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  if(sessionStorage.getItem("pageState")) {
+  if(sessionStorage.getItem("RecommendationsPageState")) {
     // on page reload, from recommendations page
 
     $('#beforeSubmit').toggleClass("hide");
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
   $('#email').submit(function() {
 
-    var pageState = 1;
+    var recommendationsPageState = 1;
     sessionStorage.setItem("pageState", pageState);
         // kick off AJAX
 
