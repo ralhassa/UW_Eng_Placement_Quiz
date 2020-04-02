@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>UW Program Compatibility Tool | Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/style/emailSubmission.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static '/js/recommendations.js' %}"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form class="back">
+        <input type="button" class="button" id="backButton" value="Back to My Results" onclick="goBack()">
+        </form>
+        <div class="message">
+            <p>We have recieved your email and will keep you up to date with all the engieering events for prespective students that will be taking place at the University of Waterloo</p>
+        </div>
+    </div>
+</body>
+</html>

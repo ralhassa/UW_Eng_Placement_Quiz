@@ -1,4 +1,13 @@
 $(document).ready(function() {
+
+  if(sessionStorage.getItem("pageState")) {
+    // on page reload, from recommendations page
+
+    $('#beforeSubmit').toggleClass("hide");
+    $('#afterSubmit').toggleClass("show");
+    sessionStorage.clear();
+  }
+
   $("#link0").toggleClass("activelink");
   $("#link1").toggleClass("activelink");
   $("#link2").toggleClass("activelink");
@@ -26,14 +35,16 @@ $(document).ready(function() {
   // });
 
   $('#email').submit(function() {
+
+    var pageState = 1;
+    sessionStorage.setItem("pageState", pageState);
         // kick off AJAX
+
     $.ajax({
       url: this.action,
       type: this.method,
       data: $(this).serialize(),
       success: function(response) {
-        $('#beforeSubmit').toggleClass("hide");
-        $('#afterSubmit').toggleClass("show");
       }
     });
     return false;

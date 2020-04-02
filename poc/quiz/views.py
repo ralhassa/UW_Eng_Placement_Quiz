@@ -49,10 +49,10 @@ def email(request):
                                 email = Email()
                                 email.email = request.POST.get('email')
                                 email.save()
-                                return HttpResponse("success")
+                                return render(request,'quiz/emailSubmission.html')
         except:
                 print("Unexpected error:", sys.exc_info()[0])
-        return HttpResponse("Something went wrong...couldn't save email")
+        return HttpResponse("Something went wrong...Your email was not submitted")
 
 
 def submit(request):
