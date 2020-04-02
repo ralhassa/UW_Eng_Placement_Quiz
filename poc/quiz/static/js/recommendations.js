@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  if(sessionStorage.getItem("RecommendationsPageState")) {
+  if(sessionStorage.getItem("recommendationsPageState")) {
     // on page reload, from recommendations page
 
     $('#beforeSubmit').toggleClass("hide");
