@@ -33,10 +33,12 @@ $(document).ready(function() {
   //   $('#beforeSubmit').toggleClass("hide");
   //   $('#afterSubmit').toggleClass("show");
   // });
-  
-  $('#email').submit(function() {
+  $('#emailSubmit').submit(function() {
     var recommendationsPageState = 1;
-        sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
+    sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
+  });
+
+  $('#email').submit(function() {
         // kick off AJAX
     $.ajax({
       url: this.action,
