@@ -35,16 +35,15 @@ $(document).ready(function() {
   // });
 
   $('#email').submit(function() {
-
-    var recommendationsPageState = 1;
-    sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
         // kick off AJAX
 
     $.ajax({
       url: this.action,
       type: this.method,
       data: $(this).serialize(),
-      success: function(response) {
+      success: function() {
+        var recommendationsPageState = 1;
+        sessionStorage.setItem("recommendationsPageState", recommendationsPageState);
       }
     });
     return false;

@@ -47,12 +47,6 @@ body {
     height: 40px;
 }
 
-.show {
-    visibility: visible !important;
-}
-.hide {
-    visibility: hidden;
-}
 
 
 
