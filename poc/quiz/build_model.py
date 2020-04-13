@@ -540,7 +540,7 @@ v0 = 1
 # experiment_model_name = 'dataSet_dataBalance_columnSet_dataBalanceMultiple'
 experiment_model_name = 'd0_b7_c36_v0'
 directory = d0
-data_balance = b0
+data_balance = b7
 column_list = c36
 data_balance_multiple = v0 # Ratio of other programs to program in binary classifier. 2 means double of other programs, 0.5 means half
 
