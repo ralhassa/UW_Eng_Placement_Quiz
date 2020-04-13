@@ -451,7 +451,8 @@ MODEL_NAME = 'nb_ohe_f0_d0_b7_c36_v0'
 
 d0 = 'poc/quiz/exported_model_files/d0.csv'
 
-c36 = ['creative',
+c36 = [
+    'creative',
        'outdoors',
        'career',
        'group_work',
@@ -476,21 +477,17 @@ c36 = ['creative',
 ]
 
 ohe =  [
-        'problem_type',
         'creative',
         'outdoors',
         'career',
         'group_work',
         'liked_courses',
         'disliked_courses',
-        'programming',
         'join_clubs',
         'not_clubs',
         'liked_projects',
         'disliked_projects',
-        'tv_shows',
         'alternate_degree',
-        'expensive_equipment',
         'drawing',
         'essay'
         ]
