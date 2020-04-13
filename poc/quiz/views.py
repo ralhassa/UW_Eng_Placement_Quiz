@@ -200,7 +200,7 @@ def recommendations(request,post_dict):
     print(MODEL_NAME)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
-    prediction = model.predict_proba([new_vector])
+    prediction = model.predict_proba(new_vector)
     print("Prediction created...")
 
     # Getting Ordered Results
