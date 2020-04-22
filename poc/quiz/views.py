@@ -71,7 +71,7 @@ def recommendations(request,post_dict):
     model_name = MODEL_NAME
     post_dict = transform_post_dict(post_dict)
     print("Entered Response Creation...")
-    model_name = 'nb_le_f0_d0_b0_c36_v0'
+
     encoded_dictionary = get_encoded_dict(model_name)
     print("encoded_dictionary retrieved...")
 
@@ -200,7 +200,10 @@ def recommendations(request,post_dict):
     print(MODEL_NAME)
     pkl_file = open('poc/quiz/exported_model_files/'+model_name+'.pkl', 'rb')
     model = pickle.load(pkl_file)
-    prediction = model.predict_proba(new_vector)
+    try:
+        prediction = model.predict_proba([new_vector])
+    except:
+        prediction = model.predict_proba(new_vector)
     print("Prediction created...")
 
     # Getting Ordered Results
