@@ -71,7 +71,7 @@ def recommendations(request,post_dict):
     model_name = MODEL_NAME
     post_dict = transform_post_dict(post_dict)
     print("Entered Response Creation...")
-    model_name = 'nb_le_f0_d0_b0_c36_v0'
+
     encoded_dictionary = get_encoded_dict(model_name)
     print("encoded_dictionary retrieved...")
 
